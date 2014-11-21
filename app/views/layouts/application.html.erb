@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= yield :title %></title>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+		<div class="container">
+			<% flash.each do |message_type, message| %>
+			<div class="alert alert-<%= message_type %>">
+				<%= message %>
+			</div>
+			<% end %>
+			<%= yield %>
+			<%= render 'layouts/footer' %>
+			<%= debug(params) if Rails.env.development? %>
+		</div>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+		<script type="text/javascript">
+			$(window).load(function() {
+				$('.alert').delay(15000).fadeOut();
+			});
+		</script>
+		<%= yield :view_scripts %>
+	</body>
+</html>
