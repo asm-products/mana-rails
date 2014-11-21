@@ -1,7 +1,7 @@
-# mana-rails
-[![Build Status](https://travis-ci.org/asm-products/mana-rails.svg)](https://travis-ci.org/asm-products/mana-rails)
-
+![Mana](https://d8izdk6bl4gbi.cloudfront.net/https://d1015h9unskp4y.cloudfront.net/attachments/aefce943-0367-4b97-9ee4-91fdb75d43ac/mana-logo.png)
 ## Fun automatic project and invoice management.
+
+[![Build Status](https://travis-ci.org/asm-products/mana-rails.svg)](https://travis-ci.org/asm-products/mana-rails)
 
 ### The project management, invoicing, team collaboration tool to rule them all!
 
