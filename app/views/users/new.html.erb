@@ -6,7 +6,7 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
+      <%= f.label :name, "Username or Email" %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
