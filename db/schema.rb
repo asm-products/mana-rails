@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141121181716) do
+ActiveRecord::Schema.define(version: 20141122071122) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20141121181716) do
     t.integer  "unique_id"
     t.string   "subject"
     t.text     "description"
-    t.decimal  "projected_hours"
+    t.decimal  "projected_hours", default: 0.0
     t.datetime "due_date"
     t.integer  "project_id"
     t.datetime "created_at"
