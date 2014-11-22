@@ -25,6 +25,13 @@ module SessionsHelper
     end
   end
   
+  # Redirects to login_page if not logged in.
+  def authenticate_user!
+    if current_user.nil?
+      redirect_to login_path
+    end
+  end
+  
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?

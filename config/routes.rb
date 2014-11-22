@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
-  get 'home/index'
-
+  
   root to: "home#index"
+  
+  # Custom routes
   get 'signup' => "users#new"
   get 'login' => "sessions#new"
   post 'login' => "sessions#create"
   delete 'logout' => 'sessions#destroy'
-  resources :users
   
+  # Resources
+  resources :users
+  resources :clients do
+    resources :contacts
+  end
+  
+  ## API routes
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :clients do
