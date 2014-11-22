@@ -15,17 +15,27 @@ The following guidelines for contribution should be followed if you want to subm
 ## Make Changes
 
 * In your forked repository, create a topic branch for your upcoming patch. (e.g. `feature--autoplay` or `bugfix--ios-crash`)
-	* Usually this is based on the develop branch.
-	* Create a branch based on develop; `git branch
-	fix/master/my_contribution develop` then checkout the new branch with `git
-	checkout fix/develop/my_contribution`.  Please avoid working directly on the `master` branch.
+	* Usually this is based on the `develop` branch.
+	* Create a branch based on `develop`; 
+	```
+	git branch fix/master/my_contribution develop
+	``` 
+	* then checkout the new branch with 
+	```
+	git	checkout fix/develop/my_contribution.
+	```  
+	* Please avoid working directly on the `master` or `develop` branch.
 * Make sure you stick to the coding style that is used already.
-* Make use of the `.editorconfig`-file if provided with the repository.
-* Squash your topic branch on develop in as few logical commits as possible.
+* Squash your topic branch on `develop` in as few logical commits as possible.
+   ```
+   git rebase -i develop
+   ```
 * Check for unnecessary whitespace with `git diff --check` before committing.
-
 * If possible, submit tests to your patch / new feature so it can be tested easily.
 * Assure nothing is broken by running all the tests.
+* If your changes are to the api be sure to reflect those changes with semver.
+  * Read the [semver](http://semver.org/) spec
+  * Learn how to use the [semver2](https://github.com/haf/semver) gem to increment semver.
 
 ## Submit Changes
 
@@ -35,6 +45,7 @@ The following guidelines for contribution should be followed if you want to subm
 * If not done in commit messages (which you really should do) please reference and update your issue with the code changes. But _please do not close the issue yourself_.
 _Notice: You can [turn your previously filed issues into a pull-request here](http://issue2pr.herokuapp.com/)._
 * Even if you have write access to the repository, do not directly push or merge pull-requests. Let another team member review your pull request and approve.
+* If you have the authority to merge your a pull request ensure it passed the build test with Travis CI before merging the request.
 
 # Additional Resources
 
