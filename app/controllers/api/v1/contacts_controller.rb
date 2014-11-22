@@ -1,6 +1,8 @@
 class Api::V1::ContactsController < ApplicationController
   before_action :set_client_contact, only: [:index, :show, :update, :destroy]
   
+  before_filter :authenticate_api
+  
   # GET clients/:client_id/contacts/
   # GET clients/:client_id/contacts.json
   def index
