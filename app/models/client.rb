@@ -1,7 +1,7 @@
 class Client < ActiveRecord::Base
   before_save :default_values
   
-  has_many :contacts
+  has_many :contacts, class_name: "User"
   
   validates :name,
     presence: true,
