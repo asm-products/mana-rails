@@ -6,7 +6,7 @@
     <%= form_for(@user) do |f| %>
       <%= render 'error_messages' %>
 
-      <%= f.label :name, "Username or Email" %>
+      <%= f.label :name, "Username" %>
       <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
@@ -17,7 +17,7 @@
 
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
-
+ 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>
