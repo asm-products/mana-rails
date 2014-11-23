@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :client
+  has_one :user_profile, dependent: :destroy
   attr_accessor :remember_token
   before_save { email.downcase! }
   

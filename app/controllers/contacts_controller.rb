@@ -22,6 +22,7 @@ class ContactsController < ApplicationController
   end
   
   def edit
+    redirect_to edit_users_profile_path(@contact)
   end
   
   def update
