@@ -1,5 +1,7 @@
 class Api::V1::ClientsController < ApplicationController  
   before_action :set_client, only: [:show, :update, :destroy]
+
+  before_filter :authenticate_api
   
   # GET /clients
   # GET /clients.json

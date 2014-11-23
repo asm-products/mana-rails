@@ -1,5 +1,7 @@
 class Api::V1::ContactsController < ApplicationController
   
+  before_filter :authenticate_api
+  
   # GET clients/:client_id/contacts/
   # GET clients/:client_id/contacts.json
   def index

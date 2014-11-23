@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }                    
   has_secure_password
   validates :password, length: { minimum: 6 }
+
+  before_create do |doc|
+    doc.api_key = doc.generate_api_key
+  end
   
   # Returns the hash digest of the given string.
   def User.digest(string)
@@ -39,5 +43,12 @@ class User < ActiveRecord::Base
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def generate_api_key
+    loop do
+      token = SecureRandom.base64.tr('+/=', 'Qrt')
+      break token unless User.exists?(api_key: token)
+    end
   end
 end
