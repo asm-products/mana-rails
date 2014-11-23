@@ -34,6 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'guard-rspec', require: false
 end
 
 group :test do
