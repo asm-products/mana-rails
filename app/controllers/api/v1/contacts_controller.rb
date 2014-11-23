@@ -11,7 +11,7 @@ class Api::V1::ContactsController < ApplicationController
   # GET clients/:client_id/contacts/:id
   # GET clients/:client_id/contacts/:id.json
   def show
-    if !@contact.nil?
+    if @contact
       render json: @contact, except: [:password_digest, :remember_digest]
     else
       render json: {message: 'Contact not found'}, status: :not_found
