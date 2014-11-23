@@ -14,3 +14,9 @@ Project.blueprint do
   short_code { "1234" }
   client_id     { Client.make.id }
 end
+
+User.blueprint do
+  name       { "TestName" }
+  email      { "test@test.com" }
+  password   { "testtest" }
+end
