@@ -37,6 +37,14 @@ group :development do
   gem 'guard-rspec', require: false
 end
 
+group :test do
+  gem 'machinist'
+end
+
+group :test, :development do
+  gem "rspec-rails"
+end
+
 group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
