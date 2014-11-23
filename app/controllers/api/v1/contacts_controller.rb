@@ -46,6 +46,7 @@ class Api::V1::ContactsController < ApplicationController
     @contact.destroy
     render json: @contact, except: [:password_digest, :remember_digest]
   end
+
   private  
   #allow contact parameters
   def contact_params
