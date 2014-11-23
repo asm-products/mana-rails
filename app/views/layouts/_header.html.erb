@@ -2,6 +2,11 @@
   <div class="container">
     <%= link_to "Mana", root_path, id: "logo", class: "navbar-brand" %>
     <nav>
+      <ul class="nav navbar-nav">
+      	<% if logged_in? %>
+      		<li><%= link_to "Clients", clients_path %></li>
+      	<% end %>
+      </ul>
       <ul class="nav navbar-nav pull-right">
         <li><%= link_to "Home", root_path %></li>
         <% if logged_in? %>
