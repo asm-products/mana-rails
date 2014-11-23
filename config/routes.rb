@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root to: "home#index"
   
   # Custom routes
-  get 'signup' => "users#new"
-  get 'login' => "sessions#new"
-  post 'login' => "sessions#create"
-  delete 'logout' => 'sessions#destroy'
+  get 'signup', to: "users#new"
+  get 'login', to: "sessions#new"
+  post 'login', to: "sessions#create"
+  delete 'logout', to: 'sessions#destroy'
+  get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
+  put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
+  patch 'users/:id/profile', to: 'users#update_profile'
   
   # Resources
   resources :users
