@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20141123025205) do
     t.integer  "client_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "api_key"
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id"

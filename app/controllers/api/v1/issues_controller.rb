@@ -1,6 +1,8 @@
 class Api::V1::IssuesController < ApplicationController
   before_action :set_project_issue, only: [:index, :show, :update, :destroy]
   
+  before_filter :authenticate_api
+
   # GET /projects/:project_id/issues
   # GET /projects/:project_id/issues.json
   def index
