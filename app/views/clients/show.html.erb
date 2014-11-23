@@ -11,8 +11,7 @@
 						<%= link_to "All Clients", clients_path, class: "btn btn-default" %>
 						<%= link_to "Delete Client", [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger"%>
 						<%= link_to "Edit Client", edit_client_path(@client.short_code), class: "btn btn-primary" %>
-						<!-- TODO: ADD create contact button -->
-						<%= link_to "Create Contact", clients_path, class: "btn btn-success" %>
+						<%= link_to "Create Contact", new_client_contact_path(@client.short_code), class: "btn btn-success" %>
 					</div>
 				</div>
 			</div>
@@ -21,7 +20,7 @@
 			<div class="col-md-12">
 				<h3>Contacts</h3>
 				<hr />
-				<!-- TODO: List Client Contacts -->
+				<%= render @client.contacts %>
 			</div>
 		</div>
 		<div class="row">
