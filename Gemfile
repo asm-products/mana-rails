@@ -36,6 +36,10 @@ group :development do
   gem "binding_of_caller"
 end
 
+group :test, :development do
+  gem "rspec-rails"
+end
+
 group :production do
   gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
