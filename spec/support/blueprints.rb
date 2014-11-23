@@ -9,3 +9,8 @@ Issue.blueprint do
   subject { "Test Subject" }
 end
 
+Project.blueprint do
+  name       { "TestName" }
+  short_code { "1234" }
+  client_id     { Client.make.id }
+end
