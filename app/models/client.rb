@@ -21,11 +21,11 @@ class Client < ActiveRecord::Base
   
   def default_values
       if short_code.blank? && name.present?
-          self.unique_short_code = self.name[0..3]
+          self.unique_short_code = self.name[0..3].downcase.strip
     end
   end
   
-  def generate_unique_short_code
+  def generate_unique_short_code(new_short_code)
     i = 0
     generated_short_code = new_short_code
     
