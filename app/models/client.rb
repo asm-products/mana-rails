@@ -25,7 +25,7 @@ class Client < ActiveRecord::Base
     end
   end
   
-  def generate_unique_short_code
+  def generate_unique_short_code(new_short_code)
     i = 0
     generated_short_code = new_short_code
     
