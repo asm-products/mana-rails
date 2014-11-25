@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
     self.projected_hours ||= 0.0
     self.short_code = short_code.present? ? self.short_code.downcase : self.name[0..1].downcase
     self.short_code = self.short_code.parameterize
-    if !Project.where(short_code: self.short_code).take.nil?
+    if Project.where(short_code: self.short_code).take.nil?
       self.short_code = generate_unique_short_code
     end
   end
