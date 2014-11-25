@@ -1,7 +1,10 @@
 module SpecAuthHelper
   def login(user=nil)
-    user = User.make!
-    post :create, session: {username: user.email, password: 'testtest' }
+    begin
+      user = User.make!
+    rescue
+    end
+    session[:user_id] = user.id
   end
 
   def current_user
