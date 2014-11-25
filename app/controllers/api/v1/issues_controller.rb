@@ -1,12 +1,11 @@
 class Api::V1::IssuesController < ApplicationController
-  before_action :set_project_issue, only: [:index, :show, :update, :destroy]
+  before_action :set_project_issue, except: [:create]
   
   before_filter :authenticate_api
 
   # GET /projects/:project_id/issues
   # GET /projects/:project_id/issues.json
   def index
-    @issues = Issue.where(project_id: @project.id)
     render json: @issues
   end
   
@@ -23,7 +22,7 @@ class Api::V1::IssuesController < ApplicationController
   # POST /projects/:project_id/issues
   # POST /projects/:project_id/issues.json
   def create
-    @project = Project.where("id = :project_id OR short_code = :project_id", {project_id: params[:project_id]}).take
+    @project = Project.find_by(id: params[:project_id]) || Project.find_by(short_code: params[:project_id])
     @issue = Issue.new(issue_params)
     @issue.project_id = @project.id
     @issue.unique_id = get_next_issue_id(@project.id)
@@ -57,8 +56,9 @@ class Api::V1::IssuesController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_project_issue
-      @project = Project.where("id = :project_id OR short_code = :project_id", {project_id: params[:project_id]}).take
-      @issue = Issue.where("project_id = :project_id AND unique_id = :id", {project_id: @project.id, id: params[:id]}).take
+      @project = Project.find_by(id: params[:project_id]) || Project.find_by(short_code: params[:project_id])
+      @issues = Issue.where(project_id: @project.id)
+      @issue = @issues.find_by(unique_id: params[:id])
     end
     
     # allow issue parameters
@@ -66,6 +66,7 @@ class Api::V1::IssuesController < ApplicationController
       params.permit(:subject, :description, :projected_hours, :due_date)
     end
     
+    ## TODO: move these two functions to the model.
     # update projected hours for issue project
     def get_projected_hours(project_id)
       collection = Issue.where(project_id: project_id)

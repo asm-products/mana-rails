@@ -1,5 +1,5 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :update, :destroy]
+  before_action :set_project, except: [:index, :create]
   
   before_filter :authenticate_api
 
@@ -52,7 +52,7 @@ class Api::V1::ProjectsController < ApplicationController
   
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.where("id = :id OR short_code = :id", {id: params[:id]}).take
+      @project = Project.find_by(id: params[:id]) || Project.find_by(short_code: params[:id])
     end
     
     # allow project paramaters

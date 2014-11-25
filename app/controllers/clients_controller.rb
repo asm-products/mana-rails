@@ -40,7 +40,7 @@ class ClientsController < ApplicationController
   private
     
     def set_client
-      @client = Client.find_by("id = :id OR short_code = :id", {id: params[:id]})
+      @client = Client.find_by(id: params[:id]) || Client.find_by(short_code: params[:id])
     end
     
     def client_params
