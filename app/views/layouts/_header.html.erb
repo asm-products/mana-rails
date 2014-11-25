@@ -1,0 +1,30 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Mana", root_path, id: "logo", class: "navbar-brand" %>
+    <nav>
+      <ul class="nav navbar-nav">
+      	<% if logged_in? %>
+      		<li><%= link_to "Clients", clients_path %></li>
+      	<% end %>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
