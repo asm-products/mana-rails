@@ -45,6 +45,10 @@ class Api::V1::ClientsController < ApplicationController
   #DELETE /clients/:id.json
   def destroy
     @client.destroy
+    @contacts = User.where(client_id: @client.id)
+    @contacts.each do |contact|
+      contact.update_attribute(:client_id, nil)
+    end
     render json: @client
   end
   
@@ -52,7 +56,7 @@ class Api::V1::ClientsController < ApplicationController
     
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      @client = Client.where("id = :id OR short_code = :id", {id: params[:id]}).take
+      @client = Client.find_by(id: params[:id]) || Client.find_by(short_code: params[:id])
     end
     
     # allow client paramaters

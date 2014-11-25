@@ -6,12 +6,12 @@ class ContactsController < ApplicationController
   end
   
   def new
-    @client = Client.find_by("id = :id OR short_code = :id", {id: params[:client_id]})
+    @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = User.new
   end
   
   def create
-    @client = Client.find_by("id = :id OR short_code = :id", {id: params[:client_id]})
+    @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = User.new(contact_params)
     @contact.client_id = @client.id
     if @contact.save
@@ -42,8 +42,9 @@ class ContactsController < ApplicationController
   private
   
   def set_client_contact
-    @client = Client.find_by("id = :client_id OR short_code = :client_id", {client_id: params[:client_id]})
-    @contact = User.find_by("client_id = :client_id AND (id = :id OR name = :id)", {client_id: @client.id, id: params[:id]})
+    @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
+    @contacts = User.where(client_id: @client.id)
+    @contact = @contacts.find_by(id: params[:id]) || @contacts.find_by(name: params[:id])
   end
   
   def contact_params

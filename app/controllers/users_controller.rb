@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   private
     
     def set_user_profile
-      @user = User.find_by("id = :id OR name = :id", {id: params[:id]})
+      @user = User.find_by(id: params[:id]) || User.find_by(name: params[:id])
       @profile = UserProfile.find_by(user_id: @user.id)
     end
     
