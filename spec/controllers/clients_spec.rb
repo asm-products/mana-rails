@@ -24,4 +24,10 @@ describe ClientsController, :type => :controller do
     delete :destroy, { id: @client.id }
     expect(response).to redirect_to clients_path
   end
+
+  it "requires authentication" do
+    logout if logged_in?
+    get :index
+    expect(response).to have_http_status 302
+  end
 end
