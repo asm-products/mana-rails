@@ -7,14 +7,18 @@ class ContactsController < ApplicationController
   
   def new
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
-    @contact = User.new
+    @contact = @client.contacts.new
+    @profile = UserProfile.new
   end
   
   def create
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new(contact_params)
+    @profile = UserProfile.new(profile_params)
     if @contact.save
-      redirect_to client_contact_path(@client.short_code, @contact.name)
+      @profile.user = @contact
+      @profile.save
+      redirect_to client_user_path(@client.short_code, @contact.name)
     else
       render 'new'
     end
@@ -26,7 +30,7 @@ class ContactsController < ApplicationController
   
   def update
     if @contact.update(contact_params)
-      redirect_to client_contact_path(@client.short_code, @contact.name)
+      redirect_to client_user_path(@client.short_code, @contact.name)
     else
       render 'edit'
     end
@@ -47,6 +51,10 @@ class ContactsController < ApplicationController
   end
   
   def contact_params
-    params.require(:user).permist(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def profile_params
+    params.require(:user_profile).permit(:first_name, :last_name, :job_title, :phone)
   end
 end

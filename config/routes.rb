@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   # Resources
   resources :users
   resources :clients do
-    resources :contacts
+    resources :contacts, as: 'users'
   end
   
   ## API routes
