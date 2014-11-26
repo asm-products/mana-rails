@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_client_contact, except: [:create, :new]
    
   def show
   end
@@ -12,8 +12,7 @@ class ContactsController < ApplicationController
   
   def create
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
-    @contact = User.new(contact_params)
-    @contact.client_id = @client.id
+    @contact = @client.contacts.new(contact_params)
     if @contact.save
       redirect_to client_contact_path(@client.short_code, @contact.name)
     else
@@ -43,7 +42,7 @@ class ContactsController < ApplicationController
   
   def set_client_contact
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
-    @contacts = User.where(client_id: @client.id)
+    @contacts = @client.contacts
     @contact = @contacts.find_by(id: params[:id]) || @contacts.find_by(name: params[:id])
   end
   

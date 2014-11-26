@@ -22,8 +22,7 @@ class Api::V1::ContactsController < ApplicationController
   # POST clients/:client_id/contacts.json
   def create
     @client = Client.find_by(id: client_id) || Client.find_by(short_code: client_id)
-    @contact = User.new(contact_params)
-    @contact.client_id = @client.id
+    @contact = @client.contacts.new(contact_params)
     if @contact.save
       render json: @contact, except: [:password_digest, :remember_digest, :api_key]
     else
@@ -53,7 +52,7 @@ class Api::V1::ContactsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_client_contact
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
-    @contacts = User.where(client_id: @client.id)
+    @contacts = @client.contacts
     @contact = @contacts.find_by(id: params[:id]) || @contacts.find_by(name: params[:id])
   end
     
