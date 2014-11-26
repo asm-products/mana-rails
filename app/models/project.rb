@@ -1,7 +1,9 @@
 class Project < ActiveRecord::Base
   belongs_to :client
   before_save :default_values
+  
   has_one :client
+  has_many :issues
   
   validates :name, presence: true, length: { minimum: 4 }
   validates :short_code, uniqueness: true, length: { maximum: 4 }, allow_blank: true
