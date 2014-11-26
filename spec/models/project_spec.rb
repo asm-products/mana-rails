@@ -28,7 +28,12 @@ describe Project, :type => :model do
   end
   
   it "has a unique short code" do
-      other_client = Project.make(short_code: @project.short_code)
+    other_client = Project.make(short_code: @project.short_code)
     expect !other_client.valid?
-  end  
+  end
+
+  it "has many issues" do
+    expect(@project.issues).to be_a ActiveRecord::Associations::CollectionProxy
+    expect(@project.issues.empty?).to eq true
+  end
 end
