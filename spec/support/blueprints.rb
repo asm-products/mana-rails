@@ -7,6 +7,7 @@ end
 
 Issue.blueprint do
   subject { "Test Subject" }
+  project { Project.make! }
 end
 
 Project.blueprint do
