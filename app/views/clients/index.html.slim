@@ -1,0 +1,24 @@
+- provide(:title, "Clients")
+div class="row"
+	div class="col-md-10 col-md-offset-1"
+		div class="row"
+			div class="col-md-6"
+				h1 Clients
+			
+			div class="col-md-6"
+				div class="pull-right"
+					= link_to "Create New Client", new_client_path, class: "btn btn-success" 
+
+		- @clients.each do |client| 
+			div class="row"
+				div class="col-md-12"
+					h3 = link_to client.name, client_path(client.short_code)
+					p = client.address
+					p 
+						| (
+						span = client.phone[0..2]
+						| ) 
+						span = client.phone[3..5] 
+						| - 
+						span = client.phone[6..9]
+					p = link_to client.website, client.website
