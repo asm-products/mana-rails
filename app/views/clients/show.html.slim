@@ -1,0 +1,34 @@
+- provide(:title, @client.name)
+div class="row"
+	
+	div class="col-md-10 col-md-offset-1"
+		
+		div class="row"
+			
+			div class="col-md-6"
+				h1 = @client.name
+			
+			div class="col-md-6"
+				div class="pull-right"
+					div class="btn-group"
+						= link_to "All Clients", clients_path, class: "btn btn-default"
+						= link_to "Delete Client", [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger"
+						= link_to "Edit Client", edit_client_path(@client.short_code), class: "btn btn-primary"
+						= link_to "Create Contact", new_client_user_path(@client.short_code), class: "btn btn-success"
+		div class="row"
+			div class="col-md-12"
+				h3 Contacts
+				hr
+				= render @client.contacts
+		
+		div class="row"
+			div class="col-md-12"
+				h3 Projects
+				hr
+				/! TODO: List Client Projects
+
+		div class="row"
+			div class="col-md-12"
+				h3 Client Activity
+				hr
+				/! TODO: List Client Activity
