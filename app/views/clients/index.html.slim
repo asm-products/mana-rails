@@ -14,11 +14,4 @@ div class="row"
 				div class="col-md-12"
 					h3 = link_to client.name, client_path(client.short_code)
 					p = client.address
-					p 
-						| (
-						span = client.phone[0..2]
-						| ) 
-						span = client.phone[3..5] 
-						| - 
-						span = client.phone[6..9]
-					p = link_to client.website, client.website
+					p = client.formatted_phone

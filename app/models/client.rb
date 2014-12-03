@@ -1,11 +1,13 @@
 class Client < ActiveRecord::Base
   before_save :default_values
+  phony_normalize :phone
 
   has_many :contacts, class_name: "User"
 
   validates :name, presence: true, length: { minimum: 4 }
   validates :short_code, uniqueness: true, length: { minimum: 4, maximum: 6 },
     allow_blank: true
+  validates :phone, length: {minmum: 10, maximum: 10}, allow_blank: true
   
   def default_values
     if short_code.blank? && name.present?
@@ -31,5 +33,21 @@ class Client < ActiveRecord::Base
     end
     
     generated_short_code
+  end
+  
+  def area_code
+    phone.first 3
+  end
+  
+  def phone_prefix
+    phone.slice(3,3)
+  end
+  
+  def phone_suffix
+    phone.last 4
+  end
+  
+  def formatted_phone
+    '(' + area_code + ') ' + phone_prefix + '-' + phone_suffix  
   end
 end
