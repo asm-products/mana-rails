@@ -30,5 +30,20 @@ describe Client, :type => :model do
   it "has a unique short code" do
       other_client = Client.make(short_code: @client.short_code)
     expect !other_client.valid?
+  end
+  
+  it "has valid phone number" do
+    other_client = Client.make(phone: "123456789")
+    expect !other_client.valid?
+  end
+  
+  it "allows blank phone number" do
+    other_client = Client.make(phone: "")
+    expect other_client.valid?
+  end
+  
+  it "normalizes phone number" do
+    other_client = Client.make(phone: "(123)456-7890")
+    expect other_client.valid?
   end  
 end

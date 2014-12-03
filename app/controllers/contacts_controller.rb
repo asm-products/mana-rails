@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
     if @contact.save
       @profile.user = @contact
       @profile.save
-      redirect_to client_user_path(@client.short_code, @contact.name)
+      redirect_to client_path(@client.short_code)
     else
       render 'new'
     end

@@ -7,28 +7,47 @@ div class="row"
 			
 			div class="col-md-6"
 				h1 = @client.name
+				p = @client.address
+				p = @client.formatted_phone
+				p = link_to @client.website, @client.website
 			
 			div class="col-md-6"
 				div class="pull-right"
 					div class="btn-group"
-						= link_to "All Clients", clients_path, class: "btn btn-default"
-						= link_to "Delete Client", [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger"
-						= link_to "Edit Client", edit_client_path(@client.short_code), class: "btn btn-primary"
-						= link_to "Create Contact", new_client_user_path(@client.short_code), class: "btn btn-success"
-		div class="row"
-			div class="col-md-12"
-				h3 Contacts
-				hr
-				= render @client.contacts
+						= link_to raw('<i class="fa fa-users fa-fw"></i>'), clients_path, class: "btn btn-default ttip", title: "Back to All Clients"
+						= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Client"
+						= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_client_path(@client.short_code), class: "btn btn-default ttip", title: "Edit Client"
+						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_user_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
 		
 		div class="row"
-			div class="col-md-12"
-				h3 Projects
-				hr
-				/! TODO: List Client Projects
-
-		div class="row"
-			div class="col-md-12"
-				h3 Client Activity
-				hr
-				/! TODO: List Client Activity
+			div class="col-md-9"
+				div class="row"
+					div class="col-md-12"
+						h3 Client Activity
+						hr
+						/! TODO: List all Client Activity
+					div class="col-md-12"
+						h3 Projects
+						hr
+						/! TODO: List all Client Projects
+			div class="col-md-3"
+				h3 Contacts
+				- @client.contacts.each do |contact|
+					= link_to(user_path(contact)) do
+						div class="row"
+							div class="col-md-2"
+								= gravatar_for contact, size: 50
+							div class="col-md-9 col-md-offset-1"
+								p 
+									= contact.user_profile.first_name + ' ' + contact.user_profile.last_name + ' (' + contact.user_profile.job_title + ')'
+									br
+									= contact.email
+									br
+									= contact.user_profile.phone
+									
+- content_for :view_scripts do
+	javascript:
+		$(function () {
+            $('.ttip').tooltip()
+        });
+		

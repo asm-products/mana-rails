@@ -59,3 +59,7 @@ end
 # Semver versioning for the api
 gem 'semver2'
 
+# Normalize phone numbers
+# NOTE: this gem must come after mongoid
+gem 'phony_rails'
+
