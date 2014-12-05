@@ -1,0 +1,30 @@
+/* TYPOGRAPHY */
+
+// Font-Size Mixin -> REM Fallback for IE8
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+// Font weights
+$light: 300;
+$regular: 400;
+$semibold: 600;
+$bold: 700;
+
+
+// Fallback Stack for Main-Font
+$base-fallback-stack: 'Helvetica', Arial, non-serif;
+
+
+// Base Font
+$base-font-family: 'Open Sans', $base-fallback-stack;
+$base-font-weight: $regular;
+$base-font-size: 1.6;
+$base-line-height: 1.4em;
+
+
+// Headlines
+$main-headline-font-weight: $bold;
+$sub-headline-font-weight: $semibold;
+

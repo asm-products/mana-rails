@@ -1,0 +1,20 @@
+@mixin headline-font() {
+    font-weight: $main-headline-font-weight;
+    line-height: 1.2em;
+}
+
+
+@mixin sub-headline-font() {
+    font-weight: $sub-headline-font-weight;
+    line-height: 1.2em;
+}
+
+
+@mixin sub-sub-headline-font() {
+    text-transform: uppercase;
+}
+
+
+@mixin main-font() {
+    line-height: $base-line-height;
+}

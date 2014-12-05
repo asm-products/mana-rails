@@ -1,0 +1,49 @@
+html {
+    font-size: 62.5%;
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+}
+
+body {
+    background-color: $light-light-gray;
+}
+
+h1 {
+    @include main-font();
+    @include font-size(2);
+    font-weight: $light;
+    text-align: center;
+    margin: 2em 0 0 0;
+    color: $purple-dark;
+
+    @media screen and (min-width: 38.400em) {
+        @include font-size(4);
+    }
+}
+
+h2 {
+    @include headline-font();
+    @include font-size(3.6);
+    text-align: center;
+    margin: 1em 0 2em 0;  
+}
+
+h3 {
+    @include headline-font();
+    @include font-size(3.2);
+    text-align: center;
+    margin: 0.25em 0 0.75em 0;
+}
+
+
+p {
+    @include main-font();
+    @include font-size(1.6);
+} 
+
+
+a {
+    font-weight: $semibold;
+    color: $purple-dark;
+    text-decoration: none;
+}
