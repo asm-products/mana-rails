@@ -1,8 +1,5 @@
 .page-header {
-    @include container(100%);
-    width: 100vw;
-    height: 100vh;
-    position: relative;
+    background-color: $light-light-gray;
 }
 
 
@@ -30,14 +27,31 @@
 
 
 .page-intro {
-    padding: 12em 0;
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    padding-top: 4em;
+
+    @media screen and (orientation: landscape) {
+        padding-top: 5em;
+    }
 }
 
     .page-intro .logo {
         width: 80%;
-        max-width: 65.00em;
+        max-width: 60.00em;
         display: block;
-        margin: 0 auto 2em auto;
+        margin: 0 auto;
+
+        @media screen and (orientation: landscape) {
+            width: 50%;
+        }
+
+        @media screen and (orientation: landscape) and (min-width: 43.750em) {
+            width: 70%;
+        }
     }
 
 
@@ -46,16 +60,22 @@
 .primary-button--intro {
     color: $black;
     width: 50%;
-    margin-top: 4em;
+    margin-top: 2em;
     @include font-size(1.8);
 
     @media screen and (min-width: 43.750em) {
         @include font-size(2.4);
-        width: 25%;
+        width: 30%;
     }
 
     @media screen and (min-width: 78.125em) {
         width: 20%;
+        left: 40%;
+    }
+
+    @media screen and (orientation: landscape) {
+        margin-top: 1.5em;
+        width: 30%;
     }
 }
 

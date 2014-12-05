@@ -13,11 +13,16 @@ h1 {
     @include font-size(2);
     font-weight: $light;
     text-align: center;
-    margin: 2em 0 0 0;
+    margin: 5% 0 0 0;
     color: $purple-dark;
 
-    @media screen and (min-width: 38.400em) {
+    @media screen and (min-width: 38.400em) and (orientation: portrait) {
         @include font-size(4);
+    }
+
+    @media screen and (min-width: 38.400em) and (orientation: landscape) {
+        @include font-size(3.5);
+        margin-top: 2.5%
     }
 }
 
