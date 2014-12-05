@@ -1,5 +1,5 @@
 .page-header {
-    background-color: $light-light-gray;
+    background-color: $black;
 }
 
 
@@ -58,10 +58,12 @@
 
 
 .primary-button--intro {
-    color: $black;
+    color: $white;
     width: 50%;
     margin-top: 2em;
     @include font-size(1.8);
+    border: 1px solid $purple-dark;
+    background-color: transparent;
 
     @media screen and (min-width: 43.750em) {
         @include font-size(2.4);
@@ -76,6 +78,11 @@
     @media screen and (orientation: landscape) {
         margin-top: 1.5em;
         width: 30%;
+    }
+
+    &:hover {
+        background-color: rgba($white, 0.1);
+        border: 1px solid $white;
     }
 }
 

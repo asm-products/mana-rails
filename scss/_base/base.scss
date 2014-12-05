@@ -14,7 +14,7 @@ h1 {
     font-weight: $light;
     text-align: center;
     margin: 5% 0 0 0;
-    color: $purple-dark;
+    color: $white;
 
     @media screen and (min-width: 38.400em) and (orientation: portrait) {
         @include font-size(4);
