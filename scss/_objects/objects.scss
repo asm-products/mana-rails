@@ -1,0 +1,107 @@
+.full-screen-container {
+    @include container(100%);
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+
+.section {
+    width: 100%;
+    padding: 4em 0 8em 0;
+}
+
+.content-wrap {
+    @include container(100%);
+
+    @media screen and (min-width: 78.125em) {
+        @include container(80%);
+        margin: 0 auto;
+    }
+}
+
+
+.section-purple {
+    color: $white;
+    background-color: $purple-dark;
+}
+
+    .section-purple h2 {
+        color: $white;
+        text-align: center;
+        margin: 1em 0 2em 0;
+        @include font-size(3.6);
+    }
+
+
+.section-light {
+    color: $purple-dark;
+    background-color: $light-light-gray;
+}
+
+    .section-light h2 {
+        color: $purple-dark;
+        text-align: center;
+        margin: 1em 0 2em 0;
+        @include font-size(3.6);
+    }
+
+
+.section-black {
+    color: $white;
+    background-color: $black;
+}
+
+
+
+.input {
+    display: block;
+    @include font-size(2);
+    padding: 0.5em;
+    margin: 0.5em auto;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    font-weight: $light;
+    -webkit-appearance: none;
+}
+
+.input-text, .input-mail {
+    border: 1px solid $light-gray;
+}
+
+
+
+
+.label {}
+    .label--hidden {
+        @include hide();
+    }
+
+
+.primary-button {
+    background-color: $yellow;
+    border: none;
+    font-weight: $bold;
+    padding: 0.75em 0;
+    text-align: center;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: shade($yellow, 10%);
+    } 
+}
+
+    .primary-button--gray {
+        background-color: $gray; 
+        color: $black;  
+
+        &:hover {
+            background-color: shade($gray, 10%);
+        }
+    }
+
+
+
+
+

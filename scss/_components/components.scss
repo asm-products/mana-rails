@@ -1,0 +1,230 @@
+.page-header {
+    background-color: $black;
+}
+
+
+.main-navigation {
+    background-color: $black;
+    display: block;
+    @include span(16 of 16);
+    text-align: center;
+
+    @media screen and (min-width: 43.750em) {
+        text-align: right;
+        padding-right: 2em;
+    }
+}
+
+    .main-navigation a {
+        color: $white;
+        display: inline-block;
+        @include font-size(1.4);
+        padding: 2em 1em;
+    }
+
+
+
+
+
+.page-intro {
+    width: 80%;
+    height: 60%;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    margin: auto;
+    padding-top: 4em;
+
+    @media screen and (orientation: landscape) {
+        padding-top: 5em;
+    }
+}
+
+    .page-intro .logo {
+        width: 80%;
+        max-width: 60.00em;
+        display: block;
+        margin: 0 auto;
+
+        @media screen and (orientation: landscape) {
+            width: 50%;
+        }
+
+        @media screen and (orientation: landscape) and (min-width: 43.750em) {
+            width: 70%;
+        }
+    }
+
+
+
+
+.primary-button--intro {
+    color: $white;
+    width: 50%;
+    margin-top: 2em;
+    @include font-size(1.8);
+    border: 1px solid $purple-dark;
+    background-color: transparent;
+
+    @media screen and (min-width: 43.750em) {
+        @include font-size(2.4);
+        width: 30%;
+    }
+
+    @media screen and (min-width: 78.125em) {
+        width: 20%;
+        left: 40%;
+    }
+
+    @media screen and (orientation: landscape) {
+        margin-top: 1.5em;
+        width: 30%;
+    }
+
+    &:hover {
+        background-color: rgba($white, 0.1);
+        border: 1px solid $white;
+    }
+}
+
+
+
+
+
+
+.application-list {
+    @include container(100%);
+
+}
+    .application-list__item {
+        @include span(16 of 16);
+
+        + .application-list__item {
+            margin-top: 7.5em;
+        }
+
+
+
+
+        @media screen and (min-width: 43.750em) {
+            @include span(5 of 15);
+
+
+            &:last-child {
+                @include span(5 of 15 last);
+            }
+
+            + .application-list__item {
+                margin-top: 0;
+            }
+
+            & h3 {
+                height: 2em;
+            }
+
+        }
+    }
+
+        .application-list__item img {
+            width: 25%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .application-list__item p {
+            padding: 0 5% 0 15%;
+        }
+
+
+
+
+
+.audience-list {
+    @include container(100%);
+
+    @media screen and (min-width: 43.750em) {
+        .audience-list__item__first, .audience-list__item__third {
+            @include span(8 of 16);
+        }
+
+        .audience-list__item__second, .audience-list__item__fourth {
+            @include span(8 of 16 last)
+        }
+
+        .audience-list__item + .audience-list__item {
+            margin-top: 0;
+        }
+
+        .audience-list__item + .audience-list__item__second {
+            margin-top: 0;
+        }
+
+        .audience-list__item + .audience-list__item__third, .audience-list__item + .audience-list__item__fourth {
+            margin-top: 7.5em;
+        }
+    }
+
+
+    @media screen and (min-width: 78.125em) {
+        .audience-list__item h3 {
+            text-align: left;
+        }
+
+        .audience-list__item img {
+            float: left;
+            margin-bottom: 6em;
+        }
+    }
+
+}
+
+
+    .audience-list__item {
+        @include span(16 of 16);
+
+        + .audience-list__item {
+            margin-top: 7.5em;
+        }
+    }
+
+        .audience-list__item img {
+            width: 25%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .audience-list__item p {
+            padding: 0 5% 0 15%;
+        }
+
+
+
+
+
+.section--contact h2 {
+    margin: 1em 0;
+}
+
+.section--contact .input, .section--assembly .input {
+    width: 90%;
+
+    @media screen and (min-width: 43.750em) {
+        width: 60%;
+    }
+}
+
+
+
+
+
+.section--assembly {
+    padding: 4em 0;
+}
+
+    
+
+
+
+
+
