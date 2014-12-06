@@ -2,35 +2,43 @@
 	div class="form-group"
 		= f.label :name, "Contacts Login Name"
 		= f.text_field :name, class: "form-control"
+		= errors_for @contact, :name
 
 	div class="form-group"
 		= f.label :email
 		= f.text_field :email, class: "form-control"
+		= errors_for @contact, :email
 
 	div class="form-group"
 		= f.label :password
 		= f.password_field :password, class: "form-control"
+		= errors_for @contact, :password
 
 	div class="form-group"
 		= f.label :password_confirmation
 		= f.password_field :password_confirmation, class: "form-control"
+		= errors_for @contact, :password_confirmation
 
 	= fields_for @profile do |p|
 		div class="form-group"
 			= p.label :first_name
 			= p.text_field :first_name, class: "form-control"
+			= errors_for @profile, :first_name
 		
 		div class="form-group"
 			= p.label :last_name
 			= p.text_field :last_name, class: "form-control"
+			= errors_for @profile, :last_name
 
 		div class="form-group"
 			= p.label :job_title
 			= p.text_field :job_title, class: "form-control"
+			= errors_for @profile, :job_title
 
 		div class="form-group"
 			= p.label :phone
 			= p.text_field :phone, class: "form-control"
+			= errors_for @profile, :phone
 
 	div class="pull-right"
 		= link_to "Cancel", client_path(@client), class: "btn btn-danger"

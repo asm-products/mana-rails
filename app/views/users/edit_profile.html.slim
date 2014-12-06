@@ -8,18 +8,22 @@
 	div class="form-group"
 		= f.label :first_name
 		= f.text_field :first_name, class: "form-control"
+		= errors_for @profile, :first_name
 	
 	div class="form-group"
 		= f.label :last_name
 		= f.text_field :last_name, class: "form-control"
+		= errors_for @profile, :last_name
 	
 	div class="form-group"
 		= f.label :job_title
 		= f.text_field :job_title, class: "form-control"
+		= errors_for @profile, :job_title
 	
 	div class="form-group"
 		= f.label :phone
 		= f.text_field :phone, class: "form-control"
+		= errors_for @profile, :phone
 	
 	div class="pull-right"
 		= f.submit class: "btn btn-success"
