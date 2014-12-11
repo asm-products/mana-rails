@@ -15,3 +15,6 @@ div class="row"
 					h3 = link_to client.name, client_path(client.short_code)
 					p = client.address
 					p = client.formatted_phone
+        div class="row"
+          div class="col-md-12"
+            = will_paginate @clients

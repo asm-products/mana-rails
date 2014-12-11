@@ -63,3 +63,6 @@ gem 'semver2'
 # NOTE: this gem must come after mongoid
 gem 'phony_rails'
 
+# Pagination
+gem 'will_paginate', '~> 3.0.6'
+
