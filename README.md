@@ -2,6 +2,7 @@
 ## Fun automatic project and invoice management.
 
 [![Build Status](https://travis-ci.org/asm-products/mana-rails.svg)](https://travis-ci.org/asm-products/mana-rails)
+<a href="https://assembly.com/mana/bounties"><img src="http://badger.asm.co/mana/badges/tasks.svg" height="18px" alt="Open Tasks" /></a>
 
 ### The project management, invoicing, team collaboration tool to rule them all!
 
