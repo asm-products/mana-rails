@@ -36,18 +36,18 @@ class Client < ActiveRecord::Base
   end
   
   def area_code
-    phone.first 3
+    phone == nil ? '' : phone.first(3)
   end
   
   def phone_prefix
-    phone.slice(3,3)
+    phone == nil ? '' : phone.slice(3,3)
   end
   
   def phone_suffix
-    phone.last 4
+    phone == nil ? '' : phone.last(4)
   end
   
   def formatted_phone
-    '(' + area_code + ') ' + phone_prefix + '-' + phone_suffix  
+    phone == nil ? '' : '(' + area_code + ') ' + phone_prefix + '-' + phone_suffix
   end
 end
