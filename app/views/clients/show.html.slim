@@ -33,7 +33,7 @@ div class="row"
 			div class="col-md-3"
 				h3 Contacts
 				- @client.contacts.each do |contact|
-					= link_to(user_path(contact)) do
+					= link_to(client_user_path(@client.short_code, contact.name)) do
 						div class="row"
 							div class="col-md-2"
 								= gravatar_for contact, size: 50
