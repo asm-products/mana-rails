@@ -1,15 +1,19 @@
-h1 Welcome #{@contact.name}
-p Please create your password
-= form_for @contact, url: client_contact_verify_path(@client.short_code, @contact.name, @contact.api_key) do |f|
-	= f.hidden_field :name
-	= f.hidden_field :email
-	div class="form-group"
-		= f.label :password
-		= f.password_field :password, class: "form-control"
-		= errors_for @contact, :password
-	div class="form-group"
-		= f.label :password_confirmation
-		= f.password_field :password_confirmation, class: "form-control"
-		= errors_for @contact, :password_confirmation
-	div class="pull-right"
-		= f.submit "Verify Account", class: "btn btn-success"
+- if @contact != nil
+  h1 Welcome #{@contact.name}
+  p Please create your password
+  = form_for @contact, url: client_contact_verify_path(@client.short_code, @contact.name, @contact.api_key) do |f|
+	  = f.hidden_field :name
+	  = f.hidden_field :email
+	  div class="form-group"
+		  = f.label :password
+		  = f.password_field :password, class: "form-control"
+		  = errors_for @contact, :password
+	  div class="form-group"
+		  = f.label :password_confirmation
+		  = f.password_field :password_confirmation, class: "form-control"
+		  = errors_for @contact, :password_confirmation
+	  div class="pull-right"
+		  = f.submit "Verify Account", class: "btn btn-success"
+- else
+  p Verification has expired.
+  = link_to "Retry Verification", client_contact_reverify_path(@client.short_code, params[:contact_id])
