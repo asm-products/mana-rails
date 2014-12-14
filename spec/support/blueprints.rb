@@ -21,3 +21,9 @@ User.blueprint do
   email      { "test@test.com" }
   password   { "testtest" }
 end
+
+Team.blueprint do
+  name       { "TestName" }
+  users      { [User.make!] }
+end
+

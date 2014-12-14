@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214034814) do
+ActiveRecord::Schema.define(version: 20141214041652) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(version: 20141214034814) do
   add_index "projects", ["client_id"], name: "index_projects_on_client_id"
   add_index "projects", ["short_code"], name: "index_projects_on_short_code", unique: true
 
+  create_table "teams", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "user_profiles", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -76,6 +82,7 @@ ActiveRecord::Schema.define(version: 20141214034814) do
     t.string   "api_key"
     t.boolean  "admin"
     t.string   "special_key"
+    t.integer  "team_id"
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id"
