@@ -16,6 +16,7 @@ class ContactsController < ApplicationController
     @contact = @client.contacts.new(contact_params)
     @contact.password = SecureRandom.base64.tr('+/=', 'Qrt')
     @contact.password_confirmation = @contact.password
+    @contact.special_key = SecureRandom.base64.tr('+/=', 'Qrt')
     @profile = UserProfile.new(profile_params)
     if @contact.save
       ContactMailer.verify_email(@client, @contact).deliver
@@ -29,11 +30,12 @@ class ContactsController < ApplicationController
   end
   
   def edit
-    redirect_to edit_users_profile_path(@contact)
+    @profile = @contact.user_profile
   end
   
   def update
-    if @contact.update(contact_params)
+    @profile = @contact.user_profile
+    if @contact.user_profile.update(profile_params)
       redirect_to client_user_path(@client.short_code, @contact.name)
     else
       render 'edit'
@@ -48,17 +50,33 @@ class ContactsController < ApplicationController
   
   def verify
     @client = Client.find_by(short_code: params[:client_id])
-    @contact = @client.contacts.find_by(name: params[:contact_id], api_key: params[:id])
+    @contact = @client.contacts.find_by(name: params[:contact_id], special_key: params[:id])
+    if @contact.updated_at < DateTime.now - 24.hours
+      @contact = nil
+    end
   end
   
   def verified
     @client = Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.find_by(name: params[:contact_id], api_key: params[:id])
+    if @contact.updated_at < DateTime.now - 24.hours
+      @contact = nil
+    end
     if @contact.update(contact_params)
+      @contact.update_attribute(:special_key, nil)
       redirect_to user_path(@contact)
     else
       render 'verify'
     end
+  end
+
+  def reverify
+    @client = Client.find_by(short_code: params[:client_id])
+    @contact = @client.contacts.find_by(name: params[:contact_id])
+    @contact.update_attribute(:special_key, SecureRandom.base64.tr('+/=', 'Qrt'))
+    ContactMailer.verify_email(@client, @contact).deliver
+    flash[:success] = "Please check your email to verify your account."
+    redirect_to root_path
   end
 
   private

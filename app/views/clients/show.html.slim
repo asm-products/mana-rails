@@ -33,7 +33,7 @@ div class="row"
 			div class="col-md-3"
 				h3 Contacts
 				- @client.contacts.each do |contact|
-					= link_to(user_path(contact)) do
+					= link_to(client_user_path(@client.short_code, contact.name)) do
 						div class="row"
 							div class="col-md-2"
 								= gravatar_for contact, size: 50
@@ -43,7 +43,7 @@ div class="row"
 									br
 									= contact.email
 									br
-									= contact.user_profile.phone
+									= contact.user_profile.formatted_phone
 									
 - content_for :view_scripts do
 	javascript:

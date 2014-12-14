@@ -75,10 +75,12 @@ ActiveRecord::Schema.define(version: 20141214034814) do
     t.datetime "updated_at"
     t.string   "api_key"
     t.boolean  "admin"
+    t.string   "special_key"
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["name"], name: "index_users_on_name", unique: true
+  add_index "users", ["special_key"], name: "index_users_on_special_key"
 
 end
