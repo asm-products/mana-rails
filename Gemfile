@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-throttle'
 
 # Roles/Permissions
-gem "cancan"
+gem 'cancan'
 
 group :development do
   gem "better_errors"
