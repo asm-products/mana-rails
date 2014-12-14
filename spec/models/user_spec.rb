@@ -71,7 +71,7 @@ describe User, :type => :model do
   end
 
   it "belongs to a team" do
-    expect @user.respond_to? :team_id
+    expect @user.respond_to? :team
   end  
   
 end

@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
   before_save :default_values
   phony_normalize :phone
 
+  belongs_to :team
   has_many :contacts, class_name: "User"
 
   validates :name, presence: true, length: { minimum: 4 }

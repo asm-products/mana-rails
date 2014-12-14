@@ -36,4 +36,8 @@ describe Project, :type => :model do
     expect(@project.issues).to be_a ActiveRecord::Associations::CollectionProxy
     expect(@project.issues.empty?).to eq true
   end
+
+  it "belongs to a team" do
+    expect @project.respond_to? :team
+  end 
 end

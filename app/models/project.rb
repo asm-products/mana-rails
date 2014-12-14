@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :client
+  belongs_to :team
   before_save :default_values
   
   has_one :client

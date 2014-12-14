@@ -1,5 +1,8 @@
 class Team < ActiveRecord::Base
   has_many :users
+  has_many :projects
+  has_many :clients
+  has_many :issues, through: :projects
 
   validates_presence_of :name
 
