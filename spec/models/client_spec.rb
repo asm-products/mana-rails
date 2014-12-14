@@ -49,5 +49,10 @@ describe Client, :type => :model do
 
   it "belongs to a team" do
     expect @client.respond_to? :team
-  end 
+  end
+
+  it "filters by first letter" do
+    expect Client.find_by_first_letter('T').length == 1
+    expect Client.find_by_first_letter('A').length == 0
+  end
 end
