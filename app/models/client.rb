@@ -51,4 +51,8 @@ class Client < ActiveRecord::Base
   def formatted_phone
     phone == nil ? '' : '(' + area_code + ') ' + phone_prefix + '-' + phone_suffix
   end
+  
+  def self.find_by_first_letter(letter)
+    where('name LIKE ?', "#{letter}%").order('name ASC')
+  end
 end

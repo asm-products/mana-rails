@@ -32,7 +32,7 @@ div class="row"
 						/! TODO: List all Client Projects
 			div class="col-md-3"
 				h3 Contacts
-				- @client.contacts.each do |contact|
+				- @client.contacts.order('name ASC').each do |contact|
 					= link_to(client_user_path(@client.short_code, contact.name)) do
 						div class="row"
 							div class="col-md-2"
