@@ -36,6 +36,9 @@ gem 'bcrypt', '~> 3.1.7'
 # API rete limiter
 gem 'rack-throttle'
 
+# Roles/Permissions
+gem 'cancan'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

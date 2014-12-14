@@ -45,6 +45,26 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  def admin?
+    admin
+  end
+
+  def make_admin
+    admin = true
+  end
+
+  def make_admin!
+    update admin: true
+  end
+
+  def revoke_admin
+    admin = false
+  end
+
+  def revoke_admin!
+    update admin: false  
+  end
+  
   def generate_api_key
     loop do
       token = SecureRandom.base64.tr('+/=', 'Qrt')
