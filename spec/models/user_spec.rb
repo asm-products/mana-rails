@@ -69,5 +69,9 @@ describe User, :type => :model do
     @user.make_admin!
     expect @user.admin?
   end
+
+  it "belongs to a team" do
+    expect @user.respond_to? :team
+  end  
   
 end

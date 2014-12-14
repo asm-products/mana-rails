@@ -45,5 +45,9 @@ describe Client, :type => :model do
   it "normalizes phone number" do
     other_client = Client.make(phone: "(123)456-7890")
     expect other_client.valid?
-  end  
+  end 
+
+  it "belongs to a team" do
+    expect @client.respond_to? :team
+  end 
 end

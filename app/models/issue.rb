@@ -1,6 +1,7 @@
 class Issue < ActiveRecord::Base
   before_save :default_values
   belongs_to :project
+  belongs_to :team
 
   validates :subject, presence: true, length: { minimum: 3 }
   validates :project_id, presence: true

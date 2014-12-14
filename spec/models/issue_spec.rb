@@ -25,4 +25,8 @@ describe Issue, :type => :model do
   it "sets unique_id" do
     expect(@issue.unique_id).to eq(1)
   end  
+
+  it "belongs to a team" do
+    expect @issue.respond_to? :team
+  end 
 end
