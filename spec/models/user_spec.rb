@@ -36,4 +36,38 @@ describe User, :type => :model do
     @user.password = "123"
     expect !@user.valid?
   end
+
+  it "checks for admin" do
+    @user.admin = true
+    expect @user.admin?
+  end
+
+  it "revokes admin access" do
+    @user.admin = true
+
+    @user.revoke_admin
+    expect !@user.admin?
+  end
+
+  it "revokes admin access and saves" do
+    @user.admin = true
+
+    @user.revoke_admin!
+    expect !@user.admin?
+  end
+
+  it "adds admin access" do
+    @user.admin = true
+
+    @user.make_admin
+    expect @user.admin?
+  end
+
+  it "adds admin access and saves" do
+    @user.admin = true
+
+    @user.make_admin!
+    expect @user.admin?
+  end
+  
 end
