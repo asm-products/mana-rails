@@ -39,6 +39,9 @@ gem 'rack-throttle'
 # Roles/Permissions
 gem 'cancan'
 
+# Bachround Jobs
+gem 'resque'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
