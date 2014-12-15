@@ -26,6 +26,16 @@ ActiveRecord::Schema.define(version: 20141214044820) do
 
   add_index "clients", ["short_code"], name: "index_clients_on_short_code", unique: true
 
+  create_table "comments", force: true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "commenter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id"
+
   create_table "issues", force: true do |t|
     t.integer  "unique_id"
     t.string   "subject"
@@ -84,8 +94,8 @@ ActiveRecord::Schema.define(version: 20141214044820) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "api_key"
-    t.boolean  "admin"
     t.string   "special_key"
+    t.boolean  "admin"
     t.integer  "team_id"
   end
 
