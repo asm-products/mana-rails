@@ -1,0 +1,15 @@
+- provide(:title, 'Create Team')
+h1 Sign up
+
+div class="row"
+  div class="col-md-6 col-md-offset-3"
+  	= form_for(@team) do |f| 
+		
+		div class="form-group"
+      		= f.label :name, "Team Name"
+      		= f.text_field :name, class: 'form-control'
+      		= errors_for @team, :name
+
+ 		div class="pull-right"
+      		= f.submit "Create team", class: "btn btn-primary"
+

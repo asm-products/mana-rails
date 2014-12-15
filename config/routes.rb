@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   # Resources
   resources :users
+  resources :teams
   resources :clients do
     get 'contacts/:contact_id/verify/:id', to: 'contacts#verify', as: 'contact_verify'
     patch 'contacts/:contact_id/verify/:id', to: 'contacts#verified'
