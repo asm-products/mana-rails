@@ -24,6 +24,5 @@ end
 
 Team.blueprint do
   name       { "TestName" }
-  users      { [User.make!] }
 end
 
