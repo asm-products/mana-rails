@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       UserProfile.create(user_id: @user.id)
       log_in @user
       flash[:success] = "Welcome to the Mana!"
-      redirect_to edit_users_profile_path(@user.name)
+      redirect_to new_team_path
     else
       render 'new'
     end
