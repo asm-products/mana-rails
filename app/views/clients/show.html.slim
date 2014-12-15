@@ -30,6 +30,20 @@ div class="row"
 						h3 Projects
 						hr
 						/! TODO: List all Client Projects
+                    div class="col-md-12"
+                      - if @client.comments.any?
+                        h3 Client Notes
+                        hr
+                        - @client.comments.each do |comment|
+                          div class="row"
+                            div class="col-md-12"
+                              p class="text-right" #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
+                              p = comment.body
+                              hr
+                      = form_for([@client, @client.comments.build]) do |f|
+                        = f.text_area :body, class: "form-control", placeholder: "Create new client note..."
+                        div class="pull-right"
+                          = f.submit class: "btn btn-success"
 			div class="col-md-3"
 				h3 Contacts
 				- @client.contacts.order('name ASC').each do |contact|

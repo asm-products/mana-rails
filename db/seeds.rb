@@ -19,6 +19,7 @@ if Rails.env.development?
   client_1 = Client.create(name: 'Cool Stuff Inc.', address: '9000 Coolio Dr. San Antonio, Texas 78238 United States', phone: '8008675309', website: 'www.cool.com', short_code:'COOL', team_id: team.id)
   client_2 = Client.create(name: 'Cooperate Cooperation', address: '90210 Bevelry Blvd. San Antonio, Texas 78238 United States', phone: '8002221111', website: 'www.corp.com', short_code: 'CORP', team_id: team.id)
   client_3 = Client.create(name: 'Startups Inc.', address: '800 Somewhere Dr. Cupertino, California 95014 United States', phone: '1234567890', website: 'www.startup.com', short_code: 'STAR', team_id: team.id)
+  Comment.create(body: 'This is a client note', commenter: user_1, commentable: client_1)
   client_1_contact_1 = User.create(name: 'bobnarley', email: 'bobnarley@cool.com', password: 'password', password_confirmation: 'password', client: client_1)
   UserProfile.create(first_name: 'Robert', last_name: 'Narley', job_title: 'Owner', phone: '8008675309', user: client_1_contact_1)
   client_1_contact_2 = User.create(name: 'sandynarley', email: 'sandynarley@cool.com', password: 'password', password_confirmation: 'password', client: client_1)
