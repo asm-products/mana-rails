@@ -6,10 +6,16 @@ describe ClientsController, :type => :controller do
     @client = Client.make!
   end
   
-  it "#index is 200" do
+  it "lists clients" do
     get :index
-    expect(response).to have_http_status 200
+    expect(response).to render_template :index
   end
+
+  it "shows clients" do
+    get :show, { id: @client.id } 
+    expect(response).to render_template :show
+    expect(response).to_not have_http_status 404
+  end  
 
   it "it creates clients" do
     client = Client.make!(name: "TestName2", short_code: "12346")
