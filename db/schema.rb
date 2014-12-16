@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214044820) do
+ActiveRecord::Schema.define(version: 20141215230139) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -25,6 +25,20 @@ ActiveRecord::Schema.define(version: 20141214044820) do
   end
 
   add_index "clients", ["short_code"], name: "index_clients_on_short_code", unique: true
+
+  create_table "comments", force: true do |t|
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "commenter_id"
+    t.boolean  "is_public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+  end
+
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
+  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id"
 
   create_table "issues", force: true do |t|
     t.integer  "unique_id"
