@@ -46,6 +46,10 @@ class User < ActiveRecord::Base
     update_attribute(:remember_digest, nil)
   end
 
+  def has_team?
+    team
+  end
+
   def admin?
     admin
   end

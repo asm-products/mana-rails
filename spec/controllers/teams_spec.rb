@@ -18,5 +18,6 @@ describe TeamsController, :type => :controller do
     logout if logged_in?
     get :new
     expect(response).to have_http_status 302
+    expect(response).to redirect_to login_path
   end
 end
