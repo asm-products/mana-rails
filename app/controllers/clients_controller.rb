@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   def index
     if params[:letter]
-      @clients = Client.find_by_first_letter(params[:letter]).order('name ASC').paginate(:page => params[:page])
+      @clients = Client.find_by_first_letter(params[:letter]).paginate(:page => params[:page])
     else
       @clients = Client.order('name ASC').paginate(:page => params[:page])
     end
