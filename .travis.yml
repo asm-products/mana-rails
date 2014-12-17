@@ -5,3 +5,7 @@ cache: bundler
 
 notifications:
   slack: manacore:vn9ITXRs0av3S9kwXresy57Z
+
+branches:
+  except:
+    - html
