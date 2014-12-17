@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   # Resources
   resources :users
   resources :teams
+  resources :comments
   resources :clients do
     get 'contacts/:contact_id/verify/:id', to: 'contacts#verify', as: 'contact_verify'
     patch 'contacts/:contact_id/verify/:id', to: 'contacts#verified'
     get 'contacts/:contact_id/reverify', to: 'contacts#reverify', as: 'contact_reverify'
     resources :contacts, as: 'users'
-    resources :comments
   end
   
   ## API routes

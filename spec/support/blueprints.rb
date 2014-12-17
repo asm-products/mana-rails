@@ -29,6 +29,7 @@ end
 Comment.blueprint do
   subject { 'Test Comment' }
   body { 'Test Body'}
-  commenter { User.make! }
+  commenter { User.make!(email: "testcommenter@test.com",
+                        name: "testcommenter1") }
 end
 

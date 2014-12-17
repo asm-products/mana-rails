@@ -3,7 +3,7 @@ require 'rails_helper'
 describe TeamsController, :type => :controller do
   before do
     login
-    @team = Team.make!
+    @team = Team.make
   end
 
   it 'it creates teams' do
