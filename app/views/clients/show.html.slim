@@ -9,7 +9,7 @@ div class="row"
 				h1 = @client.name
 				p = @client.address
 				p = @client.formatted_phone
-				p = link_to @client.website, @client.website
+				p = link_to @client.website, "http://#{@client.website}"
 			
 			div class="col-md-6"
 				div class="pull-right"
