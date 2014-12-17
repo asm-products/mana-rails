@@ -22,6 +22,13 @@ User.blueprint do
   password   { 'testtest' }
 end
 
+Contact.blueprint do
+  name       { 'TestContact' }
+  email      { 'testcontact@test.com' }
+  password   { 'testtest' }
+  client {Client.make!}
+end
+
 Team.blueprint do
   name       { 'TestName' }
 end

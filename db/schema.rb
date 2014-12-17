@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 20141215230139) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "api_key"
-    t.boolean  "admin"
     t.string   "special_key"
+    t.boolean  "admin"
     t.integer  "team_id"
   end
 

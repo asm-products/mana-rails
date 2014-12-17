@@ -3,7 +3,7 @@ class Client < ActiveRecord::Base
   phony_normalize :phone
 
   belongs_to :team
-  has_many :contacts, class_name: 'User'
+  has_many :contacts
   has_many :comments, as: :commentable
 
   validates :name, presence: true, length: { minimum: 4 }
