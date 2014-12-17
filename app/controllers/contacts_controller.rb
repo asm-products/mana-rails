@@ -14,6 +14,7 @@ class ContactsController < ApplicationController
   def create
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new(contact_params)
+    @contact.name = @client.name + '_guest_' + @client.contacts.count.to_s
     @contact.password = SecureRandom.base64.tr('+/=', 'Qrt')
     @contact.password_confirmation = @contact.password
     @contact.special_key = SecureRandom.base64.tr('+/=', 'Qrt')
@@ -49,16 +50,17 @@ class ContactsController < ApplicationController
   end
   
   def verify
+    @allow_verify = true
     @client = Client.find_by(short_code: params[:client_id])
-    @contact = @client.contacts.find_by(name: params[:contact_id], special_key: params[:id])
+    @contact = @client.contacts.find_by(special_key: params[:id])
     if @contact.updated_at < DateTime.now - 24.hours
-      @contact = nil
+      @allow_verify = false
     end
   end
   
   def verified
     @client = Client.find_by(short_code: params[:client_id])
-    @contact = @client.contacts.find_by(name: params[:contact_id], api_key: params[:id])
+    @contact = @client.contacts.find_by(special_key: params[:id])
     if @contact.updated_at < DateTime.now - 24.hours
       @contact = nil
     end
@@ -72,7 +74,7 @@ class ContactsController < ApplicationController
 
   def reverify
     @client = Client.find_by(short_code: params[:client_id])
-    @contact = @client.contacts.find_by(name: params[:contact_id])
+    @contact = @client.contacts.find_by(special_key: params[:id])
     @contact.update_attribute(:special_key, SecureRandom.base64.tr('+/=', 'Qrt'))
     ContactMailer.verify_email(@client, @contact).deliver
     flash[:success] = "Please check your email to verify your account."
