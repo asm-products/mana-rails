@@ -7,13 +7,18 @@ class CommentsController < ApplicationController
 
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(comment_params)
-    @comment.commenter = current_user
-    if @comment.save
-      flash[:success] = 'Note Saved!'
-      redirect_to :back
+    if @commentable
+      @comment = @commentable.comments.build(comment_params)
+      @comment.commenter = current_user
+      if @comment.save
+        flash[:success] = 'Note Saved!'
+        redirect_to :back
+      else
+        flash[:danger] = 'Comment ' + @comment.errors.full_messages.to_sentence
+        redirect_to :back
+      end
     else
-      flash[:danger] = 'Comment ' + @comment.errors.full_messages.to_sentence
+      flash[:danger] = "What you are trying to comment on doesn't exist"
       redirect_to :back
     end
   end

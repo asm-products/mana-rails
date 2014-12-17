@@ -22,6 +22,10 @@ describe User, :type => :model do
     expect !@user.valid?
   end
 
+  it "checks for a team" do
+    expect @user.has_team?
+  end  
+
   it "validates length of email" do
     255.times { @user.email += "m" }
     expect !@user.valid?
