@@ -14,9 +14,6 @@ class ContactsController < ApplicationController
   def create
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new(contact_params)
-    @contact.name = @client.name + '_guest_' + @client.contacts.count.to_s
-    @contact.password = SecureRandom.base64.tr('+/=', 'Qrt')
-    @contact.password_confirmation = @contact.password
     @contact.special_key = SecureRandom.base64.tr('+/=', 'Qrt')
     @profile = UserProfile.new(profile_params)
     if @contact.save
@@ -90,7 +87,7 @@ class ContactsController < ApplicationController
   end
   
   def contact_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:contact).permit(:name, :email, :password, :password_confirmation)
   end
   
   def profile_params

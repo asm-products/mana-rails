@@ -17,7 +17,7 @@ div class="row"
 						= link_to raw('<i class="fa fa-users fa-fw"></i>'), clients_path, class: "btn btn-default ttip", title: "Back to All Clients"
 						= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Client"
 						= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_client_path(@client.short_code), class: "btn btn-default ttip", title: "Edit Client"
-						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_user_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
+						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_contact_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
 		
 		div class="row"
 			div class="col-md-9"
@@ -47,7 +47,7 @@ div class="row"
 			div class="col-md-3"
 				h3 Contacts
 				- @client.contacts.order('name ASC').each do |contact|
-					= link_to(client_user_path(@client.short_code, contact.name)) do
+					= link_to(client_contact_path(@client.short_code, contact.name)) do
 						div class="row"
 							div class="col-md-2"
 								= gravatar_for contact, size: 50

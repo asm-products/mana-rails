@@ -1,5 +1,7 @@
 = form_for([@client, @client.contacts.build]) do |f|
-	div class="form-group"
+	- @contact.errors.full_messages.each do |msg|
+	  = msg
+    div class="form-group"
 		= f.label :email
 		= f.text_field :email, class: "form-control"
 		= errors_for @contact, :email
