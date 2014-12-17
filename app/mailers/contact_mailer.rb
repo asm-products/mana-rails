@@ -4,6 +4,6 @@ class ContactMailer < ActionMailer::Base
   def verify_email(client, contact)
     @client = client
     @contact = contact
-    @url = client_contact_verify_path(@client.short_code, @contact.name, @contact.special_key).to_s
+    @url = client_contact_verify_path(@client.short_code, @contact.special_key).to_s
   end
 end
