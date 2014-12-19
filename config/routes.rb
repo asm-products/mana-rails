@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     resources :contacts
     resources :comments
   end
+  resources :contacts do
+    resources :comments
+  end
   
   ## API routes
   namespace :api, defaults: {format: 'json'} do

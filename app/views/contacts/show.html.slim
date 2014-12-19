@@ -1,2 +1,12 @@
 = @contact.name
 = link_to "Edit Client", edit_client_contact_path(@client.short_code, @contact.name)
+- @contact.comments.each do |comment|
+  div class="row"
+     div class="col-md-12"
+      p class="text-right" #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
+      p = comment.body
+      hr
+= form_for([@contact, @contact.comments.build]) do |f|
+  = f.text_area :body, class: "form-control", placeholder: "Create new contact note..."
+  div class="pull-right"
+    = f.submit class: "btn btn-success"
