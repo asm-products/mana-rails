@@ -1,10 +1,7 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client_contact, except: [:create, :new]
-   
-  def show
-  end
-  
+
   def new
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new

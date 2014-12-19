@@ -1,5 +1,6 @@
 class Contact < User
   belongs_to :client
+  has_many :comments, as: :commentable
 
   before_validation :default_values
 
