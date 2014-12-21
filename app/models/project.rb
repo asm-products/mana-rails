@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 4 }
   validates :short_code, uniqueness: true, length: { maximum: 4 }, allow_blank: true
   validate :check_client_exists
+
+  def shortcode
+    short_code
+  end
   
   def default_values
     self.projected_hours ||= 0.0
@@ -32,8 +36,10 @@ class Project < ActiveRecord::Base
   end
   
   def check_client_exists
-    if !self.client_id.nil?
-      errors.add(:client_id, 'Client does not exist') if (Client.where(id: self.client_id).take.nil?)
-    end
+      errors.add(:client_id, 'Client does not exist') if (Client.where(id: self.client_id).take.nil?) if !self.client_id.nil?
+  end
+
+  def self.find_by_shortcode(shortcode)
+    find_by(short_code: shortcode)
   end
 end

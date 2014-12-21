@@ -39,5 +39,14 @@ describe Project, :type => :model do
 
   it "belongs to a team" do
     expect @project.respond_to? :team
-  end 
+  end
+
+  it "finds by short code" do
+    expect Project.find_by_shortcode(@project.short_code)
+  end
+
+  it "has a short code alias" do
+    expect @project.respond_to? :shortcode
+  end
+  
 end
