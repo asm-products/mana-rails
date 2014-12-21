@@ -22,6 +22,14 @@ User.blueprint do
   password   { 'testtest' }
 end
 
+UserProfile.blueprint do
+  address          { 'TestAddress' }
+  secondary_phone  { '(555) 555-5555' }
+  time_zone        { 'Pacific' }
+  twitter_name     { '@manacore' }
+  user             { User.make }
+end
+
 Contact.blueprint do
   name       { 'TestContact' }
   email      { 'testcontact@test.com' }
