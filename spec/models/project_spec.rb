@@ -45,6 +45,10 @@ describe Project, :type => :model do
     expect Project.find_by_shortcode(@project.short_code)
   end
 
+  it "finds by id" do
+    expect Project.find_by_id(@project.id)
+  end  
+
   it "has a short code alias" do
     expect @project.respond_to? :shortcode
   end

@@ -42,4 +42,8 @@ class Project < ActiveRecord::Base
   def self.find_by_shortcode(shortcode)
     find_by(short_code: shortcode)
   end
+
+  def self.find_by_id(id)
+    find_by(id: id)
+  end  
 end
