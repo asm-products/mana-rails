@@ -1,0 +1,9 @@
+- provide(:title, "Create Client")
+div class="row"
+	div class="col-md-6 col-md-offset-3"
+		h1 New Client
+		- if @client.errors.any?
+			ul
+				- @client.errors.full_messages.each do |msg|
+					li =msg		
+		= render 'client_form'

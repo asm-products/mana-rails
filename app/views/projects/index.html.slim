@@ -1,0 +1,21 @@
+- provide(:title, "Projects")
+div class="row"
+	div class="col-md-10 col-md-offset-1"
+		div class="row"
+			div class="col-md-6"
+				h1 Projects
+			div class="col-md-6"
+				div class="pull-right"
+					= link_to "Create New Project", new_project_path, class: "btn btn-success" 
+		- @projects.each do |project| 
+			div class="row"
+				div class="col-md-12"
+					h3 = link_to project.name, project_path(project.short_code)
+        div class="row"
+          div class="col-md-12"
+            = will_paginate @projects
+          - if @projects.count > 0
+            center
+              - ("A".."Z").each do |letter|
+                a href="/clients?letter=#{letter}"
+                  = letter + ' '

@@ -1,0 +1,23 @@
+- provide(:title, "Log in")
+h1 Log in
+
+div class="row"
+  div class="col-md-6 col-md-offset-3"
+    = form_for(:session, url: login_path) do |f|
+		div class="form-group"
+      		= f.label :username, "Username or Email"
+      		= f.text_field :username, class: 'form-control'
+
+		div class="form-group"
+      		= f.label :password
+      		= f.password_field :password, class: 'form-control'
+
+      	div class="check-box"
+      		= f.label :remember_me, class: "checkbox inline" do
+        		= f.check_box :remember_me
+        		span Remember me on this computer
+		
+		div class="pull-right"
+      		= f.submit "Log in", class: "btn btn-primary"
+
+    	p = link_to "Register", signup_path

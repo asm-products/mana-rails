@@ -1,0 +1,10 @@
+doctype html
+html
+	head
+		meta content='text/html; charset=UTF-8' http-equiv='Content-Type
+	
+	body
+		h1 A new account has been created for you #{@contact.name}
+		p Please take a moment to setup your password by clicking the button below:
+		div class="center-block"
+			= link_to "Verify My Account", @url, class:"btn btn-primary"
