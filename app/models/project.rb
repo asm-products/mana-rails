@@ -1,7 +1,10 @@
 class Project < ActiveRecord::Base
+  include StringHelper
+  
   belongs_to :client
   belongs_to :team
   before_save :default_values
+  before_validation :generate_unique_short_code
   
   has_one :client
   has_many :issues
@@ -24,15 +27,7 @@ class Project < ActiveRecord::Base
   end
   
   def generate_unique_short_code
-    i = 0
-    new_short_code = self.short_code
-    while !Project.where(short_code: new_short_code).take.nil? do
-      i += 1
-      new_short_code = self.short_code + i.to_s
-      n = self.short_code[0..3].length - i.to_s.length
-      new_short_code = new_short_code.length < 4 ? new_short_code : self.short_code[0..n] + i.to_s
-    end
-    return new_short_code
+    random_string(5)
   end
   
   def check_client_exists

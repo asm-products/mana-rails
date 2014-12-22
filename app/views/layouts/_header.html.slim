@@ -6,6 +6,8 @@ header class="navbar navbar-fixed-top navbar-inverse"
       	- if logged_in?
       		li
       			= link_to "Clients", clients_path
+      		li
+      			= link_to "Projects", projects_path
       ul class="nav navbar-nav pull-right"
         - if logged_in?
           li class="dropdown"

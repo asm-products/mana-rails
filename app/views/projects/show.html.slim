@@ -1,0 +1,24 @@
+- provide(:title, @project.name)
+div class="row"
+	
+	div class="col-md-10 col-md-offset-1"
+		
+		div class="row"
+			
+			div class="col-md-6"
+				h1 = @project.name
+			
+			div class="col-md-6"
+				div class="pull-right"
+					div class="btn-group"
+						= link_to raw('<i class="fa fa-users fa-fw"></i>'), projects_path, class: "btn btn-default ttip", title: "Back to All Projects"
+						= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@project], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Project"
+						= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_project_path(@project.short_code), class: "btn btn-default ttip", title: "Edit Project"
+						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_project_path(@project.short_code), class: "btn btn-default ttip", title: "New Project"
+		
+- content_for :view_scripts do
+	javascript:
+		$(function () {
+            $('.ttip').tooltip()
+        });
+		
