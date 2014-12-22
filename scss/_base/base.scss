@@ -30,7 +30,7 @@ h2 {
     @include headline-font();
     @include font-size(3.6);
     text-align: center;
-    margin: 1em 0 2em 0;  
+    margin: 1em 0 2em 0;
 }
 
 h3 {
@@ -44,7 +44,7 @@ h3 {
 p {
     @include main-font();
     @include font-size(1.6);
-} 
+}
 
 
 a {

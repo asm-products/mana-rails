@@ -130,10 +130,11 @@
             display: block;
             margin: 0 auto;
         }
-        
+
         .application-list__item p {
             padding: 0 5% 0 15%;
         }
+
 
 
 
@@ -143,35 +144,22 @@
     @include container(100%);
 
     @media screen and (min-width: 43.750em) {
-        .audience-list__item__first, .audience-list__item__third {
-            @include span(8 of 16);
-        }
-
-        .audience-list__item__second, .audience-list__item__fourth {
-            @include span(8 of 16 last)
-        }
-
-        .audience-list__item + .audience-list__item {
+        .audience-list__item {
+            @include span(4 of 16);
             margin-top: 0;
+            text-align: center;
         }
 
-        .audience-list__item + .audience-list__item__second {
-            margin-top: 0;
+        .audience-list__item:last-child {
+            @include span(4 of 16 last)
         }
 
-        .audience-list__item + .audience-list__item__third, .audience-list__item + .audience-list__item__fourth {
-            margin-top: 7.5em;
-        }
-    }
+      }
 
 
     @media screen and (min-width: 78.125em) {
-        .audience-list__item h3 {
-            text-align: left;
-        }
 
         .audience-list__item img {
-            float: left;
             margin-bottom: 6em;
         }
     }
@@ -181,10 +169,6 @@
 
     .audience-list__item {
         @include span(16 of 16);
-
-        + .audience-list__item {
-            margin-top: 7.5em;
-        }
     }
 
         .audience-list__item img {
@@ -192,10 +176,6 @@
             height: auto;
             display: block;
             margin: 0 auto;
-        }
-        
-        .audience-list__item p {
-            padding: 0 5% 0 15%;
         }
 
 
@@ -221,10 +201,3 @@
 .section--assembly {
     padding: 4em 0;
 }
-
-    
-
-
-
-
-
