@@ -4,8 +4,8 @@
 [![Build Status](https://travis-ci.org/asm-products/mana-rails.svg)](https://travis-ci.org/asm-products/mana-rails)
 <a href="https://assembly.com/mana/bounties"><img src="http://badger.asm.co/mana/badges/tasks.svg" height="20px" alt="Open Tasks" /></a>
 
-## v0.1.0-prealpha.1.0.0
-This product is currently in a pre alpha development state and is not yet ready for production use. Please note that the semver file is reflects the api version and not the application version.
+## v0.1.0-prealpha.1.0.1
+This product is currently in a pre alpha development state and is not yet ready for production use. Please note that the semver file reflects the api version and not the application version.
 
 ### The project management, invoicing, team collaboration tool to rule them all!
 
