@@ -3,9 +3,9 @@ class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
   def index
     if params[:letter]
-      @clients = Client.find_by_first_letter(params[:letter]).paginate(:page => params[:page])
+      @clients = Client.accessible_by(current_ability).find_by_first_letter(params[:letter]).paginate(:page => params[:page])
     else
-      @clients = Client.order('name ASC').paginate(:page => params[:page])
+      @clients = Client.accessible_by(current_ability).order('name ASC').paginate(:page => params[:page])
     end
   end
   
@@ -18,6 +18,7 @@ class ClientsController < ApplicationController
   
   def create
     @client = Client.new(client_params)
+    @client.team = current_team #TODO: somehow move this logic into the model
     if @client.save
       redirect_to client_path(@client.short_code)
     else
