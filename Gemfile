@@ -36,7 +36,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-throttle'
 
 # Roles/Permissions
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
 
 # Bachround Jobs
 gem 'resque'

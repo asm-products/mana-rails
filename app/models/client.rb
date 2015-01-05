@@ -1,4 +1,8 @@
 class Client < ActiveRecord::Base
+  def to_param #override
+    self.short_code
+  end
+
   before_save :default_values
   phony_normalize :phone
 
