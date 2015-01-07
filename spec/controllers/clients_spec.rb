@@ -12,7 +12,7 @@ describe ClientsController, :type => :controller do
   end
 
   it "shows clients" do
-    get :show, { id: @client.id } 
+    get :show, { id: @client.short_code }
     expect(response).to render_template :show
     expect(response).to_not have_http_status 404
   end  
@@ -27,7 +27,7 @@ describe ClientsController, :type => :controller do
 
   it "destroys Clients" do
     client = Client.create
-    delete :destroy, { id: @client.id }
+    delete :destroy, { id: @client.short_code }
     expect(response).to redirect_to clients_path
   end
 

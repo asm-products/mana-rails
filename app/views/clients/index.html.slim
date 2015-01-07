@@ -10,7 +10,7 @@ div class="row"
 		- @clients.each do |client| 
 			div class="row"
 				div class="col-md-12"
-					h3 = link_to client.name, client_path(client.short_code)
+					h3 = link_to client.name, client_path(client)
 					p = client.address
 					p = client.formatted_phone
         div class="row"
