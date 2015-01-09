@@ -1,6 +1,8 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client_contact, except: [:create, :new]
+  before_filter :set_client_contact, except: [:create, :new]
+  load_and_authorize_resource :client
+  load_and_authorize_resource :contact, through: :client
 
   def new
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])

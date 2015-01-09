@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
-  load_resource find_by: :short_code
-  authorize_resource
+  before_filter :set_client, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     if params[:letter]
@@ -44,6 +44,10 @@ class ClientsController < ApplicationController
   end
 
   private
+    def set_client
+      @client = Client.find_by(id: params[:id]) || Client.find_by(short_code: params[:id])
+    end
+
     def client_params
       params.require(:client).permit(:name, :address, :phone, :website, :short_code)
     end
