@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit_profile, :update_profile]
-  before_action :set_user_profile, only: [:show, :edit_profile, :update_profile]
-  
+  before_filter :set_user_profile, only: [:show, :edit_profile, :update_profile]
+  load_and_authorize_resource
+
   def show
   end
   

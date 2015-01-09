@@ -10,6 +10,7 @@ class Ability
     can :manage, Project, team_id: user.team_id
     can :manage, Issue, team_id: user.team_id
     can :manage, Client, team_id: user.team_id
+    can :manage, Contact, :client => {team_id: user.team_id}
     can :manage, User, id: user.id
     can :read, User, team_id: user.team_id
     # The first argument to `can` is the action you are giving the user 
