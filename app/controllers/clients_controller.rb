@@ -18,8 +18,7 @@ class ClientsController < ApplicationController
   end
   
   def create
-    @client = Client.new(client_params)
-    @client.team = current_team #TODO: somehow move this logic into the model
+    @client = Client.new(client_params, team: current_team)
     if @client.save
       redirect_to @client
     else
