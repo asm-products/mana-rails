@@ -52,5 +52,5 @@
 }
 
 .last {
-    @include: last;
+    @include span(last);
 }
