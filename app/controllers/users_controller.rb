@@ -11,11 +11,11 @@ class UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(user_params)    # Not the final implementation!
+    @user = User.new(user_params, special_key: SecureRandom.base64.tr('+/=', 'Qrt'))
     if @user.save
       UserProfile.create(user_id: @user.id)
       log_in @user
-      flash[:success] = "Welcome to the Mana!"
+      UserMailer.verify_email(@user).deliver
       redirect_to new_team_path
     else
       render 'new'
@@ -32,6 +32,26 @@ class UsersController < ApplicationController
     else
       render 'edit_profile'
     end
+  end
+
+  def verify
+    @allow_verify = true
+    @user = User.find_by(special_key: params[:id])
+    if @user.updated_at > DateTime.now - 24.hours
+      @user.update(verified: true, special_key: nil)
+      flash[:success] = "Your email address has been verified."
+      redirect_to @user
+    else
+      @allow_verify = false
+    end
+  end
+
+  def reverify
+    @user = User.find_by(special_key: params[:id])
+    @user.update_attribute(:special_key, SecureRandom.base64.tr('+/=', 'Qrt'))
+    UserMailer.verify_email(@user).deliver
+    flash[:success] = "Please check your email to verify your account"
+    redirect_to root_path
   end
   
   private

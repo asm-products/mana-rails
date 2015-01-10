@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   
   # Resources
   resources :users
+  get 'users/verify/:id', to: 'users#verify', as: 'user_verify'
+  get 'users/reverify/:id', to: 'users#reverify', as: 'user_reverify'
+
   resources :teams
   resources :projects
   resources :clients do

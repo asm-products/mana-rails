@@ -1,5 +1,5 @@
 class ContactMailer < ActionMailer::Base
-  default from: "noreply@mana.com" # TODO: change this email address once an appropriate email address has been setup.
+  default from: "noreply@getmana.io"
   
   def verify_email(client, contact)
     @client = client
