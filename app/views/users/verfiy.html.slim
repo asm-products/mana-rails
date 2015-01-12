@@ -1,0 +1,3 @@
+-if !@allow_verify
+  p Verification has expired.
+  = link_to "Retry Verification", user_reverify_path(params[:id])

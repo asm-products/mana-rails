@@ -60,7 +60,7 @@ class ContactsController < ApplicationController
     if @contact.updated_at < DateTime.now - 24.hours
       @contact = nil
     end
-    if @contact.update(contact_params)
+    if @contact.update(contact_params, verified: true)
       @contact.update_attribute(:special_key, nil)
       redirect_to user_path(@contact)
     else
