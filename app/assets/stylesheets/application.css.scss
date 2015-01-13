@@ -1,42 +1,38 @@
-/*-----------------------------------*\
-    MANA
-\*-----------------------------------*/
+//
+// MANA
+// --------------------------------------------------
 
 
-/**
-* SETTINGS
-*/
+// Settings
+// --------------------------------------------------
 @import "settings/global";
 @import "settings/colors";
 @import "settings/susy_settings";
 
-/**
-* TOOLS
-*/
-@import "tools/mixins";
+// Mixins
+// --------------------------------------------------
+@import "mixins/vendor-prefixes";
+@import "mixins/tab-focus";
+@import "mixins/opacity";
+@import "mixins/buttons";
 
-/**
-* GENERIC
-*/
+// Generic
+// --------------------------------------------------
 @import "generic/normalize";
 
-/**
-* BASE
-*/
+// Base
+// --------------------------------------------------
 @import "base/type";
 
-/**
-* OBJECTS
-*/
+// Objects
+// --------------------------------------------------
 @import "objects/layout";
 
-/**
-* COMPONENTS
-*/
+// Components
+// --------------------------------------------------
 @import "components/buttons";
 
 
-/**
-* TRUMPS
-*/
+// Trumps
+// --------------------------------------------------
 @import "trumps/clearfix";
