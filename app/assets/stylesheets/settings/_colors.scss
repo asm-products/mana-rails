@@ -1,3 +1,48 @@
-/*-----------------------------------*\
-    SETTINGS - COLORS
-\*-----------------------------------*/
+//
+// Colors
+// --------------------------------------------------
+
+// Global
+// --------------------------------------------------
+$purple-grey: rgba(223,211,225,1);
+$neon-purple: rgba(124,0,160,1);
+$purple: rgba(69,37,78,1);
+$dark-purple: rgba(55,19,63,1);
+
+$off-white: rgba(250,250,250,1);
+$grey: rgba(211,208,215,1);
+
+$orange: rgba(247,105,83,1);
+$light-blue: rgba(0,174,235,1);
+$light-green: rgba(122,196,119,1);
+$red: rgba(243,25,41,1);
+
+// Buttons
+// --------------------------------------------------
+$btn-default-color: black;
+$btn-default-bg: $grey;
+$btn-default-border: transparent;
+
+$btn-primary-color: white;
+$btn-primary-bg: $neon-purple;
+$btn-primary-border: transparent;
+
+$btn-success-color: white;
+$btn-success-bg: $light-green;
+$btn-success-border: transparent;
+
+$btn-info-color: white;
+$btn-info-bg: $light-blue;
+$btn-info-border: transparent;
+
+$btn-warning-color: white;
+$btn-warning-bg: $orange;
+$btn-warning-border: transparent;
+
+$btn-danger-color: white;
+$btn-danger-bg: $red;
+$btn-danger-border: transparent;
+
+
+
+
