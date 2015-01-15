@@ -25,6 +25,12 @@ describe ClientsController, :type => :controller do
     expect(response).to render_template nil
   end
 
+  it "should set team" do
+    expect(current_user.team).to be_present
+    post :create, client: {name: "testname", short_code: "12346"}
+    expect(Client.last.team).to be_present
+  end
+
   it "destroys Clients" do
     client = Client.create
     delete :destroy, { id: @client.short_code }

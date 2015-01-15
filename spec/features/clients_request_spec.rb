@@ -6,7 +6,7 @@ describe ClientsController do
       login
     end
 
-    it "should create client" do
+    def create_client
       visit clients_path
       click_link 'Create New Client'
       fill_in :client_name, with: "testname"
@@ -15,16 +15,20 @@ describe ClientsController do
       fill_in :client_website, with: "testweb.com"
       fill_in :client_short_code, with: "tscde"
       click_on "Create Client"
+      expect(Client.last.team).to be_present
+    end
 
+    it "should create client" do
+      create_client
       expect(page.current_path).to eq(client_path('tscde'))
     end
 
     it "should list clients" do
-      client = Client.make!
+      create_client
       visit clients_path
 
-      expect(page).to have_content(client.name)
-      expect(page).to have_content(client.address)
+      expect(page).to have_content("testname")
+      expect(page).to have_content("testaddress")
     end
   end
 
