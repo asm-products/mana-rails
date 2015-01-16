@@ -3,6 +3,9 @@ require 'rails_helper'
 describe User, :type => :model do
   before { @user = User.make! }
 
+  it { should have_and_belong_to_many(:permissions) }
+  it { should belong_to(:team) }
+
   it "should set special_key" do
     expect(@user.special_key).to be_present
   end

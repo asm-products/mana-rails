@@ -1,9 +1,14 @@
-require "spec_helper"
+require "rails_helper"
 
 describe UsersController do
+  before(:each) do
+    Permission.seed "User"
+  end
+
   it "should signup new users" do
     visit '/'
     click_on 'Register'
+
     fill_in :user_name, with: 'testuser'
     fill_in :user_email, with: 'testemail@domain.com'
     fill_in :user_password, with: 'password'
@@ -11,6 +16,7 @@ describe UsersController do
     click_on 'Create my account'
 
     expect(page.current_path).to eq(new_team_path)
+    User.last.permissions << Permission.all
 
     fill_in :team_name, with: 'testteam'
     click_on 'Create team'
@@ -21,6 +27,8 @@ describe UsersController do
 
   it "should edit profile" do
     login
+    User.last.permissions << Permission.all
+
     visit '/'
     click_on 'Profile'
     click_on 'Edit Profile'

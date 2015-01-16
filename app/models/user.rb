@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   end
   belongs_to :team
   has_one :user_profile, dependent: :destroy
+  has_and_belongs_to_many :permissions
   attr_accessor :remember_token
   before_save { email.downcase! }
 
@@ -70,9 +71,9 @@ class User < ActiveRecord::Base
   end
 
   def revoke_admin!
-    update admin: false  
+    update admin: false
   end
-  
+
   def generate_api_key
     loop do
       token = SecureRandom.base64.tr('+/=', 'Qrt')

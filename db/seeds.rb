@@ -36,4 +36,9 @@ if Rails.env.development?
   UserProfile.create(first_name: 'Elon', last_name: 'Musk', job_title: 'Certified Bad Ass', phone: '1112223333', user: client_3_contact_1)
   client_3_contact_2 = Contact.create(name: 'thejobs', email: 'steve@start.com', password: 'password', password_confirmation: 'password', client: client_3)
   UserProfile.create(first_name: 'Steve', last_name: 'Jobs', job_title: 'Money Maker', phone: '2223334444', user: client_3_contact_2)
+
+  Permission.seed
+  User.all.each do |user|
+    user.permissions << Permission.all
+  end
 end

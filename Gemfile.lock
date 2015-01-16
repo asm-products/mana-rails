@@ -212,6 +212,8 @@ GEM
       rdoc (~> 4.0)
     semver2 (3.4.1)
     shellany (0.0.1)
+    shoulda-matchers (2.7.0)
+      activesupport (>= 3.0.0)
     sinatra (1.4.5)
       rack (~> 1.4)
       rack-protection (~> 1.4)
@@ -282,6 +284,7 @@ DEPENDENCIES
   sass-rails (~> 5.0.0.beta1)
   sdoc (~> 0.4.0)
   semver2
+  shoulda-matchers
   slim
   spring
   sqlite3
