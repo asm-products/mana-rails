@@ -18,7 +18,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params.merg({team: current_team}))
+    @client = Client.new(client_params.merge({team: current_team}))
     if @client.save
       redirect_to @client
     else
@@ -36,7 +36,7 @@ class ClientsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @client.destroy
     redirect_to clients_path
@@ -50,5 +50,5 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:name, :address, :phone, :website, :short_code)
     end
-  
+
 end
