@@ -2,6 +2,8 @@ module SpecAuthHelper
   def login(user=nil)
     begin
       user = User.make!
+      user.team = Team.make!
+      user.save
     rescue
     end
     session[:user_id] = user.id

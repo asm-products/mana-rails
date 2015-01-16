@@ -3,9 +3,9 @@ require 'rails_helper'
 describe ClientsController, :type => :controller do
   before do
     login
-    @client = Client.make!
+    @client = Client.make!(team_id: current_user.team_id)
   end
-  
+
   it "lists clients" do
     get :index
     expect(response).to render_template :index
@@ -23,6 +23,12 @@ describe ClientsController, :type => :controller do
 
     expect(response).to_not render_template :new
     expect(response).to render_template nil
+  end
+
+  it "should set team" do
+    expect(current_user.team).to be_present
+    post :create, client: {name: "testname", short_code: "12346"}
+    expect(Client.last.team).to be_present
   end
 
   it "destroys Clients" do

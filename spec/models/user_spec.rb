@@ -3,6 +3,10 @@ require 'rails_helper'
 describe User, :type => :model do
   before { @user = User.make! }
 
+  it "should set special_key" do
+    expect(@user.special_key).to be_present
+  end
+
   it "is valid" do
     expect @user.valid?
   end
@@ -24,7 +28,7 @@ describe User, :type => :model do
 
   it "checks for a team" do
     expect @user.has_team?
-  end  
+  end
 
   it "validates length of email" do
     255.times { @user.email += "m" }
@@ -76,6 +80,6 @@ describe User, :type => :model do
 
   it "belongs to a team" do
     expect @user.respond_to? :team
-  end  
-  
+  end
+
 end

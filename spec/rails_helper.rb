@@ -30,7 +30,8 @@ RSpec.configure do |config|
 
   # Auth Helper
   config.include SpecAuthHelper, :type => :controller
-  
+  config.include SpecAuthRequestHelper, :type => :feature
+
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.

@@ -2,7 +2,10 @@ require 'machinist/active_record'
 
 Client.blueprint do
   name       { 'TestName' }
+  address { 'TestAdress' }
+  phone { '12345' }
   short_code { '12345' }
+  website { 'http://www.testweb.com' }
 end
 
 Issue.blueprint do
