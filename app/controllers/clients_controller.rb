@@ -10,25 +10,25 @@ class ClientsController < ApplicationController
       @clients = @clients.order('name ASC').paginate(:page => params[:page])
     end
   end
-  
+
   def show
   end
-  
+
   def new
   end
-  
+
   def create
-    @client = Client.new(client_params, team: current_team)
+    @client = Client.new(client_params.merg({team: current_team}))
     if @client.save
       redirect_to @client
     else
       render 'new'
     end
   end
-  
+
   def edit
   end
-  
+
   def update
     if @client.update(client_params)
       redirect_to client_path @client

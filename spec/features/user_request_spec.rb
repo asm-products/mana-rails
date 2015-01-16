@@ -10,13 +10,13 @@ describe UsersController do
     fill_in :user_password_confirmation, with: 'password'
     click_on 'Create my account'
 
-    expect(page).to have_content("Welcome to the Mana!")
+    expect(page.current_path).to eq(new_team_path)
 
     fill_in :team_name, with: 'testteam'
     click_on 'Create team'
 
-    expect(page).to have_content("Team Created!")
-    expect(page).to have_content("testuser")
+    expect(page).to have_content("Please check your email to verify your account.")
+    expect(page).to have_content("Welcome to Mana, tell us a little about you")
   end
 
   it "should edit profile" do

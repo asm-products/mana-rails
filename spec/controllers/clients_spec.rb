@@ -3,9 +3,9 @@ require 'rails_helper'
 describe ClientsController, :type => :controller do
   before do
     login
-    @client = Client.make!
+    @client = Client.make!(team_id: current_user.team_id)
   end
-  
+
   it "lists clients" do
     get :index
     expect(response).to render_template :index
