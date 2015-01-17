@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150110100015) do
+ActiveRecord::Schema.define(version: 20150116171452) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -53,6 +53,21 @@ ActiveRecord::Schema.define(version: 20150110100015) do
 
   add_index "issues", ["project_id"], name: "index_issues_on_project_id"
   add_index "issues", ["unique_id"], name: "index_issues_on_unique_id"
+
+  create_table "permissions", force: true do |t|
+    t.string   "klass"
+    t.string   "action"
+    t.text     "description"
+    t.string   "condition"
+    t.boolean  "is_public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "permissions_users", id: false, force: true do |t|
+    t.integer "user_id",       null: false
+    t.integer "permission_id", null: false
+  end
 
   create_table "projects", force: true do |t|
     t.string   "name"

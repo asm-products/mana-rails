@@ -53,8 +53,9 @@ group :test do
 end
 
 group :test, :development do
-  gem "rspec-rails"
+  gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :production do

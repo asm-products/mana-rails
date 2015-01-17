@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def show
   end
-  
+
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params, special_key: SecureRandom.base64.tr('+/=', 'Qrt'))
     if @user.save
@@ -21,11 +21,11 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-    
+
   def edit_profile
-    
+
   end
-  
+
   def update_profile
     if @profile.update(user_profile_params)
       redirect_to @user
@@ -53,20 +53,20 @@ class UsersController < ApplicationController
     flash[:success] = "Please check your email to verify your account"
     redirect_to root_path
   end
-  
+
   private
-    
+
     def set_user_profile
       @user = User.find_by(id: params[:id]) || User.find_by(name: params[:id])
       @profile = UserProfile.find_by(user_id: @user.id)
     end
-    
+
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
-    
+
     def user_profile_params
       params.require(:user_profile).permit(:first_name, :last_name, :job_title, :phone)
     end
-  
+
 end

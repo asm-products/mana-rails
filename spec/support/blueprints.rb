@@ -51,3 +51,8 @@ Comment.blueprint do
                         name: "testcommenter1") }
 end
 
+Permission.blueprint do
+  klass { 'User' }
+  action { 'manage' }
+  description { 'Lorem ipsum' }
+end

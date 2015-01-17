@@ -1,9 +1,11 @@
-require "spec_helper"
+require "rails_helper"
 
 describe ClientsController do
   context "logged in" do
     before(:each) do
       login
+      Permission.seed "Client"
+      User.last.permissions << Permission.all
     end
 
     def create_client
@@ -29,6 +31,14 @@ describe ClientsController do
 
       expect(page).to have_content("testname")
       expect(page).to have_content("testaddress")
+    end
+
+    it "should not be allowed to edit other teams clients" do
+      team = Team.make!
+      client = Client.make!
+      team.clients << client
+      visit edit_client_path(client)
+      expect(page).to have_content("You are not authorized to access this page.")
     end
   end
 
