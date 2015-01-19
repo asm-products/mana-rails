@@ -4,7 +4,7 @@ Client.blueprint do
   name       { 'TestName' }
   address { 'TestAdress' }
   phone { '12345' }
-  short_code { '12345' }
+  short_code { sn }
   website { 'http://www.testweb.com' }
 end
 
@@ -55,4 +55,9 @@ Permission.blueprint do
   klass { 'User' }
   action { 'manage' }
   description { 'Lorem ipsum' }
+end
+
+Role.blueprint do
+  name { 'testrole' }
+  short_code { sn }
 end
