@@ -1,16 +1,16 @@
 - provide(:title, @client.name)
 div class="row"
-	
+
 	div class="col-md-10 col-md-offset-1"
-		
+
 		div class="row"
-			
+
 			div class="col-md-6"
 				h1 = @client.name
 				p = @client.address
 				p = @client.formatted_phone
 				p = link_to @client.website, "http://#{@client.website}"
-			
+
 			div class="col-md-6"
 				div class="pull-right"
 					div class="btn-group"
@@ -18,7 +18,7 @@ div class="row"
 						= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Client"
 						= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_client_path(@client.short_code), class: "btn btn-default ttip", title: "Edit Client"
 						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_contact_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
-		
+
 		div class="row"
 			div class="col-md-9"
 				div class="row"
@@ -43,7 +43,7 @@ div class="row"
                       = form_for([@client, @client.comments.build]) do |f|
                         = f.text_area :body, class: "form-control", placeholder: "Create new client note..."
                         div class="pull-right"
-                          = f.submit class: "btn btn-success"
+                          = f.submit class: "btn"
 			div class="col-md-3"
 				h3 Contacts
 				- @client.contacts.order('name ASC').each do |contact|
@@ -52,16 +52,15 @@ div class="row"
 							div class="col-md-2"
 								= gravatar_for contact, size: 50
 							div class="col-md-9 col-md-offset-1"
-								p 
+								p
 									= contact.user_profile.first_name + ' ' + contact.user_profile.last_name + ' (' + contact.user_profile.job_title + ')'
 									br
 									= contact.email
 									br
 									= contact.user_profile.formatted_phone
-									
+
 - content_for :view_scripts do
 	javascript:
 		$(function () {
             $('.ttip').tooltip()
         });
-		
