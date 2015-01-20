@@ -9,12 +9,9 @@
 @import "settings/colors";
 @import "settings/susy_settings";
 
-// Mixins
+// Toolss
 // --------------------------------------------------
-@import "mixins/vendor-prefixes";
-@import "mixins/tab-focus";
-@import "mixins/opacity";
-@import "mixins/buttons";
+@import "tools/mixins";
 
 // Generic
 // --------------------------------------------------
@@ -22,7 +19,7 @@
 
 // Base
 // --------------------------------------------------
-@import "base/type";
+@import "base/typography";
 
 // Objects
 // --------------------------------------------------
