@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116171452) do
+ActiveRecord::Schema.define(version: 20150119214909) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150116171452) do
     t.boolean  "is_public"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   create_table "permissions_users", id: false, force: true do |t|
@@ -83,6 +84,19 @@ ActiveRecord::Schema.define(version: 20150116171452) do
 
   add_index "projects", ["client_id"], name: "index_projects_on_client_id"
   add_index "projects", ["short_code"], name: "index_projects_on_short_code", unique: true
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.string   "short_code"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"

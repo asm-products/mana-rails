@@ -1,7 +1,8 @@
 class Permission < ActiveRecord::Base
   has_and_belongs_to_many :users
-  scope :for_everybody, -> { where(is_public: true) }
+  belongs_to :role
 
+  scope :for_everybody, -> { where(is_public: true) }
 
   def condition_hash user
     case condition

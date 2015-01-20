@@ -2,9 +2,12 @@ class User < ActiveRecord::Base
   def to_param #overrides
     name
   end
+
   belongs_to :team
   has_one :user_profile, dependent: :destroy
   has_and_belongs_to_many :permissions
+  has_and_belongs_to_many :roles
+
   attr_accessor :remember_token
   before_save { email.downcase! }
 

@@ -25,7 +25,7 @@ describe UsersController do
     expect(page).to have_content("Welcome to Mana, tell us a little about you")
   end
 
-  it "should edit profile" do
+  it "should edit profile with permission" do
     login
     User.last.permissions << Permission.all
 

@@ -4,7 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    (Permission.for_everybody + user.permissions).each do |permission|
+    (
+        user.roles.map(&:permissions).flatten +
+        Permission.for_everybody +
+        user.permissions
+    ).uniq.each do |permission|
       can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user)
     end
 

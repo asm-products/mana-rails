@@ -4,7 +4,9 @@ RSpec.describe Permission, :type => :model do
   let(:permission) { Permission.make! }
   let(:user) { User.make!(team: team) }
   let(:team) { Team.make! }
-  it { should have_and_belong_to_many(:users) }
+
+  it { should have_and_belong_to_many :users }
+  it { should belong_to :role }
 
   it "is valid" do
     expect permission.valid?
