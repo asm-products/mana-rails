@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit_profile, :update_profile]
   before_filter :set_user_profile, only: [:show, :edit_profile, :update_profile]
+  before_filter :set_user, only: [:edit, :update]
   load_and_authorize_resource
 
   def show
@@ -8,6 +9,10 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+  end
+
+  def update
+    redirect_to user_path(@user)
   end
 
   def create
@@ -56,8 +61,12 @@ class UsersController < ApplicationController
 
   private
 
-    def set_user_profile
+    def set_user
       @user = User.find_by(id: params[:id]) || User.find_by(name: params[:id])
+    end
+
+    def set_user_profile
+      set_user
       @profile = UserProfile.find_by(user_id: @user.id)
     end
 
