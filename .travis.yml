@@ -13,3 +13,7 @@ notifications:
 branches:
   except:
     - html
+
+addons:
+  code_climate:
+    repo_token: a5960eb8e84098e99c5b35ce31ab5ee6fee35f99e2e5e5322d5cf1f168b9edb8

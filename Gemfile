@@ -74,3 +74,6 @@ gem 'phony_rails'
 # Pagination
 gem 'will_paginate', '~> 3.0.6'
 
+# CodeClimate
+gem 'codeclimate-test-reporter', group: :test, require: nil
+
