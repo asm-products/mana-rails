@@ -8,7 +8,7 @@ div class="row"
 			div class="col-md-6"
 				h1 = @client.name
 				p = @client.address
-				p = @client.formatted_phone
+				p = formatted_phone @client
 				p = link_to @client.website, "http://#{@client.website}"
 
 			div class="col-md-6"
@@ -57,7 +57,7 @@ div class="row"
 									br
 									= contact.email
 									br
-									= contact.user_profile.formatted_phone
+									= formatted_phone contact.user_profile
 
 - content_for :view_scripts do
 	javascript:

@@ -15,8 +15,4 @@ class UserProfile < ActiveRecord::Base
   def phone_suffix
     phone == nil ? '' : phone.last(4)
   end
-
-  def formatted_phone
-    phone == nil ? '' : '(' + area_code + ') ' + phone_prefix + '-' + phone_suffix
-  end
 end
