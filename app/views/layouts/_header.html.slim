@@ -1,4 +1,4 @@
-header class="navbar navbar-fixed-top navbar-inverse"
+header class="navbar navbar-static-top navbar-inverse"
   div class="container"
     = link_to "Mana", root_path, id: "logo", class: "navbar-brand"
     nav
@@ -8,11 +8,11 @@ header class="navbar navbar-fixed-top navbar-inverse"
       			= link_to "Clients", clients_path
       		li
       			= link_to "Projects", projects_path
-      ul class="nav navbar-nav pull-right"
+      ul class="nav navbar-nav navbar-right"
         - if logged_in?
           li class="dropdown"
-            a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-            	span Account 
+            a href="#" class="dropdown-toggle" data-toggle="dropdown"
+            	span Account
             	b class="caret"
             ul class="dropdown-menu"
               li
@@ -24,4 +24,4 @@ header class="navbar navbar-fixed-top navbar-inverse"
           li
           	= link_to "Log in", login_path
           li
-          	= link_to "Register", signup_path 
+          	= link_to "Register", signup_path
