@@ -2,6 +2,10 @@
     OBJECTS - LAYOUT
 \*-----------------------------------*/
 
+// Temporary until we remove the default bootstrap nav
+body { 
+    padding-top: 70px; 
+}
 
 .wrap {
     @include container();
