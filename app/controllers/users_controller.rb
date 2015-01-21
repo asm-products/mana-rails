@@ -11,8 +11,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def edit
+  end
+
   def update
-    redirect_to user_path(@user)
+    if @user.update_attributes user_params
+      redirect_to user_path(@user), notice: "Updated User Account"
+    else
+      render :edit
+    end
   end
 
   def create
