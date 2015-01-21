@@ -39,4 +39,23 @@ describe UsersController do
     fill_in :user_profile_phone, with: '123123'
     click_on 'Update User profile'
   end
+
+  it "should change password" do
+    login
+    user = User.last
+    user.permissions << Permission.all
+
+    visit '/'
+    click_on 'Profile'
+    click_on 'Edit User'
+
+    fill_in :user_password, with: 'test12345'
+    fill_in :user_password_confirmation, with: 'test12345'
+    click_on 'Update my Account'
+
+    expect(page.current_path).to eq(user_path(user))
+
+    user.reload
+    expect(user.authenticate('test12345')).to eq(user)
+  end
 end
