@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   def to_param #override
-    self.short_code
+    short_code_was
   end
 
   before_save :default_values
