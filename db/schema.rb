@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150122085826) do
+ActiveRecord::Schema.define(version: 20150122204243) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150122085826) do
     t.integer  "team_id"
   end
 
-  add_index "clients", ["short_code"], name: "index_clients_on_short_code", unique: true
+  add_index "clients", ["short_code"], name: "index_clients_on_short_code"
 
   create_table "comments", force: true do |t|
     t.string   "subject"
@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20150122085826) do
   end
 
   add_index "projects", ["client_id"], name: "index_projects_on_client_id"
-  add_index "projects", ["short_code"], name: "index_projects_on_short_code", unique: true
+  add_index "projects", ["short_code"], name: "index_projects_on_short_code"
 
   create_table "roles", force: true do |t|
     t.string   "name"
