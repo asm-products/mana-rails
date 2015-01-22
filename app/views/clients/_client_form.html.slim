@@ -1,30 +1,30 @@
 = form_for @client do |f| 
-	div class="form-group"
+	.form-group
 		= f.label :name
 		= f.text_field :name, class: "form-control"
 		= errors_for @client, :name
 
-    div class="form-group"
+    .form-group
 		= f.label :address
 		= f.text_area :address, class: "form-control"
 		= errors_for @client, :address
 
-	div class="form-group"
+	.form-group
 		= f.label :phone
 		= f.text_field :phone, class: "form-control"
 		= errors_for @client, :phone
 
-	div class="form-group"
+	.form-group
 		= f.label :website
 		= f.text_field :website, class: "form-control"
 		= errors_for @client, :website
 
-	div class="form-group"
+	.form-group
 		= f.label :short_code
 		= f.text_field :short_code, class: "form-control"
 		= errors_for @client, :short_code
 
-	div class="pull-right"
+	.pull-right
 	  - if @client.short_code == nil
 	    = link_to "Cancel", clients_path, class: "btn btn-danger"
 	  - else
