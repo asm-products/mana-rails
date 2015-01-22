@@ -11,7 +11,8 @@ class Client < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   validates :name, presence: true, length: { minimum: 4 }
-  validates :short_code, presence: true, uniqueness: true, length: { minimum: 4 }
+  validates :short_code, presence: true, length: { minimum: 4 },
+            uniqueness: {scope: :team}
   validates :phone, length: {minmum: 10, maximum: 10}, allow_blank: true
 
   def default_values

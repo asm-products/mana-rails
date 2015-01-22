@@ -3,6 +3,8 @@ require 'rails_helper'
 describe Client, :type => :model do
   before { @client = Client.make! }
 
+  it { should validate_uniqueness_of(:short_code).scoped_to(:team_id) }
+
   it "is valid" do
     expect @client.valid?
   end

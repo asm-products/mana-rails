@@ -3,6 +3,8 @@ require 'rails_helper'
 describe Project, :type => :model do
   before { @project = Project.make! }
 
+  it { should validate_uniqueness_of(:short_code).scoped_to(:team_id) }
+
   it "is valid" do
     expect @project.valid?
   end
