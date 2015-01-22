@@ -5,7 +5,8 @@ describe User, :type => :model do
 
   it { should have_and_belong_to_many(:permissions) }
   it { should have_and_belong_to_many(:roles) }
-  it { should belong_to(:team) }
+  it { should have_many(:memberships) }
+  it { should have_many(:teams).through(:memberships) }
 
   it "should set special_key" do
     expect(@user.special_key).to be_present

@@ -44,6 +44,11 @@ Team.blueprint do
   name       { 'TestName' }
 end
 
+Membership.blueprint do
+  user { User.make! }
+  team { Team.make! }
+end
+
 Comment.blueprint do
   subject { 'Test Comment' }
   body { 'Test Body'}

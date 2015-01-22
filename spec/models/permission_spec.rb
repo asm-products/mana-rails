@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Permission, :type => :model do
   let(:permission) { Permission.make! }
-  let(:user) { User.make!(team: team) }
+  let(:user) { User.make! }
   let(:team) { Team.make! }
+  let(:membership) { Membership.make!(user: user, team: team)}
 
-  it { should have_and_belong_to_many :users }
+  it { should have_and_belong_to_many :memberships }
   it { should belong_to :role }
 
   it "is valid" do
@@ -21,27 +22,27 @@ RSpec.describe Permission, :type => :model do
 
   describe "#condition_hash" do
     before(:each) do
-      permission.users << user
+      permission.memberships << membership
     end
 
     it "should return belongs_to_user hash" do
       permission.condition = "belongs_to_user"
-      expect(permission.condition_hash(user)).to eq({id: user.id})
+      expect(permission.condition_hash(user, team)).to eq({id: user.id})
     end
 
     it "should return belongs_to_me hash" do
       permission.condition = "belongs_to_me"
-      expect(permission.condition_hash(user)).to eq({user_id: user.id})
+      expect(permission.condition_hash(user, team)).to eq({user_id: user.id})
     end
 
     it "should return belongs_to_team hash" do
       permission.condition = "belongs_to_team"
-      expect(permission.condition_hash(user)).to eq({team_id: user.team.id})
+      expect(permission.condition_hash(user, team)).to eq({team_id: team.id})
     end
 
     it "should return contact_belongs_to_team hash" do
       permission.condition = "contact_belongs_to_team"
-      expect(permission.condition_hash(user)).to eq({ client: {team_id: user.team.id}})
+      expect(permission.condition_hash(user, team)).to eq({ client: {team_id: team.id}})
     end
   end
 
