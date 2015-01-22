@@ -8,3 +8,7 @@
         - @client.errors.full_messages.each do |msg|
 		  li =msg
 	= render 'client_form'
+
+- content_for :view_scripts do
+  javascript:
+    generateShortCode('client_name', 'client_short_code');
