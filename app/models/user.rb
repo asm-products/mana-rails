@@ -3,7 +3,9 @@ class User < ActiveRecord::Base
     name
   end
 
-  belongs_to :team
+  has_many :memberships
+  has_many :teams, through: :memberships
+
   has_one :user_profile, dependent: :destroy
   has_and_belongs_to_many :permissions
   has_and_belongs_to_many :roles
@@ -58,7 +60,7 @@ class User < ActiveRecord::Base
   end
 
   def has_team?
-    team
+    teams.present?
   end
 
   def admin?

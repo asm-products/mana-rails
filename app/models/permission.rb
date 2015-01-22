@@ -1,19 +1,19 @@
 class Permission < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :memberships
   belongs_to :role
 
   scope :for_everybody, -> { where(is_public: true) }
 
-  def condition_hash user
+  def condition_hash user, team
     case condition
     when 'belongs_to_user'
       { id: user.id }
     when 'belongs_to_me'
       { user_id: user.id }
     when 'belongs_to_team'
-      { team_id: user.team.id }
+      { team_id: team.id }
     when 'contact_belongs_to_team'
-      { client: {team_id: user.team.id}}
+      { client: {team_id: team.id}}
     else
       {}
     end
@@ -25,8 +25,8 @@ class Permission < ActiveRecord::Base
       {klass: 'Issue', action: 'manage', condition: 'belongs_to_team'},
       {klass: 'Client', action: 'manage', condition: 'belongs_to_team'},
       {klass: 'Contact', action: 'manage', condition: 'belongs_to_team'},
-      {klass: 'User', action: 'manage', condition: 'belongs_to_user'},
       {klass: 'User', action: 'read', condition: 'belongs_to_team'},
+      {klass: 'User', action: 'manage', condition: 'belongs_to_user', is_public: true},
       {klass: 'Team', action: 'create', is_public: true},
       {klass: 'User', action: 'create', is_public: true}
     ]

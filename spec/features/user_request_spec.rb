@@ -16,7 +16,6 @@ describe UsersController do
     click_on 'Create my account'
 
     expect(page.current_path).to eq(new_team_path)
-    User.last.permissions << Permission.all
 
     fill_in :team_name, with: 'testteam'
     click_on 'Create team'

@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
   it { should have_many :roles }
+  it { should have_many :memberships}
+  it { should have_many(:users).through(:memberships)}
 
   before { @team = Team.make! }
 
