@@ -6,5 +6,5 @@ html
   body
     h1 A new account has been created for you #{@user.name}
     p Please take a moment to verify your email address by clicking the button below:
-    div class="center-block"
+    .center-block
       = link_to "Verify My Email Address", @url, class:"btn btn-primary"

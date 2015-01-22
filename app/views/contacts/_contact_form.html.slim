@@ -1,32 +1,32 @@
 = form_for([@client, @client.contacts.build]) do |f|
-	- @contact.errors.full_messages.each do |msg|
-	  = msg
-    div class="form-group"
-		= f.label :email
-		= f.text_field :email, class: "form-control"
-		= errors_for @contact, :email
+  - @contact.errors.full_messages.each do |msg|
+    = msg
+  .form-group
+    = f.label :email
+	= f.text_field :email, class: "form-control"
+	= errors_for @contact, :email
 
-	= fields_for @profile do |p|
-		div class="form-group"
-			= p.label :first_name
-			= p.text_field :first_name, class: "form-control"
-			= errors_for @profile, :first_name
+  = fields_for @profile do |p|
+    .form-group
+      = p.label :first_name
+	  = p.text_field :first_name, class: "form-control"
+	  = errors_for @profile, :first_name
 		
-		div class="form-group"
-			= p.label :last_name
-			= p.text_field :last_name, class: "form-control"
-			= errors_for @profile, :last_name
+    .form-group
+	  = p.label :last_name
+	  = p.text_field :last_name, class: "form-control"
+	  = errors_for @profile, :last_name
 
-		div class="form-group"
-			= p.label :job_title
-			= p.text_field :job_title, class: "form-control"
-			= errors_for @profile, :job_title
+	.form-group
+	  = p.label :job_title
+	  = p.text_field :job_title, class: "form-control"
+	  = errors_for @profile, :job_title
 
-		div class="form-group"
-			= p.label :phone
-			= p.text_field :phone, class: "form-control"
-			= errors_for @profile, :phone
+	.form-group
+	  = p.label :phone
+	  = p.text_field :phone, class: "form-control"
+	  = errors_for @profile, :phone
 
-	div class="pull-right"
-		= link_to "Cancel", client_path(@client), class: "btn btn-danger"
-		= f.submit class:"btn btn-success"
+  .pull-right
+    = link_to "Cancel", client_path(@client), class: "btn btn-danger"
+	= f.submit class:"btn btn-success"
