@@ -1,0 +1,57 @@
+nav[role="pagination"] {
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+    .clients-pagination {
+        //Delete "clients-" when delete Bootstrap
+        list-style: none;
+
+    }
+
+        .pagination__list {
+            display: inline-block;
+        }
+
+            .pagination__item {
+                -webkit-font-smoothing: antialiased;
+                @include appearance(none);
+                background-color: transparent;
+                border-radius: $pagination-border-radius;
+                border: 1px solid $pagination-color;
+                color: $pagination-color;
+                cursor: pointer;
+                //display: inline-block;
+                font-family: $pagination-font-family;
+                font-size: $pagination-font-size;
+                font-weight: $pagination-font-weight;
+                line-height: $pagination-line-height;
+                margin: 0 $pagination-horizontal-margin;
+                padding: $pagination-padding;
+                text-decoration: none;
+                text-transform: $pagination-text-transform;
+                @include user-select(none);
+                vertical-align: middle;
+                white-space: nowrap;
+
+                &:hover,
+                &:focus {
+                    background-color: $hover-pagination-background-color;
+                    color: $hover-pagination-color;
+                }
+
+                &.current {
+                    background-color: $hover-pagination-background-color;
+                    color: $hover-pagination-color;
+                    border: none;
+                }
+
+                &.disabled {
+                    background-color: $disabled-pagination-background-color;
+                    color: $disabled-pagination-color;
+                    border: none;
+                    cursor: not-allowed;
+                }
+            }
