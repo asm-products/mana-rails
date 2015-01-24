@@ -2,6 +2,8 @@
 ## Fun automatic project and invoice management.
 
 [![Build Status](https://travis-ci.org/asm-products/mana-rails.svg)](https://travis-ci.org/asm-products/mana-rails)
+[![Code Climate](https://codeclimate.com/github/asm-products/mana-rails/badges/gpa.svg)](https://codeclimate.com/github/asm-products/mana-rails)
+[![Test Coverage](https://codeclimate.com/github/asm-products/mana-rails/badges/coverage.svg)](https://codeclimate.com/github/asm-products/mana-rails)
 <a href="https://assembly.com/mana/bounties"><img src="http://badger.asm.co/mana/badges/tasks.svg" height="20px" alt="Open Tasks" /></a>
 
 ## v0.1.0-prealpha.1.0.1

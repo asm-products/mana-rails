@@ -1,6 +1,8 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_client_contact, except: [:create, :new]
+  before_filter :set_client_contact, except: [:create, :new]
+  load_and_authorize_resource :client, find_by: :short_code
+  load_and_authorize_resource :contact, through: :client
 
   def new
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
@@ -58,7 +60,7 @@ class ContactsController < ApplicationController
     if @contact.updated_at < DateTime.now - 24.hours
       @contact = nil
     end
-    if @contact.update(contact_params)
+    if @contact.update(contact_params, verified: true)
       @contact.update_attribute(:special_key, nil)
       redirect_to user_path(@contact)
     else
@@ -78,7 +80,7 @@ class ContactsController < ApplicationController
   private
   
   def set_client_contact
-    @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
+    @client = Client.find_by(short_code: params[:client_id])
     @contacts = @client.contacts
     @contact = @contacts.find_by(id: params[:id]) || @contacts.find_by(name: params[:id])
   end

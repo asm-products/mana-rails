@@ -1,67 +1,64 @@
 - provide(:title, @client.name)
-div class="row"
-	
-	div class="col-md-10 col-md-offset-1"
-		
-		div class="row"
-			
-			div class="col-md-6"
-				h1 = @client.name
-				p = @client.address
-				p = @client.formatted_phone
-				p = link_to @client.website, "http://#{@client.website}"
-			
-			div class="col-md-6"
-				div class="pull-right"
-					div class="btn-group"
-						= link_to raw('<i class="fa fa-users fa-fw"></i>'), clients_path, class: "btn btn-default ttip", title: "Back to All Clients"
-						= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Client"
-						= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_client_path(@client.short_code), class: "btn btn-default ttip", title: "Edit Client"
-						= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_contact_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
-		
-		div class="row"
-			div class="col-md-9"
-				div class="row"
-					div class="col-md-12"
-						h3 Client Activity
-						hr
-						/! TODO: List all Client Activity
-					div class="col-md-12"
-						h3 Projects
-						hr
-						/! TODO: List all Client Projects
-                    div class="col-md-12"
-                      - if @client.comments.any?
-                        h3 Client Notes
-                        hr
-                        - @client.comments.each do |comment|
-                          div class="row"
-                            div class="col-md-12"
-                              p class="text-right" #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
-                              p = comment.body
-                              hr
-                      = form_for([@client, @client.comments.build]) do |f|
-                        = f.text_area :body, class: "form-control", placeholder: "Create new client note..."
-                        div class="pull-right"
-                          = f.submit class: "btn btn-success"
-			div class="col-md-3"
-				h3 Contacts
-				- @client.contacts.order('name ASC').each do |contact|
-					= link_to(client_contact_path(@client.short_code, contact.name)) do
-						div class="row"
-							div class="col-md-2"
-								= gravatar_for contact, size: 50
-							div class="col-md-9 col-md-offset-1"
-								p 
-									= contact.user_profile.first_name + ' ' + contact.user_profile.last_name + ' (' + contact.user_profile.job_title + ')'
-									br
-									= contact.email
-									br
-									= contact.user_profile.formatted_phone
-									
+
+.row
+  .col-md-10.col-md-offset-1
+    .row
+	  .col-md-6
+        h1 = @client.name
+		p = @client.address
+	    p = formatted_phone @client
+	    p = link_to @client.website, "http://#{@client.website}"
+
+	  .col-md-6
+		.pull-right
+		  .btn-group
+		    = link_to raw('<i class="fa fa-users fa-fw"></i>'), clients_path, class: "btn btn-default ttip", title: "Back to All Clients"
+			= link_to raw('<i class="fa fa-trash fa-fw"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default ttip", title: "Delete Client"
+			= link_to raw('<i class="fa fa-pencil fa-fw"></i>'), edit_client_path(@client.short_code), class: "btn btn-default ttip", title: "Edit Client"
+			= link_to raw('<i class="fa fa-plus fa-fw"></i>'), new_client_contact_path(@client.short_code), class: "btn btn-default ttip", title: "New Contact"
+
+	.row
+	  .col-md-9
+	    .row
+		  .col-md-12
+		    h3 Client Activity
+			hr
+			/! TODO: List all Client Activity
+		  .col-md-12
+		    h3 Projects
+			hr
+			/! TODO: List all Client Projects
+          .col-md-12
+            - if @client.comments.any?
+              h3 Client Notes
+              hr
+              - @client.comments.each do |comment|
+                .row
+                  .col-md-12
+                    p.text-right #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
+                    p = comment.body
+                    hr
+                    = form_for([@client, @client.comments.build]) do |f|
+                      = f.text_area :body, class: "form-control", placeholder: "Create new client note..."
+                      .pull-right
+                      = f.submit class: "btn"
+      .col-md-3
+        h3 Contacts
+	    - @client.contacts.order('name ASC').each do |contact|
+	      = link_to(client_contact_path(@client.short_code, contact.name)) do
+		    .row
+		      .col-md-2
+			    = gravatar_for contact, size: 50
+			  .col-md-9.col-md-offset-1
+			    p
+				  = contact.user_profile.first_name + ' ' + contact.user_profile.last_name + ' (' + contact.user_profile.job_title + ')'
+			      br
+				  = contact.email
+				  br
+				  = formatted_phone contact.user_profile
+
 - content_for :view_scripts do
-	javascript:
-		$(function () {
-            $('.ttip').tooltip()
-        });
-		
+  javascript:
+    $(function () {
+      $('.ttip').tooltip()
+    });

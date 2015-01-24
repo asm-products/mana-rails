@@ -1,0 +1,69 @@
+//
+// SETTINGS - COLORS
+// --------------------------------------------------
+
+
+// Logo
+// --------------------------------------------------
+$dark-purple: #7C00A0;
+$neon-purple: #AF1CD3;
+$light-purple: #E24FFF;
+$pink: #FFE8FF;
+$sky-blue: #90CFF1;
+
+
+// Greys
+// --------------------------------------------------
+$dark-grey: #3C3B3D;
+$medium-grey: #6F6D70;
+$light-grey: #D3D0D6;
+$off-white: #FAFAFA;
+
+
+// Others
+// --------------------------------------------------
+$red: #EF4C4C;
+$green: #4EE471;
+$yellow: #FBDB2A;
+
+
+// Body
+// --------------------------------------------------
+$base-background-color: white;
+
+
+// Typography
+// --------------------------------------------------
+$base-font-color: $medium-grey;
+$h1-font-color: $dark-purple;
+
+$base-link-color: $dark-purple;
+$hover-link-color: $neon-purple;
+
+
+// Border color
+// --------------------------------------------------
+$base-border-color: $off-white;
+$base-border: 1px solid $base-border-color;
+
+// Buttons
+// --------------------------------------------------
+$btn-background-color: $dark-purple;
+$btn-color: white;
+$btn-box-shadow-color: darken($btn-background-color, 20);
+$hover-btn-background-color: $neon-purple;
+$hover-btn-color: white;
+$hover-btn-box-shadow-color: darken($hover-btn-background-color, 20);
+$disabled-btn-background-color: $off-white;
+$disabled-btn-color: $light-grey;
+
+$btn--secondary-color: $dark-purple;
+$hover-btn--secondary-color: $neon-purple;
+$disabled-btn--secondary-color: $light-grey;
+
+$btn--grey-background-color: $medium-grey;
+$btn--grey-color: $dark-grey;
+$btn--grey-box-shadow-color: darken($btn--grey-background-color, 20);
+$hover-btn--grey-color: white;
+$hover-btn--grey-background-color: $dark-grey;
+$hover-btn--grey-box-shadow-color: darken($hover-btn--grey-background-color, 20);

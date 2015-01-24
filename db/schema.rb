@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141221134122) do
+ActiveRecord::Schema.define(version: 20150122204243) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20141221134122) do
     t.integer  "team_id"
   end
 
-  add_index "clients", ["short_code"], name: "index_clients_on_short_code", unique: true
+  add_index "clients", ["short_code"], name: "index_clients_on_short_code"
 
   create_table "comments", force: true do |t|
     t.string   "subject"
@@ -54,6 +54,39 @@ ActiveRecord::Schema.define(version: 20141221134122) do
   add_index "issues", ["project_id"], name: "index_issues_on_project_id"
   add_index "issues", ["unique_id"], name: "index_issues_on_unique_id"
 
+  create_table "memberships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "memberships_permissions", id: false, force: true do |t|
+    t.integer "membership_id", null: false
+    t.integer "permission_id", null: false
+  end
+
+  create_table "memberships_roles", id: false, force: true do |t|
+    t.integer "membership_id", null: false
+    t.integer "role_id",       null: false
+  end
+
+  create_table "permissions", force: true do |t|
+    t.string   "klass"
+    t.string   "action"
+    t.text     "description"
+    t.string   "condition"
+    t.boolean  "is_public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "role_id"
+  end
+
+  create_table "permissions_users", id: false, force: true do |t|
+    t.integer "user_id",       null: false
+    t.integer "permission_id", null: false
+  end
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "short_code"
@@ -67,7 +100,20 @@ ActiveRecord::Schema.define(version: 20141221134122) do
   end
 
   add_index "projects", ["client_id"], name: "index_projects_on_client_id"
-  add_index "projects", ["short_code"], name: "index_projects_on_short_code", unique: true
+  add_index "projects", ["short_code"], name: "index_projects_on_short_code"
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.string   "short_code"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "user_id", null: false
+    t.integer "role_id", null: false
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -105,6 +151,7 @@ ActiveRecord::Schema.define(version: 20141221134122) do
     t.string   "special_key"
     t.boolean  "admin"
     t.integer  "team_id"
+    t.boolean  "verified"
   end
 
   add_index "users", ["client_id"], name: "index_users_on_client_id"

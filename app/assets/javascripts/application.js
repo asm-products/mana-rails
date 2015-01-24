@@ -11,7 +11,17 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// Auto generate input values from one text input to another.
+function generateShortCode(sourceElementId,outputElementId) {
+    $source = '#' + sourceElementId;
+    $output = '#' + outputElementId;
+
+    $($source).change(function () {
+        $value = $($source).val().toLowerCase().split(' ');
+        $($output).val($value[0]);
+    });
+}

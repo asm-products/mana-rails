@@ -7,9 +7,9 @@ gem 'rails-api'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-gem 'bootstrap-sass', '~> 3.3.1'
-gem 'autoprefixer-rails'
+gem 'sass-rails', '~> 5.0.0.beta1'
+gem 'susy'
+gem 'compass-rails', '~> 2.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rack-throttle'
 
 # Roles/Permissions
-gem 'cancan'
+gem 'cancancan', '~> 1.9'
 
 # Bachround Jobs
 gem 'resque'
@@ -53,7 +53,9 @@ group :test do
 end
 
 group :test, :development do
-  gem "rspec-rails"
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :production do
@@ -71,4 +73,7 @@ gem 'phony_rails'
 
 # Pagination
 gem 'will_paginate', '~> 3.0.6'
+
+# CodeClimate
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
