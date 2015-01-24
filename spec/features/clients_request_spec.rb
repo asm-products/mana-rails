@@ -1,7 +1,19 @@
 require "rails_helper"
 
 describe ClientsController do
-  context "logged in" do
+  context "permission to read" do
+    before(:each) do
+      login
+      Permission.seed "Client"
+    end
+
+    it "should not see create button" do
+      visit clients_path
+      expect(page).to_not have_content("Create New Client")
+    end
+  end
+
+  context "permission to manage" do
     before(:each) do
       login
       Permission.seed "Client"

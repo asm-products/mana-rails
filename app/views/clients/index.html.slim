@@ -7,7 +7,7 @@
         h1 Clients
 	  .col-md-6
 	    .pull-right
-          = link_to "Create New Client", new_client_path, class: "btn"
+          = link_to("Create New Client", new_client_path, class: "btn") if can?(:create, Client)
 	  - @clients.each do |client|
         .row
           .col-md-12

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
 
   attr_accessor :remember_token
+  attr_accessor :current_team
+
   before_save { email.downcase! }
 
   validates :name, presence:true, length: { maximum: 50 }
