@@ -67,3 +67,11 @@ $btn--grey-box-shadow-color: darken($btn--grey-background-color, 20);
 $hover-btn--grey-color: white;
 $hover-btn--grey-background-color: $dark-grey;
 $hover-btn--grey-box-shadow-color: darken($hover-btn--grey-background-color, 20);
+
+// Pagination
+// --------------------------------------------------
+$pagination-color: $dark-purple;
+$hover-pagination-background-color: $neon-purple;
+$hover-pagination-color: white;
+$disabled-pagination-background-color: $off-white;
+$disabled-pagination-color: $light-grey;

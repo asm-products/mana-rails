@@ -14,10 +14,11 @@
             h3 = link_to client.name, client_path(client)
 			p = client.address
 			p = formatted_phone client
-      .row
-        .col-md-12
+      .wrap
+        nav role="pagination"
           = will_paginate @clients
-          center
-            - ("A".."Z").each do |letter|
-              a href="/clients?letter=#{letter}"
-                = letter + ' '
+          ul.clients-pagination
+              - ("A".."Z").each do |letter|
+                li.pagination__list
+                  a.pagination__item href="/clients?letter=#{letter}"
+                    = letter + ' '
