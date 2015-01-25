@@ -52,6 +52,7 @@ $base-spacing: $base-line-height * 1em;
 $base-border-radius: 4px;
 $base-z-index: 0;
 
+
 // Buttons
 // --------------------------------------------------
 $btn-font-family: $base-font-family;
@@ -64,6 +65,7 @@ $btn-horizontal-padding: 30px;
 $btn-text-transform: uppercase;
 $btn-box-shadow-v: 3px;
 
+
 // Pagination
 // --------------------------------------------------
 $pagination-font-family: $base-font-family;
@@ -74,6 +76,7 @@ $pagination-border-radius: $base-border-radius;
 $pagination-padding: 5px;
 $pagination-horizontal-margin: 2px;
 $pagination-text-transform: uppercase;
+
 
 // Breadcrumbs
 // --------------------------------------------------
@@ -87,3 +90,13 @@ $breadcrumbs-horizontal-padding: 8px;
 $breadcrumbs-horizontal-margin: 2px;
 $breadcrumbs-text-transform: uppercase;
 $before-breadcrumbs-margin: 10px;
+
+
+// Helpers
+// --------------------------------------------------
+$bg-border-radius: $base-border-radius;
+$bg-font-family: $base-font-family;
+$bg-font-size: $base-font-size;
+$bg-font-weight: $regular;
+$bg-line-height: 1;
+$bg-padding: 15px;

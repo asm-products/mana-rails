@@ -46,6 +46,7 @@ $hover-link-color: $neon-purple;
 $base-border-color: $off-white;
 $base-border: 1px solid $base-border-color;
 
+
 // Buttons
 // --------------------------------------------------
 $btn-background-color: $dark-purple;
@@ -68,6 +69,7 @@ $hover-btn--grey-color: white;
 $hover-btn--grey-background-color: $dark-grey;
 $hover-btn--grey-box-shadow-color: darken($hover-btn--grey-background-color, 20);
 
+
 // Pagination
 // --------------------------------------------------
 $pagination-color: $dark-purple;
@@ -75,6 +77,7 @@ $hover-pagination-background-color: $neon-purple;
 $hover-pagination-color: white;
 $disabled-pagination-background-color: $off-white;
 $disabled-pagination-color: $light-grey;
+
 
 // Breadcrumbs
 // --------------------------------------------------
@@ -84,3 +87,24 @@ $breadcrumbs-border-color: $light-grey;
 $before-breadcrumbs-color: $medium-grey;
 $hover-breadcrumbs-color: $light-purple;
 $disabled-breadcrumbs-color: $light-grey;
+
+
+// Helpers
+// --------------------------------------------------
+$text-muted-color: $light-grey;
+$text-primary-color: $dark-purple;
+$text-success-color: $green;
+$text-info-color: $light-purple;
+$text-warning-color: $yellow;
+$text-danger-color: $red;
+
+$bg-primary-background-color: $dark-purple;
+$bg-primary-color: white;
+$bg-success-background-color: $green;
+$bg-success-color: white;
+$bg-info-background-color: $yellow;
+$bg-info-color: $dark-grey;
+$bg-warning-background-color: $yellow;
+$bg-warning-color: $dark-grey;
+$bg-danger-background-color: $red;
+$bg-danger-color: white;

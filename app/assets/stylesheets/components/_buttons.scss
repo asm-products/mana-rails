@@ -45,50 +45,50 @@
     }
 }
 
-// Secondary Styles
-// --------------------------------------------------
-.btn--secondary {
-    background-color: transparent;
-    border: 1px solid $btn--secondary-color;
-    color: $btn--secondary-color;
-    box-shadow: none;
-
-    &:hover,
-    &:focus,
-    &:active {
+    // Secondary Styles
+    // --------------------------------------------------
+    .btn--secondary {
         background-color: transparent;
-        border: 1px solid $hover-btn--secondary-color;
-        color: $hover-btn--secondary-color;
-    }
-
-    &.disabled {
-        cursor: not-allowed;
-        border: $disabled-btn--secondary-color;
-        color: $disabled-btn--secondary-color;
-    }
-}
-
-.btn--grey {
-    background-color: $btn--grey-background-color;
-    color: $btn--grey-color;
-    box-shadow: 0 $btn-box-shadow-v 0 $btn--grey-box-shadow-color;
-
-    &:hover,
-    &:focus {
-        background-color: $hover-btn--grey-background-color;
-        box-shadow: 0 $btn-box-shadow-v 0 $hover-btn--grey-box-shadow-color;
-        color: $hover-btn--grey-color;
-    }
-
-    &:active {
-        background-color: $hover-btn--grey-background-color;
+        border: 1px solid $btn--secondary-color;
+        color: $btn--secondary-color;
         box-shadow: none;
-        color: $hover-btn--grey-color;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: transparent;
+            border: 1px solid $hover-btn--secondary-color;
+            color: $hover-btn--secondary-color;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            border: $disabled-btn--secondary-color;
+            color: $disabled-btn--secondary-color;
+        }
     }
 
-    &.disabled {
-        cursor: not-allowed;
-        background-color: $disabled-btn-background-color;
-        color: $disabled-btn-color;
+    .btn--grey {
+        background-color: $btn--grey-background-color;
+        color: $btn--grey-color;
+        box-shadow: 0 $btn-box-shadow-v 0 $btn--grey-box-shadow-color;
+
+        &:hover,
+        &:focus {
+            background-color: $hover-btn--grey-background-color;
+            box-shadow: 0 $btn-box-shadow-v 0 $hover-btn--grey-box-shadow-color;
+            color: $hover-btn--grey-color;
+        }
+
+        &:active {
+            background-color: $hover-btn--grey-background-color;
+            box-shadow: none;
+            color: $hover-btn--grey-color;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            background-color: $disabled-btn-background-color;
+            color: $disabled-btn-color;
+        }
     }
-}
