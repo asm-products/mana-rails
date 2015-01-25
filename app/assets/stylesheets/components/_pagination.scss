@@ -5,17 +5,16 @@ nav[role="pagination"] {
 
 
 
-    .clients-pagination {
-        //Delete "clients-" when delete Bootstrap
+    .pagination__list {
         list-style: none;
 
     }
 
-        .pagination__list {
+        .pagination__item {
             display: inline-block;
         }
 
-            .pagination__item {
+            .pagination__link {
                 -webkit-font-smoothing: antialiased;
                 @include appearance(none);
                 background-color: transparent;
@@ -23,7 +22,6 @@ nav[role="pagination"] {
                 border: 1px solid $pagination-color;
                 color: $pagination-color;
                 cursor: pointer;
-                //display: inline-block;
                 font-family: $pagination-font-family;
                 font-size: $pagination-font-size;
                 font-weight: $pagination-font-weight;

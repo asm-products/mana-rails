@@ -5,6 +5,16 @@
     .row
 	  .col-md-6
         h1 Clients
+        nav role="breadcrumbs"
+          ul.breadcrumbs__list
+            li.breadcrumbs__item
+              a.breadcrumbs__link href="#" Home
+            li.breadcrumbs__item
+              a.breadcrumbs__link href="#" Clients
+            li.breadcrumbs__item
+              a.breadcrumbs__link.current href="#" A test
+            li.breadcrumbs__item
+              a.breadcrumbs__link.disabled href="#" Disabled test
 	  .col-md-6
 	    .pull-right
           = link_to "Create New Client", new_client_path, class: "btn"
@@ -17,8 +27,8 @@
       .wrap
         nav role="pagination"
           = will_paginate @clients
-          ul.clients-pagination
+          ul.pagination__list
               - ("A".."Z").each do |letter|
-                li.pagination__list
-                  a.pagination__item href="/clients?letter=#{letter}"
+                li.pagination__item
+                  a.pagination__link href="/clients?letter=#{letter}"
                     = letter + ' '
