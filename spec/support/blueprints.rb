@@ -23,6 +23,7 @@ User.blueprint do
   name       { 'TestName' }
   email      { 'test@test.com' }
   password   { 'testtest' }
+  teams { [Team.make!] }
 end
 
 UserProfile.blueprint do

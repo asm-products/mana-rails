@@ -22,8 +22,11 @@ class Permission < ActiveRecord::Base
   def self.seed_data
     [
       {klass: 'Project', action: 'manage', condition: 'belongs_to_team'},
+      {klass: 'Project', action: 'read', condition: 'belongs_to_team', is_public: true},
       {klass: 'Issue', action: 'manage', condition: 'belongs_to_team'},
+      {klass: 'Issue', action: 'read', condition: 'belongs_to_team', is_public: true},
       {klass: 'Client', action: 'manage', condition: 'belongs_to_team'},
+      {klass: 'Client', action: 'read', condition: 'belongs_to_team', is_public: true},
       {klass: 'Contact', action: 'manage', condition: 'belongs_to_team'},
       {klass: 'User', action: 'read', condition: 'belongs_to_team'},
       {klass: 'User', action: 'manage', condition: 'belongs_to_user', is_public: true},

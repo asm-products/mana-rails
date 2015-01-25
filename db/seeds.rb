@@ -12,8 +12,10 @@
 #---------------------------------------
 if Rails.env.development?
   team = Team.create(name:'TestTeam')
-  user_1 = User.create(name: 'user', email: 'user@manaapp.com', password: 'password', password_confirmation: 'password', team_id: team.id)
-  user_2 = User.create(name: 'admin', email:'admin@manaapp.com', password: 'password', password_confirmation: 'password', team_id: team.id)
+  user_1 = User.create(name: 'user', email: 'user@manaapp.com', password: 'password', password_confirmation: 'password')
+  user_1.teams << team
+  user_2 = User.create(name: 'admin', email:'admin@manaapp.com', password: 'password', password_confirmation: 'password')
+  user_2.teams << team
   UserProfile.create(first_name: 'Test', last_name: 'User', job_title: 'Normal User', phone: '1234567890', user: user_1)
   UserProfile.create(first_name: 'Test', last_name: 'Admin', job_title: 'Admin User', phone: '1234567890', user: user_2)
   client_1 = Client.create(name: 'Cool Stuff Inc.', address: '9000 Coolio Dr. San Antonio, Texas 78238 United States', phone: '8008675309', website: 'www.cool.com', short_code:'COOL', team_id: team.id)
@@ -38,7 +40,7 @@ if Rails.env.development?
   UserProfile.create(first_name: 'Steve', last_name: 'Jobs', job_title: 'Money Maker', phone: '2223334444', user: client_3_contact_2)
 
   Permission.seed
-  User.all.each do |user|
-    user.permissions << Permission.all
+  Membership.all.each do |member|
+    member.permissions << Permission.all
   end
 end

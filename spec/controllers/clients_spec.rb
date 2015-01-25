@@ -32,7 +32,7 @@ describe ClientsController, :type => :controller do
     it "should set team" do
       expect(current_user.teams).to be_present
       post :create, client: {name: "testname", short_code: "12346"}
-      expect(Client.last.team).to be_present
+      expect(Client.last.team).to eq(current_team)
     end
 
     it "destroys Clients" do
