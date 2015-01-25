@@ -5,6 +5,16 @@
     .row
 	  .col-md-6
         h1 Clients
+        nav role="breadcrumbs"
+          ul.breadcrumbs__list
+            li.breadcrumbs__item
+              a.breadcrumbs__link href="#" Home
+            li.breadcrumbs__item
+              a.breadcrumbs__link href="#" Clients
+            li.breadcrumbs__item
+              a.breadcrumbs__link.current href="#" A test
+            li.breadcrumbs__item
+              a.breadcrumbs__link.disabled href="#" Disabled test
 	  .col-md-6
 	    .pull-right
           = link_to "Create New Client", new_client_path, class: "btn"
@@ -14,10 +24,11 @@
             h3 = link_to client.name, client_path(client)
 			p = client.address
 			p = formatted_phone client
-      .row
-        .col-md-12
+      .wrap
+        nav role="pagination"
           = will_paginate @clients
-          center
-            - ("A".."Z").each do |letter|
-              a href="/clients?letter=#{letter}"
-                = letter + ' '
+          ul.pagination__list
+              - ("A".."Z").each do |letter|
+                li.pagination__item
+                  a.pagination__link href="/clients?letter=#{letter}"
+                    = letter + ' '
