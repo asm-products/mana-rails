@@ -38,7 +38,7 @@
         box-shadow: none;
     }
 
-    &:disabled {
+    &.disabled {
         cursor: not-allowed;
         background-color: $disabled-btn-background-color;
         color: $disabled-btn-color;
@@ -61,7 +61,7 @@
         color: $hover-btn--secondary-color;
     }
 
-    &:disabled {
+    &.disabled {
         cursor: not-allowed;
         border: $disabled-btn--secondary-color;
         color: $disabled-btn--secondary-color;
@@ -86,7 +86,7 @@
         color: $hover-btn--grey-color;
     }
 
-    &:disabled {
+    &.disabled {
         cursor: not-allowed;
         background-color: $disabled-btn-background-color;
         color: $disabled-btn-color;
