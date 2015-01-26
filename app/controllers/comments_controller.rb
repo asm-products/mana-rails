@@ -1,25 +1,24 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_filter :load_commentable
+
+  def index
+    @comments = @commentable.comments
+  end
 
   def new
-    @comment = Comment.new
+    @comment = @commentable.comments.new
   end
 
   def create
-    @commentable = find_commentable
-    if @commentable
-      @comment = @commentable.comments.build(comment_params)
-      @comment.commenter = current_user
-      if @comment.save
-        flash[:success] = 'Note Saved!'
-        redirect_to :back
-      else
-        flash[:danger] = 'Comment ' + @comment.errors.full_messages.to_sentence
-        redirect_to :back
-      end
+    @comment = @commentable.comments.new(comment_params)
+    @comment.commenter = current_user
+    if @comment.save
+      flash[:success] = 'Comment Saved!'
+      redirect_to @commentable
     else
-      flash[:danger] = "What you are trying to comment on doesn't exist"
-      redirect_to :back
+      flash[:danger] = 'Comment ' + @comment.errors.full_messages.to_sentence
+      render 'new'
     end
   end
 
@@ -28,12 +27,8 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:subject, :body)
     end
 
-    def find_commentable
-      params.each do |name, value|
-        if name =~ /(.+)_id$/
-          return $1.classify.constantize.find(value)
-        end
-      end
-      nil
+    def load_commentable
+      resource, id = request.path.split('/')[1, 2]
+      @commentable = resource.singularize.classify.constantize.find_by_params(id)
     end
 end

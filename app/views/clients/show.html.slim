@@ -32,16 +32,8 @@
             - if @client.comments.any?
               h3 Client Notes
               hr
-              - @client.comments.each do |comment|
-                .row
-                  .col-md-12
-                    p.text-right #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
-                    p = comment.body
-                    hr
-                    = form_for([@client, @client.comments.build]) do |f|
-                      = f.text_area :body, class: "form-control", placeholder: "Create new client note..."
-                      .pull-right
-                      = f.submit class: "btn"
+              = render "comments/comments"
+            = render "comments/comments_form"
       .col-md-3
         h3 Contacts
 	    - @client.contacts.order('name ASC').each do |contact|

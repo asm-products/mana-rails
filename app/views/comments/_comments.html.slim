@@ -1,0 +1,6 @@
+- @comments.each do |comment|
+  .row
+    .col-md-12
+      p.text-right #{comment.commenter.name} commented on #{comment.created_at}
+      p = comment.body
+      hr
