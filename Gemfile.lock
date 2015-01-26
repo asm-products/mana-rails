@@ -236,6 +236,7 @@ DEPENDENCIES
   machinist
   pg (= 0.17.1)
   phony_rails
+  pry
   rack-throttle
   rails (= 4.1.7)
   rails-api
