@@ -50,6 +50,7 @@ end
 
 group :test do
   gem 'machinist'
+  gem 'pry'
 end
 
 group :test, :development do
