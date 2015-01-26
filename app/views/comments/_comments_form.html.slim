@@ -1,0 +1,4 @@
+=form_for [@commentable, @comment] do |f|
+  = f.text_area :body, class:"form-control", placeholder: "Create new comment..."
+  .pull-right
+    = f.submit class: "btn"

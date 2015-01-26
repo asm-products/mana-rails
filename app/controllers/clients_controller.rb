@@ -12,6 +12,9 @@ class ClientsController < ApplicationController
   end
 
   def show
+    @commentable = @client
+    @comments = @client.comments
+    @comment = Comment.new
   end
 
   def new

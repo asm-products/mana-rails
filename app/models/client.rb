@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+
   def to_param #override
     short_code_was
   end
@@ -8,7 +9,7 @@ class Client < ActiveRecord::Base
 
   belongs_to :team
   has_many :contacts
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 4 }
   validates :short_code, presence: true, length: { minimum: 4 },
@@ -33,5 +34,9 @@ class Client < ActiveRecord::Base
 
   def self.find_by_first_letter(letter)
     where('name LIKE ?', "#{letter}%").order('name ASC')
+  end
+
+  def self.find_by_params(param)
+    find_by(short_code: param)
   end
 end
