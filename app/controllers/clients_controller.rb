@@ -5,9 +5,9 @@ class ClientsController < ApplicationController
 
   def index
     if params[:letter]
-      @clients = Client.find_by_first_letter(params[:letter]).paginate(:page => params[:page])
+      @clients = @clients.find_by_first_letter(params[:letter]).paginate(:page => params[:page])
     else
-      @clients = Client.order('name ASC').paginate(:page => params[:page])
+      @clients = @clients.order('name ASC').paginate(:page => params[:page])
     end
   end
 
