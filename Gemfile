@@ -56,6 +56,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 group :production do
