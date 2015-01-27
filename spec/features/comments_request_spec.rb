@@ -14,7 +14,6 @@ describe CommentsController do
 
     it "should not see create comment button" do
       visit client_path(@client)
-      print page.html
       expect(page).to_not have_content("Create new comment...")
       expect(page).to have_content("You are not authorized to access this page.")
     end
