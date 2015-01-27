@@ -160,6 +160,8 @@ GEM
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_emoji (1.7.1)
+      rails (>= 3.1.0)
     rails_serve_static_assets (0.0.3)
     rails_stdout_logging (0.0.3)
     railties (4.1.7)
@@ -288,6 +290,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   rails-api
   rails_12factor (= 0.0.2)
+  rails_emoji
   resque
   rspec-rails
   sass-rails (~> 5.0.0.beta1)

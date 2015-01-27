@@ -39,8 +39,11 @@ gem 'rack-throttle'
 # Roles/Permissions
 gem 'cancancan', '~> 1.9'
 
-# Bachround Jobs
+# Background Jobs
 gem 'resque'
+
+# emojis
+gem 'rails_emoji'
 
 group :development do
   gem "better_errors"
