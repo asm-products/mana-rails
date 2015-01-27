@@ -2,5 +2,5 @@
   .row
     .col-md-12
       p.text-right #{comment.commenter.name} commented on #{comment.created_at}
-      p = comment.body
+      p = comment.body.emojify.html_safe
       hr
