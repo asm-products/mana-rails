@@ -1,6 +1,8 @@
 sudo: false
 
-install: ant libicu-dev cmake
+before_install:
+   - brew update
+   - brew install icu4c cmake
 
 cache: bundler
 
