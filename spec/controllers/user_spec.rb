@@ -31,4 +31,11 @@ describe UsersController, :type => :controller do
       expect(current_user.reload.authenticate("testtest")).to eq(current_user)
     end
   end
+
+  describe "GET edit profile" do
+    it "should set @user_profile to nil" do
+      get :edit_profile, id: 12345
+      expect(@user_profile).to eq(nil)
+    end
+  end
 end
