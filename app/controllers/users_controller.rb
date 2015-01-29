@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
     def set_user_profile
       set_user
-      @profile = UserProfile.find_by(user_id: @user.id)
+      @profile = UserProfile.find_by(user_id: @user.id) unless @user.nil?
     end
 
     def user_params
