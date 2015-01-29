@@ -1,8 +1,6 @@
 sudo: false
 
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install libicu-dev cmake
+install: libicu-dev cmake
 
 cache: bundler
 
