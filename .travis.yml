@@ -1,6 +1,6 @@
 sudo: false
 
-install: libicu-dev cmake
+install: ant libicu-dev cmake
 
 cache: bundler
 
