@@ -1,5 +1,9 @@
 sudo: false
 
+before_install:
+   - brew update
+   - brew install icu4c cmake
+
 cache: bundler
 
 language: ruby
