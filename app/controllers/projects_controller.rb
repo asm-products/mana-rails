@@ -2,16 +2,16 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @projects = current_user.team.projects.paginate(page: params[:page])
+    @projects = current_team.projects.paginate(page: params[:page])
   end
 
   def new
    @project = Project.new
   end
-  
+
   def create
     @project = Project.new(project_params)
-    @project.team = current_user.team
+    @project.team = current_team
     @project.short_code = @project.generate_unique_short_code
     if @project.save
       flash[:success] = "Project Created!"
@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(params[:id])
     unless @project
@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(params[:id])
   end
-  
+
   def update
     @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(project_params[:short_code])
     if @project.update(project_params)
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
       render 'edit'
     end
   end
-  
+
   def destroy
     @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(project_params[:short_code])
     if @project.destroy
@@ -51,7 +51,7 @@ class ProjectsController < ApplicationController
       render project_path(@project.id)
     end
   end
-  
+
   private
   def project_params
     params.require(:project).permit(:name, :short_code, :client_id)

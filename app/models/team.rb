@@ -1,5 +1,7 @@
 class Team < ActiveRecord::Base
-  has_many :users
+  has_many :memberships
+  has_many :users, through: :memberships
+  has_many :roles
   has_many :projects
   has_many :clients
   has_many :issues, through: :projects
@@ -18,7 +20,7 @@ class Team < ActiveRecord::Base
   def add_user!(user)
     users << user
     save
-  end  
+  end
 
   def set_name(new_name)
     name = new_name

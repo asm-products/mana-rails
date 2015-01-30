@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   
   # Resources
   resources :users
+  get 'users/verify/:id', to: 'users#verify', as: 'user_verify'
+  get 'users/reverify/:id', to: 'users#reverify', as: 'user_reverify'
+
   resources :teams
   resources :projects
   resources :clients do
@@ -20,9 +23,6 @@ Rails.application.routes.draw do
     patch 'contacts/verify/:id', to: 'contacts#verified'
     get 'contacts/reverify/:id', to: 'contacts#reverify', as: 'contact_reverify'
     resources :contacts
-    resources :comments
-  end
-  resources :contacts do
     resources :comments
   end
   

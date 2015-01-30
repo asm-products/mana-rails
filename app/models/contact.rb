@@ -1,4 +1,7 @@
 class Contact < User
+  def to_param #overrides
+    name
+  end
   belongs_to :client
   has_many :comments, as: :commentable
 

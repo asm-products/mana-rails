@@ -1,12 +1,12 @@
 = form_for @project do |f| 
-	div class="form-group"
-		= f.label :name
-		= f.text_field :name, class: "form-control"
-		= errors_for @project, :name
+  .form-group
+    = f.label :name
+	= f.text_field :name, class: "form-control"
+	= errors_for @project, :name
 
-	div class="pull-right"
-	  - if @project.short_code == nil
-	    = link_to "Cancel", projects_path, class: "btn btn-danger"
-	  - else
-	    = link_to "Cancel", projects_path(@project.short_code), class: "btn btn-danger"
-	  = f.submit class:"btn btn-success"
+  .pull-right
+    - if @project.short_code == nil
+	  = link_to "Cancel", projects_path, class: "btn btn-danger"
+	- else
+	  = link_to "Cancel", projects_path(@project.short_code), class: "btn btn-danger"
+  = f.submit class:"btn btn-success"

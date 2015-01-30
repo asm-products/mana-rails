@@ -2,7 +2,10 @@ require 'machinist/active_record'
 
 Client.blueprint do
   name       { 'TestName' }
-  short_code { '12345' }
+  address { 'TestAdress' }
+  phone { '12345' }
+  short_code { sn }
+  website { 'http://www.testweb.com' }
 end
 
 Issue.blueprint do
@@ -20,6 +23,7 @@ User.blueprint do
   name       { 'TestName' }
   email      { 'test@test.com' }
   password   { 'testtest' }
+  teams { [Team.make!] }
 end
 
 UserProfile.blueprint do
@@ -41,6 +45,11 @@ Team.blueprint do
   name       { 'TestName' }
 end
 
+Membership.blueprint do
+  user { User.make! }
+  team { Team.make! }
+end
+
 Comment.blueprint do
   subject { 'Test Comment' }
   body { 'Test Body'}
@@ -48,3 +57,13 @@ Comment.blueprint do
                         name: "testcommenter1") }
 end
 
+Permission.blueprint do
+  klass { 'User' }
+  action { 'manage' }
+  description { 'Lorem ipsum' }
+end
+
+Role.blueprint do
+  name { 'testrole' }
+  short_code { sn }
+end

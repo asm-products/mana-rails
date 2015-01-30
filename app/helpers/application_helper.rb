@@ -8,5 +8,9 @@ module ApplicationHelper
       end
     end
   end
-  
+
+  def formatted_phone model
+    model.phone == nil ? '' : '(' + model.area_code + ') ' + model.phone_prefix + '-' + model.phone_suffix
+  end
+
 end

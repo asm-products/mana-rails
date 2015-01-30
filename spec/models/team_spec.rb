@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Team, :type => :model do
+  it { should have_many :roles }
+  it { should have_many :memberships}
+  it { should have_many(:users).through(:memberships)}
+
   before { @team = Team.make! }
 
   it "is valid" do
@@ -25,14 +29,14 @@ RSpec.describe Team, :type => :model do
   it "Adds Users" do
     user = User.make!(name: "TestName2", email: "test2@test2.com")
     @team.add_user(user)
-    
+
     expect @team.has_user? user
   end
 
   it "Adds Users" do
     user = User.make!(name: "TestName2", email: "test2@test2.com")
     @team.add_user!(user)
-    
+
     expect Team.find(@team.id).has_user? user
-  end  
+  end
 end

@@ -1,0 +1,60 @@
+nav[role="breadcrumbs"] {
+    background-color: $breadcrumbs-background-color;
+    border-radius: $breadcrumbs-border-radius;
+    border: 1px solid $breadcrumbs-border-color;
+    margin-left: 0;
+    overflow: hidden;
+}
+
+
+    .breadcrumbs__list {
+        list-style: none;
+        padding: $breadcrumbs-vertical-padding $breadcrumbs-horizontal-padding;
+        margin: 0;
+    }
+
+        .breadcrumbs__item {
+            display: inline-block;
+            position: relative;
+
+            &:first-child::before {
+                content: " ";
+                margin: 0;
+            }
+
+            &::before {
+                content: "/";
+                color: $before-breadcrumbs-color;
+                margin: 0 $before-breadcrumbs-margin;
+                position: relative;
+                top: 1px;
+            }
+        }
+
+            .breadcrumbs__link {
+                color: $breadcrumbs-color;
+                cursor: pointer;
+                font-family: $breadcrumbs-font-family;
+                font-size: $breadcrumbs-font-size;
+                font-weight: $breadcrumbs-font-weight;
+                line-height: $breadcrumbs-line-height;
+                text-decoration: none;
+                text-transform: $breadcrumbs-text-transform;
+                @include user-select(none);
+                vertical-align: middle;
+
+                &:hover,
+                &:focus {
+                    color: $hover-breadcrumbs-color;
+                    text-decoration: underline;
+                }
+
+                &.current {
+                    color: $hover-breadcrumbs-color;
+                }
+
+                &.disabled {
+                    color: $disabled-breadcrumbs-color;
+                    cursor: not-allowed;
+                }
+            }

@@ -10,7 +10,8 @@ class Project < ActiveRecord::Base
   has_many :issues
   
   validates :name, presence: true, length: { minimum: 4 }
-  validates :short_code, uniqueness: true, length: { maximum: 4 }, allow_blank: true
+  validates :short_code, length: { minimum: 2 }, allow_blank: true,
+            uniqueness: {scope: :team}
   validate :check_client_exists
 
   def shortcode

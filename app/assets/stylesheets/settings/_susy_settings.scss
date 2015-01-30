@@ -1,0 +1,12 @@
+//
+// SETTINGS - SUSY
+// --------------------------------------------------
+
+@import "susy";
+
+$susy: (
+    columns: 12,
+    global-box-sizing: border-box,
+);
+
+@include border-box-sizing;

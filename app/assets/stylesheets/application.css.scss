@@ -1,19 +1,39 @@
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
+//
+// MANA
+// --------------------------------------------------
 
-@import "variables";
-@import "mixins";
 
-/* miscellaneous */
-body {
-  padding-top: 70px;
-}
+// Settings
+// --------------------------------------------------
+@import "settings/global";
+@import "settings/colors";
+@import "settings/susy_settings";
 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
+// Tools
+// --------------------------------------------------
+@import "tools/mixins";
+
+// Generic
+// --------------------------------------------------
+@import "generic/normalize";
+
+// Base
+// --------------------------------------------------
+@import "base/typography";
+
+// Objects
+// --------------------------------------------------
+@import "objects/layout";
+
+// Components
+// --------------------------------------------------
+@import "components/buttons";
+@import "components/pagination";
+@import "components/breadcrumbs";
+@import "components/helpers";
+@import "components/images";
+
+// Trumps
+// --------------------------------------------------
+@import "trumps/clearfix";
+@import "trumps/helpers";

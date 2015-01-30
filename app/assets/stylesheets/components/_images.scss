@@ -1,0 +1,32 @@
+.img--responsive {
+    @include img-responsive;
+}
+
+.img--rounded {
+    border-radius: $img-border-radius;
+}
+
+
+.img--circle {
+    border-radius: 50%;
+}
+
+.avatar {
+    border-radius: 50%;
+    display: block;
+}
+
+    .avatar--small {
+        height: $small-avatar;
+        width: $small-avatar;
+    }
+
+    .avatar--medium {
+        height: $medium-avatar;
+        width: $medium-avatar;
+    }
+
+    .avatar--big {
+        height: $big-avatar;
+        width: $big-avatar;
+    }

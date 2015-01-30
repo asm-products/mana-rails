@@ -1,27 +1,27 @@
-header class="navbar navbar-fixed-top navbar-inverse"
-  div class="container"
+header.navbar.navbar-static-top.navbar-inverse
+  .container
     = link_to "Mana", root_path, id: "logo", class: "navbar-brand"
     nav
-      ul class="nav navbar-nav"
-      	- if logged_in?
-      		li
-      			= link_to "Clients", clients_path
-      		li
-      			= link_to "Projects", projects_path
-      ul class="nav navbar-nav pull-right"
+      ul.nav.navbar-nav
         - if logged_in?
-          li class="dropdown"
-            a href="#" class="dropdown-toggle" data-toggle="dropdown" 
-            	span Account 
-            	b class="caret"
-            ul class="dropdown-menu"
-              li
-              	= link_to "Profile", current_user
-              li class="divider"
-              li
-                = link_to "Log out", logout_path, method: "delete"
+      	  li
+      	    = link_to "Clients", clients_path
+      	  li
+      		= link_to "Projects", projects_path
+      ul.nav.navbar-nav.navbar-right
+        - if logged_in?
+          li.dropdown
+            a href="#" class="dropdown-toggle" data-toggle="dropdown"
+              span Account
+              b class="caret"
+              ul.dropdown-menu
+                li
+              	  = link_to "Profile", current_user
+                li.divider
+                li
+                  = link_to "Log out", logout_path, method: "delete"
         - else
           li
-          	= link_to "Log in", login_path
+            = link_to "Log in", login_path
           li
-          	= link_to "Register", signup_path 
+          	= link_to "Register", signup_path
