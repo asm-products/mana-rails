@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.3"
+ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -42,12 +42,20 @@ gem 'cancancan', '~> 1.9'
 # Background Jobs
 gem 'resque'
 
-# emojis
-gem 'rails_emoji'
+# Html Pipeline
+gem 'html-pipeline'
+gem 'minitest',           '~> 5.3'
+gem 'rinku',              '~> 1.7',   :require => false
+gem 'gemoji',             '~> 1.0',   :require => false
+gem 'RedCloth',           '~> 4.2.9', :require => false
+gem 'github-markdown',    '~> 0.5',   :require => false
+gem 'email_reply_parser', '~> 0.5',   :require => false
+gem 'sanitize',           '~> 2.0',   :require => false
+gem 'github-linguist'
 
 group :development do
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'guard-rspec', require: false
 end
 
