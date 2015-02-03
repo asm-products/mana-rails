@@ -2,9 +2,13 @@ class Ability
   include CanCan::Ability
 
   def get_permissions_for(user)
-    (user.current_membership.roles.map(&:permissions).flatten +
-    Permission.for_everybody +
-    user.current_membership.permissions).uniq
+    permissions = []
+    if user.current_membership
+      permissions += user.current_membership.roles.map(&:permissions).flatten
+      permissions += user.current_membership.permissions
+    end
+    permissions += Permission.for_everybody
+    permissions.uniq
   end
 
   def initialize(user)

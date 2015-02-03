@@ -9,7 +9,7 @@ describe ClientsController, :type => :controller do
 
   context "with all permissions" do
     before do
-      current_user.permissions << Permission.make!(action: 'manage', klass: 'Client')
+      current_user.current_membership.permissions << Permission.make!(action: 'manage', klass: 'Client')
     end
 
     it "lists clients" do
@@ -97,7 +97,7 @@ describe ClientsController, :type => :controller do
     before do
       role = Role.make!(name: 'user')
       role.permissions << Permission.make!(action: 'read', klass: 'Client')
-      current_user.roles << role
+      current_user.current_membership.roles << role
     end
 
     it "should not be allowed to visit new" do

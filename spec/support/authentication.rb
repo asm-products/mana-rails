@@ -9,7 +9,12 @@ module SpecAuthHelper
   end
 
   def current_user
-    @current_user || @current_user = User.find(session[:user_id])
+    @current_user ||= begin
+      user = User.find(session[:user_id])
+      user.current_team = current_team
+      user.current_membership = user.memberships.find_by(team: current_team)
+      user
+    end
   end
 
   def current_team
