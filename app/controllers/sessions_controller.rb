@@ -1,11 +1,11 @@
 class SessionsController < ApplicationController
-  
+
   def new
   end
-  
+
   def create
     user = User.find_by(name: username) || User.find_by(email: username)
-    if user && user.authenticate(password)
+    if user && user.authenticate(password) && current_team.users.include?(user)
       log_in user
       remember_me == '1' ? remember(user) : forget(user)
       redirect_to user
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def destroy
     log_out if logged_in?
     redirect_to root_url
@@ -36,5 +36,5 @@ class SessionsController < ApplicationController
   def session_params
     params[:session]
   end
-  
+
 end

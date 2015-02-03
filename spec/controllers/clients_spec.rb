@@ -3,7 +3,8 @@ require 'rails_helper'
 describe ClientsController, :type => :controller do
   before do
     login
-    @client = Client.make!(team_id: current_user.team_id)
+    @request.host = "#{current_team.slug}.example.com"
+    @client = Client.make!(team_id: current_team.id)
   end
 
   context "with all permissions" do
@@ -43,6 +44,22 @@ describe ClientsController, :type => :controller do
     it "requires authentication" do
       logout if logged_in?
       get :index
+      expect(response).to have_http_status 302
+    end
+  end
+
+  context "other teams app" do
+    it "should not be allowed to visit index" do
+      team = Team.make!
+      @request.host = "#{team.slug}.example.com"
+      get :index
+      expect(response).to have_http_status 302
+    end
+
+    it "should not be allowed to show client" do
+      team = Team.make!
+      @request.host = "#{team.slug}.example.com"
+      get :show, { id: @client.id }
       expect(response).to have_http_status 302
     end
   end
@@ -87,7 +104,6 @@ describe ClientsController, :type => :controller do
       get :new
       expect(response).to have_http_status 302
     end
-
 
     it "should not be allowed to create" do
       post :create, client: {name: "testname", short_code: "12346"}

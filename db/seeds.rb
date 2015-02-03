@@ -39,6 +39,9 @@ if Rails.env.development?
   client_3_contact_2 = Contact.create(name: 'thejobs', email: 'steve@start.com', password: 'password', password_confirmation: 'password', client: client_3)
   UserProfile.create(first_name: 'Steve', last_name: 'Jobs', job_title: 'Money Maker', phone: '2223334444', user: client_3_contact_2)
 
+  team2 = Team.create(name:'TestTeam')
+  team2.users << user_2
+
   Permission.seed
   Membership.all.each do |member|
     member.permissions << Permission.all

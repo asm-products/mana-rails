@@ -41,7 +41,8 @@ module Session
 
   # Returns the current team
   def current_team
-    current_user.teams.first if current_user
+    return nil if request.subdomains.first == "www"
+    @current_team ||= Team.find_by!(slug: request.subdomains.first)
   end
 
   # Returns true if the user is logged in, false otherwise.

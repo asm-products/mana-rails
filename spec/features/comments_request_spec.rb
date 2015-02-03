@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe CommentsController do
-  
+
   before do
     @client = Client.make!(name: 'A royal client', short_code: 'xxyyzz')
   end
@@ -45,14 +45,14 @@ describe CommentsController do
     end
 
     it "should render comment form" do
-      create_client 
-      page.should have_selector(:link_or_button, 'Create Comment')
+      create_client
+      expect(page).to have_selector(:link_or_button, 'Create Comment')
     end
 
     it "should create new comment and render it" do
       create_comment
-      page.should have_content("Comment Saved!")
-      page.should have_content("testcomment")
+      expect(page).to have_content("Comment Saved!")
+      expect(page).to have_content("testcomment")
     end
   end
 
