@@ -258,7 +258,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.10)
     susy (2.2.1)
       sass (>= 3.3.0, < 3.5)
     temple (0.7.5)
@@ -324,7 +323,6 @@ DEPENDENCIES
   shoulda-matchers
   slim
   spring
-  sqlite3
   susy
   turbolinks
   uglifier (>= 1.3.0)
