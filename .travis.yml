@@ -9,6 +9,10 @@ addons:
   apt_packages:
     - libicu-dev
     - cmake
+  postgresql: "9.3"
+
+before_script:
+  - psql -c 'create database mana_test;' -U postgres
 
 sudo: false
 
