@@ -29,7 +29,7 @@ describe UsersController do
 
   it "should edit profile with permission" do
     login
-    User.last.permissions << Permission.all
+    Membership.last.permissions << Permission.all
 
     visit '/'
     click_on 'Profile'
@@ -45,7 +45,7 @@ describe UsersController do
   it "should change password" do
     login
     user = User.last
-    user.permissions << Permission.all
+    Membership.last.permissions << Permission.all
 
     visit '/'
     click_on 'Profile'

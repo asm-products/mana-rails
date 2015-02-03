@@ -4,8 +4,7 @@ ruby '2.1.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 gem 'rails-api'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'susy'
@@ -70,11 +69,9 @@ group :test, :development do
   gem 'pry'
 end
 
-group :production do
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
-  gem 'unicorn',        '4.8.3'
-end
+gem 'unicorn',        '4.8.3'
+gem 'pg'
+gem 'rails_12factor', '0.0.2'
 
 # Semver versioning for the api
 gem 'semver2'

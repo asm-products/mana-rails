@@ -1,0 +1,13 @@
+db:
+  image: postgres:9.4
+  ports:
+    - 5432:5432
+web:
+  build: .
+  command: rails s -b0.0.0.0
+  volumes:
+    - .:/mana-rails
+  ports:
+    - "3000:3000"
+  links:
+    - db
