@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150201182052) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clients", force: true do |t|
     t.string   "name"
     t.text     "address"
@@ -24,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.integer  "team_id"
   end
 
-  add_index "clients", ["short_code"], name: "index_clients_on_short_code"
+  add_index "clients", ["short_code"], name: "index_clients_on_short_code", using: :btree
 
   create_table "comments", force: true do |t|
     t.string   "subject"
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.string   "commentable_type"
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
-  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
 
   create_table "issues", force: true do |t|
     t.integer  "unique_id"
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.datetime "updated_at"
   end
 
-  add_index "issues", ["project_id"], name: "index_issues_on_project_id"
-  add_index "issues", ["unique_id"], name: "index_issues_on_unique_id"
+  add_index "issues", ["project_id"], name: "index_issues_on_project_id", using: :btree
+  add_index "issues", ["unique_id"], name: "index_issues_on_unique_id", using: :btree
 
   create_table "memberships", force: true do |t|
     t.integer  "user_id"
@@ -99,8 +102,8 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.integer  "team_id"
   end
 
-  add_index "projects", ["client_id"], name: "index_projects_on_client_id"
-  add_index "projects", ["short_code"], name: "index_projects_on_short_code"
+  add_index "projects", ["client_id"], name: "index_projects_on_client_id", using: :btree
+  add_index "projects", ["short_code"], name: "index_projects_on_short_code", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -122,7 +125,7 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.string   "slug"
   end
 
-  add_index "teams", ["name"], name: "index_teams_on_name"
+  add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
 
   create_table "user_profiles", force: true do |t|
     t.string   "first_name"
@@ -138,7 +141,7 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.string   "twitter_name"
   end
 
-  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id"
+  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -155,9 +158,9 @@ ActiveRecord::Schema.define(version: 20150201182052) do
     t.boolean  "verified"
   end
 
-  add_index "users", ["client_id"], name: "index_users_on_client_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["name"], name: "index_users_on_name", unique: true
-  add_index "users", ["special_key"], name: "index_users_on_special_key"
+  add_index "users", ["client_id"], name: "index_users_on_client_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["name"], name: "index_users_on_name", unique: true, using: :btree
+  add_index "users", ["special_key"], name: "index_users_on_special_key", using: :btree
 
 end

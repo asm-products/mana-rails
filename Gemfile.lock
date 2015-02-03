@@ -307,7 +307,7 @@ DEPENDENCIES
   jquery-rails
   machinist
   minitest (~> 5.3)
-  pg (= 0.17.1)
+  pg
   phony_rails
   pry
   rack-throttle
