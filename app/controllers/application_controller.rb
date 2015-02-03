@@ -6,7 +6,10 @@ class ApplicationController < ActionController::Base
   before_filter :set_team
 
   def set_team
-
+    if current_user
+      current_user.current_team = current_team
+      current_user.current_membership = current_user.memberships.find_by(team: current_team)
+    end
   end
 
   # Handle Access Denied Exceptions

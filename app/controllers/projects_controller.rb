@@ -1,16 +1,16 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  before_filter :set_project, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
-    @projects = current_team.projects.paginate(page: params[:page])
+    @projects = @projects.order('name ASC').paginate(:page => params[:page])
   end
 
   def new
-   @project = Project.new
   end
 
   def create
-    @project = Project.new(project_params)
     @project.team = current_team
     @project.short_code = @project.generate_unique_short_code
     if @project.save
@@ -22,7 +22,6 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(params[:id])
     unless @project
       flash[:danger] = "There was an error finding your project. Please try again"
       redirect_to projects_url
@@ -30,11 +29,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(params[:id])
   end
 
   def update
-    @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(project_params[:short_code])
     if @project.update(project_params)
       redirect_to project_path(@project.short_code)
     else
@@ -43,7 +40,6 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(project_params[:short_code])
     if @project.destroy
       flash[:success] = "Project Deleted!"
       redirect_to user_path(current_user)
@@ -53,6 +49,10 @@ class ProjectsController < ApplicationController
   end
 
   private
+  def set_project
+    @project = Project.find_by_id(params[:id]) || Project.find_by_shortcode(params[:id])
+  end
+
   def project_params
     params.require(:project).permit(:name, :short_code, :client_id)
   end

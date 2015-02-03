@@ -3,12 +3,13 @@ require 'rails_helper'
 describe ClientsController, :type => :controller do
   before do
     login
-    @client = Client.make!(team_id: current_user.team_id)
+    @request.host = "#{current_team.slug}.example.com"
+    @client = Client.make!(team_id: current_team.id)
   end
 
   context "with all permissions" do
     before do
-      current_user.permissions << Permission.make!(action: 'manage', klass: 'Client')
+      current_user.current_membership.permissions << Permission.make!(action: 'manage', klass: 'Client')
     end
 
     it "lists clients" do
@@ -47,6 +48,22 @@ describe ClientsController, :type => :controller do
     end
   end
 
+  context "other teams app" do
+    it "should not be allowed to visit index" do
+      team = Team.make!
+      @request.host = "#{team.slug}.example.com"
+      get :index
+      expect(response).to have_http_status 302
+    end
+
+    it "should not be allowed to show client" do
+      team = Team.make!
+      @request.host = "#{team.slug}.example.com"
+      get :show, { id: @client.id }
+      expect(response).to have_http_status 302
+    end
+  end
+
   context "without permissions" do
     before { current_user.permissions.delete_all }
 
@@ -80,14 +97,13 @@ describe ClientsController, :type => :controller do
     before do
       role = Role.make!(name: 'user')
       role.permissions << Permission.make!(action: 'read', klass: 'Client')
-      current_user.roles << role
+      current_user.current_membership.roles << role
     end
 
     it "should not be allowed to visit new" do
       get :new
       expect(response).to have_http_status 302
     end
-
 
     it "should not be allowed to create" do
       post :create, client: {name: "testname", short_code: "12346"}

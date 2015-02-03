@@ -4,6 +4,10 @@ describe ProjectsController do
   context "logged in" do
     before(:each) do
       login
+      Permission.seed("Project")
+      Membership.all.each do |member|
+        member.permissions << Permission.all
+      end
     end
 
     def create_project
@@ -13,7 +17,7 @@ describe ProjectsController do
       click_on "Create Project"
     end
 
-    it "should create client" do
+    it "should create project" do
       create_project
 
       expect(page).to have_content('Project Created!')
@@ -25,6 +29,17 @@ describe ProjectsController do
 
       visit projects_path
       expect(page).to have_content('testproject')
+    end
+
+    it "should not see other teams projects" do
+      team = Team.make!
+      project = Project.make!(team: team)
+
+      visit projects_path
+      expect(page).to_not have_content(project.name)
+
+      visit project_path(project)
+      expect(page).to_not have_content(project.name)
     end
   end
 

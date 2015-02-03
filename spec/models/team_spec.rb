@@ -7,6 +7,18 @@ RSpec.describe Team, :type => :model do
 
   before { @team = Team.make! }
 
+  describe "#slug" do
+    it "should remove all non alphanumeric characters and downcase" do
+      team = Team.make!(name: "AsDf & / ( ) = 123   -?=")
+      expect(team.slug).to eq("asdf123")
+    end
+
+    it "should generate different slugs for same name" do
+      Team.make!(name: "test")
+      expect(Team.make!(name: "test").slug).to eq("test1")
+    end
+  end
+
   it "is valid" do
     expect @team.valid?
   end
