@@ -6,7 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/asm-products/mana-rails/badges/coverage.svg)](https://codeclimate.com/github/asm-products/mana-rails)
 <a href="https://assembly.com/mana/bounties"><img src="http://badger.asm.co/mana/badges/tasks.svg" height="20px" alt="Open Tasks" /></a>
 
-## v0.2.0-prealpha.2.0.0
+## v0.3.0-prealpha.3.0.0
 This product is currently in a pre alpha development state and is not yet ready for production use. Please note that the semver file reflects the api version and not the application version.
 
 ### The project management, invoicing, team collaboration tool to rule them all!
