@@ -4,6 +4,7 @@ describe TeamsController, :type => :controller do
   before do
     login
     @team = Team.make
+    @request.host = "www.example.com"
   end
 
   it 'it creates teams' do
@@ -12,6 +13,12 @@ describe TeamsController, :type => :controller do
 
     expect(response).to_not render_template :new
     expect(response).to render_template nil
+  end
+
+  it 'redirects to teams page' do
+    post :create, team: {name: "testteam123"}
+
+    expect(response).to redirect_to("http://testteam123.example.com" + edit_users_profile_path(current_user))
   end
 
   it 'requires authentication' do

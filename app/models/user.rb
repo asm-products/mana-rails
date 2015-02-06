@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :remember_token
   attr_accessor :current_team
+  attr_accessor :current_membership
 
   before_save { email.downcase! }
 

@@ -18,7 +18,8 @@ html
 
 	  == yield
 	  = render 'layouts/footer'
-	  = debug(params) if Rails.env.development?
+       = debug(params) if Rails.env.development?
+	  = "current team: #{current_team.try(:slug)}" if Rails.env.development?
 	  = javascript_include_tag 'application', 'data-turbolinks-track' => true
 	  = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js', 'data-turbolinks-track' => true
 	  = yield :view_scripts

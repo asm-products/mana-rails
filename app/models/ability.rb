@@ -2,16 +2,24 @@ class Ability
   include CanCan::Ability
 
   def get_permissions_for(user)
-    (user.roles.map(&:permissions).flatten +
-    Permission.for_everybody +
-    user.permissions).uniq
+    permissions = []
+    if user.current_membership
+      permissions += user.current_membership.roles.map(&:permissions).flatten
+      permissions += user.current_membership.permissions
+    end
+    permissions += Permission.for_everybody
+    permissions.uniq
   end
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
-
-    get_permissions_for(user).each do |permission|
-      can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.teams.first)
+    if user.nil? || (user && user.current_team.nil?)
+      user = User.new
+      can :create, User
+      can :create, Team
+    else
+      get_permissions_for(user).each do |permission|
+        can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.current_team)
+      end
     end
 
     # Handle Admins

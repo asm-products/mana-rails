@@ -17,7 +17,7 @@ describe ClientsController do
     before(:each) do
       login
       Permission.seed "Client"
-      User.last.permissions << Permission.all
+      Membership.last.permissions << Permission.all
     end
 
     def create_client

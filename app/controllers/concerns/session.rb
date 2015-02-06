@@ -41,7 +41,12 @@ module Session
 
   # Returns the current team
   def current_team
-    current_user.teams.first if current_user
+    return nil if request.subdomains.first == "www"
+    if Rails.env == "development" && request.subdomains.empty?
+      @current_team ||= Team.first
+    else
+      @current_team ||= Team.find_by!(slug: request.subdomains.first)
+    end
   end
 
   # Returns true if the user is logged in, false otherwise.

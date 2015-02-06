@@ -4,7 +4,7 @@ describe UsersController, :type => :controller do
   describe "POST edit" do
     before do
       login
-      current_user.permissions << Permission.make!(action: 'manage', klass: 'User')
+      current_user.current_membership.permissions << Permission.make!(action: 'manage', klass: 'User')
     end
 
     let(:valid_attributes) { {id: current_user.id, user: {password: "abcd123123", password_confirmation: "abcd123123"}} }

@@ -10,7 +10,7 @@ class TeamsController < ApplicationController
 
     if @team.valid? and (current_user.teams << @team)
       flash[:success] = "Welcome to " + @team.name + ". Please check your email to verify your account."
-      redirect_to edit_users_profile_path(current_user)
+      redirect_to edit_users_profile_url(current_user, subdomain: @team.slug)
     else
       render 'new'
     end
