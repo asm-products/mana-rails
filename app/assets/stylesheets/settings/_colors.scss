@@ -4,7 +4,8 @@
 
 
 // Logo
-// --------------------------------------------------
+//
+
 $dark-purple: #7C00A0;
 $neon-purple: #AF1CD3;
 $light-purple: #E24FFF;
@@ -12,99 +13,77 @@ $pink: #FFE8FF;
 $sky-blue: #90CFF1;
 
 
-// Greys
-// --------------------------------------------------
-$dark-grey: #3C3B3D;
-$medium-grey: #6F6D70;
-$light-grey: #D3D0D6;
+// Grays
+//
+
+$dark-gray: #3C3B3D;
+$medium-gray: #6F6D70;
+$light-gray: #D3D0D6;
 $off-white: #FAFAFA;
 
 
 // Others
-// --------------------------------------------------
+//
+
 $red: #EF4C4C;
 $green: #4EE471;
 $yellow: #FBDB2A;
 
 
-// Body
+// Colors
+//
+
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-base:              #000 !default;
+$gray-darker:            darken($dark-gray, 20%);
+$gray-dark:              $dark-gray;
+$gray:                   $medium-gray;
+$gray-light:             $light-gray;
+$gray-lighter:           $off-white;
+
+$brand-primary:         $dark-purple;
+$brand-success:         $green;
+$brand-info:            $sky-blue;
+$brand-warning:         $yellow;
+$brand-danger:          $red;
+
+
+// Scaffolding
 // --------------------------------------------------
-$base-background-color: white;
+
+//## Settings for some of the most global styles.
+
+//** Background color for `<body>`.
+$body-bg:               white;
+//** Global text color on `<body>`.
+$text-color:            $gray-dark;
+
+//** Global textual link color.
+$link-color:            $brand-primary;
+//** Link hover color.
+$link-hover-color:      $neon-purple;
+//** Link hover decoration.
+$link-hover-decoration: underline;
 
 
-// Typography
-// --------------------------------------------------
-$base-font-color: $medium-grey;
-$h1-font-color: $dark-purple;
+// Form states and alerts
+//
 
-$base-link-color: $dark-purple;
-$hover-link-color: $neon-purple;
+//## Define colors for form feedback states and, by default, alerts.
 
+$state-success-text:             $brand-success;
+$state-success-bg:               lighten($state-success-text, 35%);
+$state-success-border:           $state-success-text;
 
-// Border color
-// --------------------------------------------------
-$base-border-color: $off-white;
-$base-border: 1px solid $base-border-color;
+$state-info-text:                $brand-info;
+$state-info-bg:                  lighten($state-info-text, 20%);
+$state-info-border:              $state-info-text;
 
+$state-warning-text:             $brand-warning;
+$state-warning-bg:               lighten($state-warning-text, 40%);
+$state-warning-border:           $state-warning-text;
 
-// Buttons
-// --------------------------------------------------
-$btn-background-color: $dark-purple;
-$btn-color: white;
-$btn-box-shadow-color: darken($btn-background-color, 20);
-$hover-btn-background-color: $neon-purple;
-$hover-btn-color: white;
-$hover-btn-box-shadow-color: darken($hover-btn-background-color, 20);
-$disabled-btn-background-color: $off-white;
-$disabled-btn-color: $light-grey;
-
-$btn--secondary-color: $dark-purple;
-$hover-btn--secondary-color: $neon-purple;
-$disabled-btn--secondary-color: $light-grey;
-
-$btn--grey-background-color: $medium-grey;
-$btn--grey-color: $dark-grey;
-$btn--grey-box-shadow-color: darken($btn--grey-background-color, 20);
-$hover-btn--grey-color: white;
-$hover-btn--grey-background-color: $dark-grey;
-$hover-btn--grey-box-shadow-color: darken($hover-btn--grey-background-color, 20);
-
-
-// Pagination
-// --------------------------------------------------
-$pagination-color: $dark-purple;
-$hover-pagination-background-color: $neon-purple;
-$hover-pagination-color: white;
-$disabled-pagination-background-color: $off-white;
-$disabled-pagination-color: $light-grey;
-
-
-// Breadcrumbs
-// --------------------------------------------------
-$breadcrumbs-background-color: $off-white;
-$breadcrumbs-color: $dark-purple;
-$breadcrumbs-border-color: $light-grey;
-$before-breadcrumbs-color: $medium-grey;
-$hover-breadcrumbs-color: $light-purple;
-$disabled-breadcrumbs-color: $light-grey;
-
-
-// Helpers
-// --------------------------------------------------
-$text-muted-color: $light-grey;
-$text-primary-color: $dark-purple;
-$text-success-color: $green;
-$text-info-color: $light-purple;
-$text-warning-color: $yellow;
-$text-danger-color: $red;
-
-$bg-primary-background-color: $dark-purple;
-$bg-primary-color: white;
-$bg-success-background-color: $green;
-$bg-success-color: white;
-$bg-info-background-color: $yellow;
-$bg-info-color: $dark-grey;
-$bg-warning-background-color: $yellow;
-$bg-warning-color: $dark-grey;
-$bg-danger-background-color: $red;
-$bg-danger-color: white;
+$state-danger-text:              $brand-danger;
+$state-danger-bg:                lighten($state-danger-text, 35%);
+$state-danger-border:            $state-danger-text;

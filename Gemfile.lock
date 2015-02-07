@@ -29,6 +29,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (5.1.4)
+      execjs
+      json
     bcrypt (3.1.9)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
@@ -36,6 +39,9 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.3)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.2.19)
     builder (3.2.2)
     cancancan (1.10.1)
     capybara (2.4.4)
@@ -85,6 +91,8 @@ GEM
     escape_utils (1.0.1)
     execjs (2.2.2)
     ffi (1.9.6)
+    font-awesome-sass (4.3.1)
+      sass (~> 3.2)
     formatador (0.2.5)
     gemoji (1.5.0)
     github-linguist (4.2.7)
@@ -291,12 +299,14 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.3.3)
   cancancan (~> 1.9)
   capybara
   codeclimate-test-reporter
   coffee-rails (~> 4.0.0)
   compass-rails (~> 2.0.0)
   email_reply_parser (~> 0.5)
+  font-awesome-sass (~> 4.3.0)
   gemoji (~> 1.0)
   github-linguist
   github-markdown (~> 0.5)
