@@ -1,0 +1,12 @@
+//
+// OBJECT - PAGINATION
+// --------------------------------------------------
+
+
+// Pagination
+//
+
+.pagination > li > a,
+.pagination > li > span {
+    padding: $pagination-vertical-padding $pagination-horizontal-padding;
+}

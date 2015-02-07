@@ -9,6 +9,8 @@ gem 'rails-api'
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'susy'
 gem 'compass-rails', '~> 2.0.0'
+gem 'bootstrap-sass', '~> 3.3.3'
+gem 'font-awesome-sass', '~> 4.3.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -85,4 +87,3 @@ gem 'will_paginate', '~> 3.0.6'
 
 # CodeClimate
 gem 'codeclimate-test-reporter', group: :test, require: nil
-

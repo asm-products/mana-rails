@@ -3,10 +3,7 @@ html
   head
     title = yield :title
 	= stylesheet_link_tag '//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700', media: 'all'
-	= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css', media: 'all'
-    = stylesheet_link_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css', media: 'all'
-	= stylesheet_link_tag '//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', media: 'all'
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+	= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
 	= csrf_meta_tags
 
   body
@@ -21,5 +18,4 @@ html
        = debug(params) if Rails.env.development?
 	  = "current team: #{current_team.try(:slug)}" if Rails.env.development?
 	  = javascript_include_tag 'application', 'data-turbolinks-track' => true
-	  = javascript_include_tag '//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js', 'data-turbolinks-track' => true
 	  = yield :view_scripts

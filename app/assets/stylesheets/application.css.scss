@@ -4,36 +4,44 @@
 
 
 // Settings
-// --------------------------------------------------
-@import "settings/global";
+//
+
 @import "settings/colors";
-@import "settings/susy_settings";
+@import "settings/globals";
+@import "settings/typography";
+@import "settings/buttons";
+@import "settings/pagination";
+@import "settings/alerts";
+@import "settings/breadcrumbs";
+
 
 // Tools
-// --------------------------------------------------
-@import "tools/mixins";
+//
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 
 // Generic
-// --------------------------------------------------
-@import "generic/normalize";
+//
+
 
 // Base
-// --------------------------------------------------
-@import "base/typography";
+//
+
 
 // Objects
-// --------------------------------------------------
-@import "objects/layout";
+//
+
+@import "objects/buttons";
+@import "objects/pagination";
+
 
 // Components
-// --------------------------------------------------
+//
+
 @import "components/buttons";
-@import "components/pagination";
-@import "components/breadcrumbs";
-@import "components/helpers";
-@import "components/images";
+
 
 // Trumps
-// --------------------------------------------------
-@import "trumps/clearfix";
-@import "trumps/helpers";
+//
