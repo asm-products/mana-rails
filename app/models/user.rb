@@ -92,4 +92,31 @@ class User < ActiveRecord::Base
       break token unless User.exists?(api_key: token)
     end
   end
+
+  def make_unavailable
+    available = false
+  end
+
+  def make_available
+    available = true
+  end
+
+  def make_out_of_office
+    available = false
+    status = "Out of Office"
+  end
+
+  def make_in_office
+    available = true
+    status = "Available"
+  end
+
+  def set_status(message)
+    status = message
+  end
+
+  def set_working_on(task)
+    status = "Working on #{task.subject}"
+  end
+  
 end

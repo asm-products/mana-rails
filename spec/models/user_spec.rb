@@ -102,4 +102,37 @@ describe User, :type => :model do
     expect @user.respond_to? :team
   end
 
+  it "sets unavailable" do
+    @user.make_unavailable
+    expect !@user.available
+  end
+
+  it "sets available" do
+    @user.make_available
+    expect @user.available
+  end
+
+  it "sets out of office" do
+    @user.make_out_of_office
+    expect !@user.available
+    expect @user.status == "Out of Office"
+  end
+
+  it "sets in office" do
+    @user.make_in_office
+    expect @user.available
+    expect @user.status == "Available"
+  end
+  
+  it "sets status" do
+    @user.set_status("Busy")
+    expect @user.status == "Busy"
+  end  
+
+  it "sets status with an issue" do
+    @user.set_working_on(issue = Issue.make)
+    expect @user.status == "Working on #{issue.subject}"
+  end
+  
+
 end
