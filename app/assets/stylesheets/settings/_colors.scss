@@ -87,3 +87,12 @@ $state-warning-border:           $state-warning-text;
 $state-danger-text:              $brand-danger;
 $state-danger-bg:                lighten($state-danger-text, 35%);
 $state-danger-border:            $state-danger-text;
+
+
+// Components
+//
+
+//** Global color for active items (e.g., navs or dropdowns).
+$component-active-color:    white;
+//** Global background color for active items (e.g., navs or dropdowns).
+$component-active-bg:       $brand-primary !default;
