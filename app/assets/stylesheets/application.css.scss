@@ -8,18 +8,27 @@
 
 @import "settings/colors";
 @import "settings/globals";
+
 @import "settings/typography";
 @import "settings/buttons";
 @import "settings/pagination";
 @import "settings/alerts";
 @import "settings/breadcrumbs";
+@import "settings/forms";
+@import "settings/labels";
+
+
+// Bootstrap and Font Awesome
+//
+
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 
 // Tools
 //
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import "tools/mixins";
 
 
 // Generic
@@ -35,12 +44,14 @@
 
 @import "objects/buttons";
 @import "objects/pagination";
+@import "objects/forms";
 
 
 // Components
 //
 
 @import "components/buttons";
+@import "components/forms";
 
 
 // Trumps
