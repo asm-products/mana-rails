@@ -1,0 +1,11 @@
+//
+// OBJECTS - DROPDOWNS
+// --------------------------------------------------
+
+.dropdown-menu {
+    padding: 0;
+
+    & > li > a {
+        padding: 10px 20px;
+    }
+}
