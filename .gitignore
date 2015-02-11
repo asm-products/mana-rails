@@ -71,3 +71,5 @@ crashlytics-build.properties
 
 # node_modules
 node_modules/
+
+config/database.yml
