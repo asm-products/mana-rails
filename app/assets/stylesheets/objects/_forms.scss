@@ -13,15 +13,15 @@ label {
 // Checkboxes
 //
 
-.checkbox{
+.checkbox {
     padding-left: 20px;
 
-    label{
+    label {
         display: inline-block;
         position: relative;
         padding-left: 5px;
 
-        &::before{
+        &:before {
             content: "";
             display: inline-block;
             position: absolute;
@@ -35,7 +35,7 @@ label {
             @include transition(border 0.15s ease-in-out, color 0.15s ease-in-out);
         }
 
-        &::after{
+        &:after {
             display: inline-block;
             position: absolute;
             width: 16px;
@@ -50,22 +50,22 @@ label {
         }
     }
 
-    input[type="checkbox"]{
+    input[type="checkbox"] {
         opacity: 0;
 
-        &:focus + label::before{
+        &:focus + label:before {
             @include tab-focus();
         }
 
-        &:checked + label::after{
+        &:checked + label:after {
             font-family: $icon-font;
             content: $fa-var-check;
         }
 
-        &:disabled + label{
+        &:disabled + label {
             opacity: 0.65;
 
-            &::before{
+            &:before {
                 background-color: $gray-lighter;
                 cursor: not-allowed;
             }
@@ -73,11 +73,11 @@ label {
 
     }
 
-    &.checkbox-circle label::before{
+    &.checkbox-circle label:before {
         border-radius: 50%;
     }
 
-    &.checkbox-inline{
+    &.checkbox-inline {
         margin-top: 0;
     }
 }
@@ -86,15 +86,15 @@ label {
 // Radios
 //
 
-.radio{
+.radio {
     padding-left: 20px;
 
-    label{
+    label {
         display: inline-block;
         position: relative;
         padding-left: 5px;
 
-        &::before{
+        &:before {
             content: "";
             display: inline-block;
             position: absolute;
@@ -108,7 +108,7 @@ label {
             @include transition(border 0.15s ease-in-out);
         }
 
-        &::after{
+        &:after {
             display: inline-block;
             position: absolute;
             content: " ";
@@ -126,28 +126,28 @@ label {
         }
     }
 
-    input[type="radio"]{
+    input[type="radio"] {
         opacity: 0;
 
-        &:focus + label::before{
+        &:focus + label:before {
             @include tab-focus();
         }
 
-        &:checked + label::after{
+        &:checked + label:after {
             @include scale(1, 1);
         }
 
-        &:disabled + label{
+        &:disabled + label {
             opacity: 0.65;
 
-            &::before{
+            &:before {
                 cursor: not-allowed;
             }
         }
 
     }
 
-    &.radio-inline{
+    &.radio-inline {
         margin-top: 0;
     }
 }

@@ -1,3 +1,25 @@
 //
 // COMPONENTS - BUTTONS
 // --------------------------------------------------
+
+.btn-outline {
+    @include button-variant($btn-outline-color, $btn-outline-bg, $btn-outline-border);
+    border: 1px solid;
+
+    &:hover,
+    &:focus,
+    &.focus,
+    &:active,
+    &.active {
+        color: white;
+        background-color: $btn-outline-color;
+        border: 0px solid transparent;
+    }
+
+}
+
+.open > .btn-outline.dropdown-toggle {
+    color: white;
+    background-color: $btn-outline-color;
+    border: 0px solid transparent;
+}

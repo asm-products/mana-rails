@@ -1,0 +1,12 @@
+aside
+  .sidebar
+    - if logged_in?
+        ul.nav.nav-pills.nav-stacked
+          li
+            = link_to clients_path
+              i.fa.fa-users.mr2
+              span Clients
+          li
+            = link_to projects_path
+              i.fa.fa-th-large.mr2
+              span Projects
