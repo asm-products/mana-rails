@@ -14,8 +14,8 @@ Issue.blueprint do
 end
 
 Project.blueprint do
-  name       { 'TestName' }
-  short_code { '1234' }
+  name       { "TestName#{sn}" }
+  short_code { '1234#{sn}' }
   client_id     { Client.make.id }
 end
 
