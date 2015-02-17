@@ -35,4 +35,8 @@ $btn-danger-color:               white !default;
 $btn-danger-bg:                  $brand-danger !default;
 //$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
 
+$btn-outline-color:               $brand-primary;
+$btn-outline-bg:                  transparent;
+$btn-outline-border:              $brand-primary;
+
 $btn-link-disabled-color:        $gray-light !default;
