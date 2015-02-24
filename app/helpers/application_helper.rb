@@ -12,5 +12,13 @@ module ApplicationHelper
   def formatted_phone model
     model.phone == nil ? '' : '(' + model.area_code + ') ' + model.phone_prefix + '-' + model.phone_suffix
   end
+  
+  def full_name model
+    model.first_name == nil ? '' : model.first_name + ' ' + model.last_name
+  end
+  
+	def get_current_page_class(path)
+	"current" if current_page?(path.to_s)
+  end
 
 end

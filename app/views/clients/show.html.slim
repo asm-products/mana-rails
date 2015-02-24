@@ -27,7 +27,7 @@
           td
             = gravatar_for contact, size: 40
           td
-            = link_to contact.user_profile.first_name + ' ' + contact.user_profile.last_name + ' (' + contact.user_profile.job_title + ')', client_contact_path(@client.short_code, contact.name)
+            = link_to full_name(contact.user_profile) + ' (' + contact.user_profile.job_title + ')', client_contact_path(@client.short_code, contact.name)
           td
             = contact.email
           td
