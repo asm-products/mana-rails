@@ -1,24 +1,23 @@
 - provide(:title, "Clients")
 
-.row
-  .col-md-10.col-md-offset-1
+.col-md-12
+  .row
+  .col-md-6
+      h1 Clients
+  .col-md-6
+  .pull-right
+    = link_to("Create New Client", new_client_path, class: "btn btn-primary") if can?(:create, Client)
+  - @clients.each do |client|
     .row
-	  .col-md-6
-        h1 Clients
-      .col-md-6
-	    .pull-right
-          = link_to("Create New Client", new_client_path, class: "btn btn-primary") if can?(:create, Client)
-	  - @clients.each do |client|
-        .row
-          .col-md-12
-            h3 = link_to client.name, client_path(client)
-			p = client.address
-			p = formatted_phone client
-      .row
-        nav
-          = will_paginate @clients
-          ul.pagination
-              - ("A".."Z").each do |letter|
-                li
-                  a href="/clients?letter=#{letter}"
-                    = letter + ' '
+      .col-md-12
+        h3 = link_to client.name, client_path(client)
+		p = client.address
+		p = formatted_phone client
+  .row
+    nav
+      = will_paginate @clients
+      ul.pagination
+          - ("A".."Z").each do |letter|
+            li
+              a href="/clients?letter=#{letter}"
+                = letter + ' '

@@ -60,11 +60,14 @@ $body-bg:               white;
 $text-color:            $gray-dark;
 
 //** Global textual link color.
-$link-color:            $brand-primary;
+$link-color:            $gray-dark;
 //** Link hover color.
-$link-hover-color:      $neon-purple;
+$link-hover-color:      $gray;
 //** Link hover decoration.
-$link-hover-decoration: underline;
+$link-hover-decoration: none;
+
+//** Hr color
+$hr-border: $gray-light;
 
 
 // Form states and alerts
