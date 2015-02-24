@@ -1,0 +1,21 @@
+//
+// OBJECTS - TABLES
+// --------------------------------------------------
+
+
+table {
+  border-collapse: separate;
+  border-radius: $border-radius-base;
+  border: 1px solid $gray-light;
+  font-weight: $bold;
+}
+
+th {
+  background-color: $gray-light;
+  color: white;
+  font-weight: $bold;
+}
+
+.table > tbody > tr > td {
+  line-height: 40px;
+}

@@ -1,0 +1,10 @@
+//
+// OBJECTS - PROGRESS BAR
+// --------------------------------------------------
+
+
+.progress {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  @include box-shadow(none);
+}

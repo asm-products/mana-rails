@@ -1,4 +1,4 @@
 =form_for [@commentable, @comment] do |f|
-  = f.text_area :body, class:"form-control", placeholder: "Create new comment..."
-  .pull-right
-    = f.submit class: "btn"
+  = f.text_area :body, class:"form-control", placeholder: "Add new note..."
+  .text-right.mt1
+    = f.submit "Add note", class: "btn btn-primary"
