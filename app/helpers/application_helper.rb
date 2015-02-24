@@ -17,8 +17,8 @@ module ApplicationHelper
     model.first_name == nil ? '' : model.first_name + ' ' + model.last_name
   end
   
-	def get_current_page_class(path)
-	"current" if current_page?(path.to_s)
+  def get_current_page_class(path)
+    "current" if current_page?(path.to_s)
   end
 
 end
