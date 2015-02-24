@@ -36,21 +36,22 @@ visit the ip you got from `boot2docker ip` with port 3000 (i.e 192.168.50.1:3000
 
 Install libicu, the way you like / can:
 
+*Via Apt-Get*
 ```
 sudo apt-get update
-sudo apt-get install libicu-dev cmake
+sudo apt-get install libicu-dev cmake postgresql libpq-dev
 ```
-or
+*Via Brew*
 ```
 brew update
-brew install icu4c cmake
+brew install icu4c cmake postgresql
 ```
 then
 ```
 bundle install
 ```
 
-Config your database in `config/database.yml`. Make sure changes are not commit to git!
+If neccessary config your database in `config/database.yml`. Make sure changes are not commit to git!
 
 ```
 rake db:create
@@ -58,6 +59,10 @@ rake db:migrate
 rake db:seed
 rails s
 ```
+
+Please note you may run into some issues if this is the first time setup for postgresql we found these to stackoverflow articles very helpful:
+* [Installing PostgreSQL on Ubuntu for Ruby on Rails](http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails)
+* [Getting error: Peer authentication failed for user “postgres”, when trying to get pgsql working with rails](http://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
 
 #### Different Teams
 Each team is identified by the subdomain of the app. In order to change team localy while development you have to map a domain (with subdomain) to localhost.

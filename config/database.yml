@@ -6,6 +6,7 @@ development:
   port: <%= ENV['MANARAILS_DB_1_PORT_5432_TCP_PORT'] %>
   pool: 5
   timeout: 5000
+  template: template0
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
@@ -17,6 +18,7 @@ test:
   port: <%= ENV['MANARAILS_DB_1_PORT_5432_TCP_PORT'] %>
   pool: 5
   timeout: 5000
+  template: template0
 
 production:
   adapter: postgresql
@@ -26,3 +28,4 @@ production:
   port: <%= ENV['MANARAILS_DB_1_PORT_5432_TCP_PORT'] %>
   pool: 5
   timeout: 5000
+  template: template0
