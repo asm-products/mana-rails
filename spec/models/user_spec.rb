@@ -5,6 +5,12 @@ describe User, :type => :model do
    @user = User.make!
  end
 
+  it { should validate_presence_of(:name) }
+  it { should validate_uniqueness_of(:name) }
+
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+
   it { should have_and_belong_to_many(:permissions) }
   it { should have_and_belong_to_many(:roles) }
   it { should have_many(:memberships) }
@@ -123,16 +129,16 @@ describe User, :type => :model do
     expect @user.available
     expect @user.status == "Available"
   end
-  
+
   it "sets status" do
     @user.set_status("Busy")
     expect @user.status == "Busy"
-  end  
+  end
 
   it "sets status with an issue" do
     @user.set_working_on(issue = Issue.make)
     expect @user.status == "Working on #{issue.subject}"
   end
-  
+
 
 end
