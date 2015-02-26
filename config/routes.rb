@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  
+
   root to: "home#index"
-  
+
   # Custom routes
   get 'signup', to: "users#new"
   get 'login', to: "sessions#new"
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   #get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
   #put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
   #patch 'users/:id/profile', to: 'users#update_profile'
-  
+
   # Resources
   resources :users do
     resources :profiles
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     resources :contacts
     resources :comments
   end
-  
+
   ## API routes
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
