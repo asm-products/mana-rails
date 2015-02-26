@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150207110412) do
+ActiveRecord::Schema.define(version: 20150226035049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,22 @@ ActiveRecord::Schema.define(version: 20150207110412) do
     t.integer "permission_id", null: false
   end
 
+  create_table "profiles", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "job_title"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "address"
+    t.string   "secondary_phone"
+    t.string   "time_zone"
+    t.string   "twitter_name"
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "projects", force: true do |t|
     t.string   "name"
     t.string   "short_code"
@@ -126,22 +142,6 @@ ActiveRecord::Schema.define(version: 20150207110412) do
   end
 
   add_index "teams", ["name"], name: "index_teams_on_name", using: :btree
-
-  create_table "user_profiles", force: true do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "job_title"
-    t.string   "phone"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "address"
-    t.string   "secondary_phone"
-    t.string   "time_zone"
-    t.string   "twitter_name"
-  end
-
-  add_index "user_profiles", ["user_id"], name: "index_user_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

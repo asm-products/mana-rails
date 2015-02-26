@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :teams, through: :memberships
 
-  has_one :user_profile, dependent: :destroy
+  has_one :profile, dependent: :destroy
   has_and_belongs_to_many :permissions
   has_and_belongs_to_many :roles
 

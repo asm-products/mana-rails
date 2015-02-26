@@ -7,14 +7,14 @@ class ContactsController < ApplicationController
   def new
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new
-    @profile = UserProfile.new
+    @profile = Profile.new
   end
   
   def create
     @client = Client.find_by(id: params[:client_id]) || Client.find_by(short_code: params[:client_id])
     @contact = @client.contacts.new(contact_params)
     @contact.special_key = SecureRandom.base64.tr('+/=', 'Qrt')
-    @profile = UserProfile.new(profile_params)
+    @profile = Profile.new(profile_params)
     if @contact.save
       ContactMailer.verify_email(@client, @contact).deliver
       @profile.user = @contact
@@ -27,12 +27,12 @@ class ContactsController < ApplicationController
   end
   
   def edit
-    @profile = @contact.user_profile
+    @profile = @contact.profile
   end
   
   def update
-    @profile = @contact.user_profile
-    if @contact.user_profile.update(profile_params)
+    @profile = @contact.profile
+    if @contact.profile.update(profile_params)
       redirect_to client_user_path(@client.short_code, @contact.name)
     else
       render 'edit'
