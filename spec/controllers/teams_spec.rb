@@ -18,7 +18,7 @@ describe TeamsController, :type => :controller do
   it 'redirects to teams page' do
     post :create, team: {name: "testteam123"}
 
-    expect(response).to redirect_to("http://testteam123.example.com" + edit_users_profile_path(current_user))
+    expect(response).to redirect_to("http://testteam123.example.com" + edit_user_profile_path(current_user, current_user.profile))
   end
 
   it 'requires authentication' do

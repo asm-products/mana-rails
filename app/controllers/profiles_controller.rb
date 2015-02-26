@@ -35,15 +35,15 @@ class ProfilesController < ApplicationController
   end
 
   private
-    def profile_params
-      params.require(:user_profile).permit(:first_name, :last_name, :job_title, :phone)
-    end
+  def profile_params
+    params.require(:profile).permit(:first_name, :last_name, :job_title, :phone)
+  end
 
-    def set_user
-      @user = User.find_by(id: params[:id]) || User.find_by(name: params[:id])
-    end
+  def set_user
+    @user = User.find_by(id: params[:user_id]) || User.find_by(name: params[:user_id])
+  end
 
-    def set_profile
-      @profile = @user.profile
-    end
+  def set_profile
+    @profile = @user.profile
+  end
 end

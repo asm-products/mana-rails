@@ -7,7 +7,7 @@ module SpecAuthRequestHelper
       team = Team.make!
       user.teams << team
       slug = team.slug
-      user.user_profile = Profile.make!
+      user.profile = Profile.make!
       user.save!
     end
     Capybara.app_host = "http://#{slug}.example.com"
