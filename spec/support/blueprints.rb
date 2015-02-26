@@ -26,7 +26,7 @@ User.blueprint do
   teams { [Team.make!] }
 end
 
-UserProfile.blueprint do
+Profile.blueprint do
   address          { 'TestAddress' }
   secondary_phone  { '(555) 555-5555' }
   time_zone        { 'Pacific' }
