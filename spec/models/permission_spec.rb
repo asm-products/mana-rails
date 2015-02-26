@@ -41,7 +41,7 @@ RSpec.describe Permission, :type => :model do
     end
 
     it "should return contact_belongs_to_team hash" do
-      permission.condition = "contact_belongs_to_team"
+      permission.condition = "client_belongs_to_team"
       expect(permission.condition_hash(user, team)).to eq({ client: {team_id: team.id}})
     end
   end
