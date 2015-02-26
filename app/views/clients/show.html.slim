@@ -31,13 +31,13 @@
             td
               = gravatar_for contact, size: 40
             td
-              = link_to full_name(contact.user_profile), client_contact_path(@client.short_code, contact.name)
+              = link_to full_name(contact.profile), client_contact_path(@client.short_code, contact.name)
             td
-              = contact.user_profile.job_title
+              = contact.profile.job_title
             td
               = contact.email
             td
-              = formatted_phone contact.user_profile
+              = formatted_phone contact.profile
             td
               .pull-right
                 = link_to raw('<i class="fa fa-trash"></i>'), [@client, contact], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Contact"
