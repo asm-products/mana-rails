@@ -2,11 +2,11 @@ aside
   .sidebar
     - if logged_in?
         ul.nav.nav-pills.nav-stacked
-          li 
+          li
             = link_to clients_path, class: "#{get_current_page_class(clients_path)}"
               i.fa.fa-users.mr2
               span Clients
-          li
-            = link_to projects_path, class: "#{get_current_page_class(projects_path)}"
-              i.fa.fa-users.mr2
-              span Projects
+          /li
+          /  = link_to projects_path, class: "#{get_current_page_class(projects_path)}"
+          /    i.fa.fa-users.mr2
+          /    span Projects
