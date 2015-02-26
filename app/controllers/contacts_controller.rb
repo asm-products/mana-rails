@@ -27,12 +27,12 @@ class ContactsController < ApplicationController
   end
   
   def edit
-    @profile = @contact.user_profile
+    @profile = @contact.profile
   end
   
   def update
-    @profile = @contact.user_profile
-    if @contact.user_profile.update(profile_params)
+    @profile = @contact.profile
+    if @contact.profile.update(profile_params)
       redirect_to client_user_path(@client.short_code, @contact.name)
     else
       render 'edit'

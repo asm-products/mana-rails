@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: 'sessions#destroy'
-  get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
-  put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
-  patch 'users/:id/profile', to: 'users#update_profile'
+  #get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
+  #put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
+  #patch 'users/:id/profile', to: 'users#update_profile'
   
   # Resources
-  resources :users
+  resources :users do
+    resources :profiles
+  end
   get 'users/verify/:id', to: 'users#verify', as: 'user_verify'
   get 'users/reverify/:id', to: 'users#reverify', as: 'user_reverify'
 
