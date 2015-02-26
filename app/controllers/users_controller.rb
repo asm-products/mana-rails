@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params, special_key: SecureRandom.base64.tr('+/=', 'Qrt'))
     if @user.save
-      UserProfile.create(user_id: @user.id)
+      Profile.create(user_id: @user.id)
       log_in @user
       UserMailer.verify_email(@user).deliver
       redirect_to new_team_path
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
 
     def set_user_profile
       set_user
-      @profile = UserProfile.find_by(user_id: @user.id) unless @user.nil?
+      @profile = Profile.find_by(user_id: @user.id) unless @user.nil?
     end
 
     def user_params
