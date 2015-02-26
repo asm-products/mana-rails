@@ -2,6 +2,7 @@
 // COMPONENTS - BUTTONS
 // --------------------------------------------------
 
+
 .btn-outline {
     @include button-variant($btn-outline-color, $btn-outline-bg, $btn-outline-border);
     border: 1px solid;

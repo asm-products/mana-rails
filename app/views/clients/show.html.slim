@@ -4,7 +4,7 @@
   .pull-right
     = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_path(@client.short_code), class: "btn btn-default btn--white mr1", title: "Edit Client"
     = link_to raw('<i class="fa fa-trash"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn--white mr1", title: "Delete Client"
-    = link_to raw('<i class="fa fa-plus"></i>'), new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Contact"
+    = link_to raw('<i class="fa fa-plus"></i>'), new_client_path(@client.short_code), class: "btn btn-primary", title: "New Client"
   h1 = @client.name
   = link_to @client.website, "http://#{@client.website}", class: "client-link"
   h3.client-info = formatted_phone @client
@@ -13,111 +13,117 @@
   h2 Contacts
   .text-right.mb1
     = link_to "New Contact", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Contact"
-  table.table
-    thead
-      tr
-        th
-        th NAME
-        th EMAIL
-        th PHONE
-        th
-    tbody
-      - @client.contacts.order('name ASC').each do |contact|
+  - if @client.contacts.count == 0
+    h3 It looks like you don't have any contacts for this client yet!
+  - else
+    table.table
+      thead
         tr
+          th
+          th NAME
+          th JOB TITLE
+          th EMAIL
+          th PHONE
+          th
+      tbody
+        - @client.contacts.order('name ASC').each do |contact|
+          tr
+            td
+              = gravatar_for contact, size: 40
+            td
+              = link_to full_name(contact.user_profile), client_contact_path(@client.short_code, contact.name)
+            td
+              = contact.user_profile.job_title
+            td
+              = contact.email
+            td
+              = formatted_phone contact.user_profile
+            td
+              .pull-right
+                = link_to raw('<i class="fa fa-trash"></i>'), [@client, contact], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Contact"
+                = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_contact_path(@client, contact), class: "btn btn-default btn-sm btn--white mr1", title: "Edit Contact"
+  - if 0 == 0
+    h3
+  - else
+    h2 Projects
+    .text-right.mb1
+      = link_to "New Project", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Project"
+    table.table
+      thead
+        tr
+          th NAME
+          th TYPE
+          th PROGRESS
+          th OUTSTANDING
+          th
+      tbody
+        tr
+          td Site redesign
           td
-            = gravatar_for contact, size: 40
+            span.label.label-warning Development
           td
-            = link_to full_name(contact.user_profile) + ' (' + contact.user_profile.job_title + ')', client_contact_path(@client.short_code, contact.name)
-          td
-            = contact.email
-          td
-            = formatted_phone contact.user_profile
+            .progress
+              .progress-bar role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"
+          td $ 3,200.00
           td
             .pull-right
               a.btn.btn-default.btn-sm.btn--white.mr1
                 i.fa.fa-trash
               a.btn.btn-default.btn-sm.btn--white
                 i.fa.fa-pencil-square-o
-  h2 Projects
-  p Fake data
-  .text-right.mb1
-    = link_to "New Project", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Project"
-  table.table
-    thead
-      tr
-        th NAME
-        th TYPE
-        th PROGRESS
-        th OUTSTANDING
-        th
-    tbody
-      tr
-        td Site redesign
-        td
-          span.label.label-warning Development
-        td
-          .progress
-            .progress-bar role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"
-        td $ 3,200.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white.mr1
-              i.fa.fa-trash
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-pencil-square-o
-      tr
-        td Newsletter template
-        td
-          span.label.label-success Design
-        td
-          .progress
-            .progress-bar role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"
-        td $ 500.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white.mr1
-              i.fa.fa-trash
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-pencil-square-o
-  h2 Invoices
-  p Fake data
-  .text-right.mb1
-    = link_to "New Invoice", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Invoice"
-  table.table
-    thead
-      tr
-        th NAME
-        th TYPE
-        th STATUS
-        th OUTSTANDING
-        th
-    tbody
-      tr
-        td
-          span New Site
-          .invoice-number INVOICE 07-15
-        td
-          span.label.label-warning Development
-        td
-          .invoice--is-sent 25 Days
-        td $ 7,500.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-cogs
-      tr
-        td
-          span A design project
-          .invoice-number INVOICE 03-15
-        td
-          span.label.label-success Design
-        td
-          .invoice--is-overdue 15 Days
-        td $ 700.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-cogs
+        tr
+          td Newsletter template
+          td
+            span.label.label-success Design
+          td
+            .progress
+              .progress-bar role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"
+          td $ 500.00
+          td
+            .pull-right
+              a.btn.btn-default.btn-sm.btn--white.mr1
+                i.fa.fa-trash
+              a.btn.btn-default.btn-sm.btn--white
+                i.fa.fa-pencil-square-o
+    h2 Invoices
+    p Fake data
+    .text-right.mb1
+      = link_to "New Invoice", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Invoice"
+    table.table
+      thead
+        tr
+          th NAME
+          th TYPE
+          th STATUS
+          th OUTSTANDING
+          th
+      tbody
+        tr
+          td
+            span New Site
+            .invoice-number INVOICE 07-15
+          td
+            span.label.label-warning Development
+          td
+            .invoice--is-sent 25 Days
+          td $ 7,500.00
+          td
+            .pull-right
+              a.btn.btn-default.btn-sm.btn--white
+                i.fa.fa-cogs
+        tr
+          td
+            span A design project
+            .invoice-number INVOICE 03-15
+          td
+            span.label.label-success Design
+          td
+            .invoice--is-overdue 15 Days
+          td $ 700.00
+          td
+            .pull-right
+              a.btn.btn-default.btn-sm.btn--white
+                i.fa.fa-cogs
   - if @client.comments.any?
     h2 Notes
     = render "comments/comments"

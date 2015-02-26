@@ -1,8 +1,17 @@
+//
+// OBJECTS - BUTTONS
+// --------------------------------------------------
+
+
 .btn {
     border: 0px solid transparent;
     text-transform: uppercase;
-    @include box-shadow(none);    
+    @include box-shadow(none);
 }
+
+  .btn:active {
+    @include box-shadow(none);
+  }
 
 .btn-group.open .dropdown-toggle {
     @include box-shadow(none);

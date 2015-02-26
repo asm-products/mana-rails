@@ -46,8 +46,11 @@
   &:hover {
     background-color: $neon-purple;
   }
+}
 
-  &:active {
-    background-color: $brand-primary;
-  }
+.nav-stacked > li + li { margin-top: 0; }
+
+.nav-pills > li > a.current {
+  background-color: $pink;
+  color: $brand-primary;
 }
