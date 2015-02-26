@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: 'sessions#destroy'
+
   #get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
   #put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
   #patch 'users/:id/profile', to: 'users#update_profile'
@@ -24,7 +25,9 @@ Rails.application.routes.draw do
     get 'contacts/verify/:id', to: 'contacts#verify', as: 'contact_verify'
     patch 'contacts/verify/:id', to: 'contacts#verified'
     get 'contacts/reverify/:id', to: 'contacts#reverify', as: 'contact_reverify'
-    resources :contacts
+    resources :contacts do
+      resources :comments
+    end
     resources :comments
   end
 
