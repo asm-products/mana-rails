@@ -5,7 +5,7 @@
 - else
 	h3 Edit Your Profile
 
-= form_for @profile, url: user_profile_path(@user) do |f|
+= form_for @profile, url: user_profile_path(@user, @profile) do |f|
   .form-group
     = f.label :first_name
 	= f.text_field :first_name, class: "form-control"

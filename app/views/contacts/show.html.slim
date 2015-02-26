@@ -3,7 +3,7 @@
 - @contact.comments.each do |comment|
   .row
     .col-md-12
-      p.text-right #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
+      p.text-right #{comment.commenter.profile.first_name} commented on #{comment.created_at}
       p = comment.body
       hr
 = form_for([@contact, @contact.comments.build]) do |f|

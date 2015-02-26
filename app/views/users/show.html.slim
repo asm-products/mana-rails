@@ -6,5 +6,12 @@
       h1
         = gravatar_for @user
         = @user.name
+      h2 User
+      = @user.email
+      h2 Profile
+      = @user.profile.first_name
+      = @user.profile.last_name
+      = @user.profile.job_title
+      = @user.profile.phone
   = link_to "Edit User", edit_user_path(@user), class: "btn btn-primary pull-right"
-  = link_to "Edit Profile", edit_users_profile_path(@user), class: "btn btn-primary pull-right"
+  = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile), class: "btn btn-primary pull-right"

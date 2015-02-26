@@ -30,6 +30,7 @@ class Permission < ActiveRecord::Base
       {klass: 'Contact', action: 'manage', condition: 'belongs_to_team'},
       {klass: 'User', action: 'read', condition: 'belongs_to_team'},
       {klass: 'User', action: 'manage', condition: 'belongs_to_user', is_public: true},
+      {klass: 'Profile', action: 'manage', condition: 'belongs_to_me', is_public: true},
       {klass: 'Team', action: 'create', is_public: true},
       {klass: 'User', action: 'create', is_public: true}
     ]

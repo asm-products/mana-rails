@@ -35,11 +35,11 @@ describe UsersController do
     click_on 'Profile'
     click_on 'Edit Profile'
 
-    fill_in :user_profile_first_name, with: 'my first name'
-    fill_in :user_profile_last_name, with: 'my last name'
-    fill_in :user_profile_job_title, with: 'my job title'
-    fill_in :user_profile_phone, with: '123123'
-    click_on 'Update User profile'
+    fill_in :profile_first_name, with: 'my first name'
+    fill_in :profile_last_name, with: 'my last name'
+    fill_in :profile_job_title, with: 'my job title'
+    fill_in :profile_phone, with: '123123'
+    click_on 'Update Profile'
   end
 
   it "should change password" do
