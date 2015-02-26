@@ -2,7 +2,7 @@ module MarkdownHelper
   def render_markdown(source)
     context = {
         asset_root: 'https://a248.e.akamai.net/assets.github.com/images/icons/',
-        base_url: '/users/'
+        base_url: ''
     }
 
     pipeline = HTML::Pipeline.new [
@@ -10,7 +10,7 @@ module MarkdownHelper
                                      HTML::Pipeline::SanitizationFilter,
                                      HTML::Pipeline::ImageMaxWidthFilter,
                                      HTML::Pipeline::HttpsFilter,
-                                     HTML::Pipeline::MentionFilter,
+                                     #HTML::Pipeline::MentionFilter,
                                      HTML::Pipeline::EmojiFilter,
                                      HTML::Pipeline::SyntaxHighlightFilter
                                  ], context.merge(gfm: true)
