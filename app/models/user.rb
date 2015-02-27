@@ -120,8 +120,8 @@ class User < ActiveRecord::Base
   def set_working_on(task)
     status = "Working on #{task.subject}"
   end
-	
-	def self.find_for_mention mention
+
+  def self.find_for_mention mention
     find_mention = mention.dup
     find_mention.strip!
     find_mention.slice!("@")

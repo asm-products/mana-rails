@@ -10,7 +10,6 @@ module MarkdownHelper
                                      HTML::Pipeline::SanitizationFilter,
                                      HTML::Pipeline::ImageMaxWidthFilter,
                                      HTML::Pipeline::HttpsFilter,
-                                     #HTML::Pipeline::MentionFilter,
                                      HTML::Pipeline::EmojiFilter,
                                      HTML::Pipeline::SyntaxHighlightFilter
                                  ], context.merge(gfm: true)
