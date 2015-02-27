@@ -1,100 +1,104 @@
 - provide(:title, @client.name)
 
 .col.md-12
-  .pull-right
-    = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_path(@client.short_code), class: "btn btn-default btn--white mr1", title: "Edit Client"
-    = link_to raw('<i class="fa fa-trash"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn--white mr1", title: "Delete Client"
-    = link_to raw('<i class="fa fa-plus"></i>'), new_client_path(@client.short_code), class: "btn btn-primary", title: "New Client"
-  h1 = @client.name
-  = link_to @client.website, "http://#{@client.website}", class: "client-link"
-  h3.client-info = formatted_phone @client
-  h3.client-info = @client.address
-  hr
-  h2 Contacts
-  .text-right.mb1
-    = link_to "New Contact", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Contact"
-  - if @client.contacts.count == 0
-    h3 It looks like you don't have any contacts for this client yet!
-  - else
+  section.client-info
+    .pull-right
+      = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_path(@client.short_code), class: "btn btn-default btn--white mr1", title: "Edit Client"
+      = link_to raw('<i class="fa fa-trash"></i>'), [@client], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn--white mr1", title: "Delete Client"
+      = link_to raw('<i class="fa fa-plus"></i>'), new_client_path(@client.short_code), class: "btn btn-primary", title: "New Client"
+    h1 = @client.name
+    = link_to @client.website, "http://#{@client.website}", class: "client-link"
+    h3.v-info = formatted_phone @client
+    h3.v-info = @client.address
+    hr
+  section.contacts
+    h2 Contacts
+    .text-right.mb1
+      = link_to "New Contact", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Contact"
+    - if @client.contacts.count == 0
+      h3 It looks like you don't have any contacts for this client yet!
+    - else
+      table.table
+        thead
+          tr
+            th
+            th NAME
+            th JOB TITLE
+            th EMAIL
+            th PHONE
+            th
+        tbody
+          - @client.contacts.order('name ASC').each do |contact|
+            tr
+              td
+                = gravatar_for contact, size: 40
+              td
+                = link_to full_name(contact.profile), client_contact_path(@client.short_code, contact.name)
+              td
+                = contact.profile.job_title
+              td
+                = contact.email
+              td
+                = formatted_phone contact.profile
+              td
+                .pull-right
+                  = link_to raw('<i class="fa fa-trash"></i>'), [@client, contact], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Contact"
+                  = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_contact_path(@client, contact), class: "btn btn-default btn-sm btn--white mr1", title: "Edit Contact"
+  /section.projects
+    h2 Projects
+    .text-right.mb1
+      = link_to "New Project", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Project"
     table.table
       thead
         tr
-          th
           th NAME
-          th JOB TITLE
-          th EMAIL
-          th PHONE
+          th TYPE
+          th PROGRESS
+          th OUTSTANDING
           th
       tbody
-        - @client.contacts.order('name ASC').each do |contact|
-          tr
-            td
-              = gravatar_for contact, size: 40
-            td
-              = link_to full_name(contact.profile), client_contact_path(@client.short_code, contact.name)
-            td
-              = contact.profile.job_title
-            td
-              = contact.email
-            td
-              = formatted_phone contact.profile
-            td
-              .pull-right
-                = link_to raw('<i class="fa fa-trash"></i>'), [@client, contact], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Contact"
-                = link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_client_contact_path(@client, contact), class: "btn btn-default btn-sm btn--white mr1", title: "Edit Contact"
-  /h2 Projects
-  /.text-right.mb1
-    = link_to "New Project", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Project"
-  /table.table
-    thead
-      tr
-        th NAME
-        th TYPE
-        th PROGRESS
-        th OUTSTANDING
-        th
-    tbody
-      tr
-        td Site redesign
-        td
-          span.label.label-warning Development
-        td
-          .progress
-            .progress-bar role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"
-        td $ 3,200.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white.mr1
-              i.fa.fa-trash
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-pencil-square-o
-  /h2 Invoices
-  /p Fake data
-  /.text-right.mb1
-    = link_to "New Invoice", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Invoice"
-  /table.table
-    thead
-      tr
-        th NAME
-        th TYPE
-        th STATUS
-        th OUTSTANDING
-        th
-    tbody
-      tr
-        td
-          span New Site
-          .invoice-number INVOICE 07-15
-        td
-          span.label.label-warning Development
-        td
-          .invoice--is-sent 25 Days
-        td $ 7,500.00
-        td
-          .pull-right
-            a.btn.btn-default.btn-sm.btn--white
-              i.fa.fa-cogs
-  - if @client.comments.any?
-    h2 Notes
-    = render "comments/comments"
-  = render "comments/comments_form"
+        tr
+          td Site redesign
+          td
+            span.label.label-warning Development
+          td
+            .progress
+              .progress-bar role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"
+          td $ 3,200.00
+          td
+            .pull-right
+              a.btn.btn-default.btn-sm.btn--white.mr1
+                i.fa.fa-trash
+              a.btn.btn-default.btn-sm.btn--white
+                i.fa.fa-pencil-square-o
+  /section.invoices
+    h2 Invoices
+    .text-right.mb1
+      = link_to "New Invoice", new_client_contact_path(@client.short_code), class: "btn btn-primary", title: "New Invoice"
+    table.table
+      thead
+        tr
+          th NAME
+          th TYPE
+          th STATUS
+          th OUTSTANDING
+          th
+      tbody
+        tr
+          td
+            span New Site
+            .invoice-number INVOICE 07-15
+          td
+            span.label.label-warning Development
+          td
+            .invoice--is-sent 25 Days
+          td $ 7,500.00
+          td
+            .pull-right
+              a.btn.btn-default.btn-sm.btn--white
+                i.fa.fa-cogs
+  section.comments
+    - if @client.comments.any?
+      h2 Notes
+      = render "comments/comments"
+    = render "comments/comments_form"

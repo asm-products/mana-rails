@@ -1,17 +1,15 @@
 - provide(:title, @user.name)
 
-.row
-  aside.col-md-4
-    section.user_info
-      h1
-        = gravatar_for @user
-        = @user.name
-      h2 User
-      = @user.email
-      h2 Profile
-      = @user.profile.first_name
-      = @user.profile.last_name
-      = @user.profile.job_title
-      = @user.profile.phone
-  = link_to "Edit User", edit_user_path(@user), class: "btn btn-primary pull-right" if can?(:edit, @user)
-  = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile), class: "btn btn-primary pull-right" if can?(:edit, @user.profile)
+.col.md-12
+  section.user_info
+    .row
+      .col-md-1
+        h1 = gravatar_for @user, size: 120
+      .col-md-11
+        .pull-right
+          = link_to "Edit User", edit_user_path(@user), class: "btn btn-default btn--white mr1", title: "Edit User"
+          = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile), class: "btn btn-default btn--white mr1", title: "Edit Profile"
+        h1 = full_name @user.profile
+        h3.v-info.v-info--name = @user.name
+        h3.v-info = @user.profile.job_title
+        h3.v-info = formatted_phone @user.profile
