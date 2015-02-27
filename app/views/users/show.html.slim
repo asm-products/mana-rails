@@ -13,5 +13,5 @@
       = @user.profile.last_name
       = @user.profile.job_title
       = @user.profile.phone
-  = link_to "Edit User", edit_user_path(@user), class: "btn btn-primary pull-right"
-  = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile), class: "btn btn-primary pull-right"
+  = link_to "Edit User", edit_user_path(@user), class: "btn btn-primary pull-right" if can?(:edit, @user)
+  = link_to "Edit Profile", edit_user_profile_path(@user, @user.profile), class: "btn btn-primary pull-right" if can?(:edit, @user.profile)
