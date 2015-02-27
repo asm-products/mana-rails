@@ -3,11 +3,11 @@ module SpecAuthRequestHelper
 
   def login(username='test@test.com', password='testtest', slug=nil)
     if User.count == 0
-      user = User.make!
+      user = User.make!(email: username)
       team = Team.make!
       user.teams << team
       slug = team.slug
-      user.user_profile = UserProfile.make!
+      user.profile = Profile.make!
       user.save!
     end
     Capybara.app_host = "http://#{slug}.example.com"

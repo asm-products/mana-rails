@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :teams, through: :memberships
 
-  has_one :user_profile, dependent: :destroy
+  has_one :profile, dependent: :destroy
   has_and_belongs_to_many :permissions
   has_and_belongs_to_many :roles
 
@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
 
   before_save { email.downcase! }
 
-  validates :name, presence:true, length: { maximum: 50 }
+  validates :name, presence:true,
+                    length: { maximum: 50, minimum: 3 },
+                    uniqueness: { case_sensitive: false }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
@@ -92,4 +94,38 @@ class User < ActiveRecord::Base
       break token unless User.exists?(api_key: token)
     end
   end
+
+  def make_unavailable
+    available = false
+  end
+
+  def make_available
+    available = true
+  end
+
+  def make_out_of_office
+    available = false
+    status = "Out of Office"
+  end
+
+  def make_in_office
+    available = true
+    status = "Available"
+  end
+
+  def set_status(message)
+    status = message
+  end
+
+  def set_working_on(task)
+    status = "Working on #{task.subject}"
+  end
+
+  def self.find_for_mention mention
+    find_mention = mention.dup
+    find_mention.strip!
+    find_mention.slice!("@")
+    find_by(name: find_mention)
+  end
+
 end

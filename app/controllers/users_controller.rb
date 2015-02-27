@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit_profile, :update_profile]
-  before_filter :set_user_profile, only: [:show, :edit_profile, :update_profile]
-  before_filter :set_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:show]
+  before_filter :set_user, only: [:show, :edit, :update]
   load_and_authorize_resource
 
   def show
+    @profile = @user.profile
   end
 
   def new
@@ -25,24 +25,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params, special_key: SecureRandom.base64.tr('+/=', 'Qrt'))
     if @user.save
-      UserProfile.create(user_id: @user.id)
+      Profile.create(user_id: @user.id)
       log_in @user
       UserMailer.verify_email(@user).deliver
       redirect_to new_team_path
     else
       render 'new'
-    end
-  end
-
-  def edit_profile
-
-  end
-
-  def update_profile
-    if @profile.update(user_profile_params)
-      redirect_to @user
-    else
-      render 'edit_profile'
     end
   end
 
@@ -72,17 +60,8 @@ class UsersController < ApplicationController
       @user = User.find_by(id: params[:id]) || User.find_by(name: params[:id])
     end
 
-    def set_user_profile
-      set_user
-      @profile = UserProfile.find_by(user_id: @user.id) unless @user.nil?
-    end
-
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
-
-    def user_profile_params
-      params.require(:user_profile).permit(:first_name, :last_name, :job_title, :phone)
     end
 
 end

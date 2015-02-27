@@ -1,0 +1,42 @@
+//
+// SETTINGS - BUTTONS
+// --------------------------------------------------
+
+
+
+// Buttons
+//
+
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-font-weight:                $regular;
+
+$btn-default-color:              $gray-dark !default;
+$btn-default-bg:                 $gray-light !default;
+//$btn-default-border:             $brand-primary !default;
+
+$btn-primary-color:              white !default;
+$btn-primary-bg:                 $brand-primary !default;
+//$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+
+$btn-success-color:              white !default;
+$btn-success-bg:                 $brand-success !default;
+//$btn-success-border:             darken($btn-success-bg, 5%) !default;
+
+$btn-info-color:                 white !default;
+$btn-info-bg:                    $brand-info !default;
+//$btn-info-border:                darken($btn-info-bg, 5%) !default;
+
+$btn-warning-color:              white !default;
+$btn-warning-bg:                 $brand-warning !default;
+//$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+
+$btn-danger-color:               white !default;
+$btn-danger-bg:                  $brand-danger !default;
+//$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+
+$btn-outline-color:               $brand-primary;
+$btn-outline-bg:                  transparent;
+$btn-outline-border:              $brand-primary;
+
+$btn-link-disabled-color:        $gray-light !default;

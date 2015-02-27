@@ -1,12 +1,15 @@
-= @contact.name
-= link_to "Edit Client", edit_client_contact_path(@client.short_code, @contact.name)
-- @contact.comments.each do |comment|
-  .row
-    .col-md-12
-      p.text-right #{comment.commenter.user_profile.first_name} commented on #{comment.created_at}
-      p = comment.body
-      hr
-= form_for([@contact, @contact.comments.build]) do |f|
-  = f.text_area :body, class: "form-control", placeholder: "Create new contact note..."
-  .pull-right
-    = f.submit class: "btn btn-success"
+- provide(:title, @contact.name)
+
+.col.md-12
+  section.contact_info
+    .row
+      .col-md-1
+        h1 = gravatar_for @contact, size: 120
+      .col-md-11
+        .pull-right
+          = link_to "Edit Contact", edit_client_contact_path(@client.short_code, @contact.name), class: "btn btn-default btn--white mr1", title: "Edit Contact"
+        h1 = full_name @contact.profile
+        h3.v-info.v-info--name = @contact.name
+        h3.v-info = @contact.profile.job_title
+        h3.v-info = @contact.email
+        h3.v-info = formatted_phone @contact.profile

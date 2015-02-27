@@ -1,0 +1,53 @@
+//
+// COMPONENTS - VIEWS
+// --------------------------------------------------
+
+
+// Layout
+
+main {
+  padding: 82px 20px 0 270px;
+}
+
+
+// Avatar
+
+.gravatar { border-radius: 50%; }
+
+
+// View
+
+.v-info {
+  margin-bottom: 2px;
+  margin-top: 2px;
+
+  &--name {
+    color: $gray-light;
+    font-size: $font-size-large;
+  }
+}
+
+.client-link {
+  color: $gray-light;
+  font-size: $font-size-large;
+}
+
+.invoice--is-sent { color: $green; }
+
+.invoice--is-overdue { color: $red; }
+
+.invoice--is-paid { color: $brand-primary; }
+
+.invoice-number {
+  color: $gray-light;
+  font-size: $font-size-small;
+  font-weight: $regular;
+  line-height: 1;
+  margin-top: -10px;
+  text-transform: uppercase;
+}
+
+.note-info {
+  color: $gray-light;
+  font-size: $font-size-small;
+}

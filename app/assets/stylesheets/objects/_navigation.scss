@@ -1,0 +1,56 @@
+//
+// OBJECTS - NAVIGATION
+// --------------------------------------------------
+
+
+// Navabar
+
+.navbar {
+  border-bottom: 2px solid $gray-light;
+
+  &-default {
+
+    .badge {
+      background-color: white;
+      color: $navbar-default-bg;
+    }
+  }
+
+  &-brand {
+    line-height: 1;
+  }
+}
+
+.username {
+  font-size: $font-size-large;
+  font-weight: $semibold;
+}
+
+
+// Sidebar
+
+.sidebar {
+  background-color: darken($brand-primary, 20%);
+  height: 100%;
+  padding-top: 60px;
+  position: fixed;
+  width: 250px;
+
+}
+
+.nav-pills > li > a {
+  color: white;
+  font-size: $font-size-large;
+  padding: 30px;
+
+  &:hover {
+    background-color: $neon-purple;
+  }
+}
+
+.nav-stacked > li + li { margin-top: 0; }
+
+.nav-pills > li > a.current {
+  background-color: $pink;
+  color: $brand-primary;
+}

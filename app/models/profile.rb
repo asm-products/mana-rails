@@ -1,4 +1,4 @@
-class UserProfile < ActiveRecord::Base
+class Profile < ActiveRecord::Base
   belongs_to :user
   phony_normalize :phone
   

@@ -1,18 +1,21 @@
 Rails.application.routes.draw do
-  
+
   root to: "home#index"
-  
+
   # Custom routes
   get 'signup', to: "users#new"
   get 'login', to: "sessions#new"
   post 'login', to: "sessions#create"
   delete 'logout', to: 'sessions#destroy'
-  get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
-  put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
-  patch 'users/:id/profile', to: 'users#update_profile'
-  
+
+  #get 'users/:id/profile', to: 'users#edit_profile', as: 'edit_users_profile'
+  #put 'users/:id/profile', to: 'users#update_profile', as: 'user_profile'
+  #patch 'users/:id/profile', to: 'users#update_profile'
+
   # Resources
-  resources :users
+  resources :users do
+    resources :profiles
+  end
   get 'users/verify/:id', to: 'users#verify', as: 'user_verify'
   get 'users/reverify/:id', to: 'users#reverify', as: 'user_reverify'
 
@@ -22,10 +25,12 @@ Rails.application.routes.draw do
     get 'contacts/verify/:id', to: 'contacts#verify', as: 'contact_verify'
     patch 'contacts/verify/:id', to: 'contacts#verified'
     get 'contacts/reverify/:id', to: 'contacts#reverify', as: 'contact_reverify'
-    resources :contacts
+    resources :contacts do
+      resources :comments
+    end
     resources :comments
   end
-  
+
   ## API routes
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do

@@ -39,4 +39,11 @@ class Client < ActiveRecord::Base
   def self.find_by_params(param)
     find_by(short_code: param)
   end
+
+  def self.find_for_mention mention
+    find_mention = mention.dup
+    find_mention.strip!
+    find_mention.slice!("@")
+    find_by(short_code: find_mention)
+  end
 end

@@ -1,6 +1,7 @@
 - @comments.each do |comment|
-  .row
-    .col-md-12
-      p.text-right #{comment.commenter.name} commented on #{comment.created_at}
+  .panel.panel-default
+    .pull-right.m1
+      = link_to raw('<i class="fa fa-trash"></i>'), [@client, comment], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Note"
+    .panel-body
+      p.note-info Created by #{comment.commenter.name} on #{comment.created_at}
       p = render_markdown(comment.body)
-      hr

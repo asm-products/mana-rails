@@ -12,10 +12,21 @@ class Permission < ActiveRecord::Base
       { user_id: user.id }
     when 'belongs_to_team'
       { team_id: team.id }
-    when 'contact_belongs_to_team'
+    when 'user_belongs_to_team'
+      { user: { memberships: { team_id: team.id } } }
+    when 'client_belongs_to_team'
       { client: {team_id: team.id}}
     else
       {}
+    end
+  end
+
+  def condition_block user, team
+    case condition
+    when 'user_belongs_to_team'
+      Proc.new {|obj|
+        obj.user.memberships.map(&:team).flatten.include?(team)
+      }
     end
   end
 
@@ -27,9 +38,11 @@ class Permission < ActiveRecord::Base
       {klass: 'Issue', action: 'read', condition: 'belongs_to_team', is_public: true},
       {klass: 'Client', action: 'manage', condition: 'belongs_to_team'},
       {klass: 'Client', action: 'read', condition: 'belongs_to_team', is_public: true},
-      {klass: 'Contact', action: 'manage', condition: 'belongs_to_team'},
+      {klass: 'Contact', action: 'manage', condition: 'client_belongs_to_team'},
       {klass: 'User', action: 'read', condition: 'belongs_to_team'},
       {klass: 'User', action: 'manage', condition: 'belongs_to_user', is_public: true},
+      {klass: 'Profile', action: 'manage', condition: 'belongs_to_me', is_public: true},
+      #{klass: 'Profile', action: 'read', condition: 'user_belongs_to_team', is_public: true},
       {klass: 'Team', action: 'create', is_public: true},
       {klass: 'User', action: 'create', is_public: true}
     ]

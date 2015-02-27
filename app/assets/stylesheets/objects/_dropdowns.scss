@@ -1,0 +1,19 @@
+//
+// OBJECTS - DROPDOWNS
+// --------------------------------------------------
+
+.dropdown-menu {
+    padding: 0;
+    @include box-shadow(none);
+
+    & > li > a {
+        padding: 10px 20px;
+    }
+}
+
+.dropdown-header {
+    background-color: $dropdown-header-bg;
+    text-transform: uppercase;
+}
+
+.dropdown-toggle .fa { margin-left: 20px; }

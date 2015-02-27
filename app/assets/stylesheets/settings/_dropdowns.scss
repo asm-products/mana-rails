@@ -1,0 +1,40 @@
+//
+// SETTINGS - DROPDOWNS
+// --------------------------------------------------
+
+
+// Dropdowns
+//
+
+//## Dropdown menu container and contents.
+
+//** Background for the dropdown menu.
+$dropdown-bg:                    white;
+//** Dropdown menu `border-color`.
+$dropdown-border:                $gray-light;
+//** Dropdown menu `border-color` **for IE8**.
+$dropdown-fallback-border:       $gray-light;
+//** Divider color for between dropdown items.
+$dropdown-divider-bg:            $gray-light;
+
+//** Dropdown link text color.
+$dropdown-link-color:            $gray-dark !default;
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      white;
+//** Hover background for dropdown links.
+$dropdown-link-hover-bg:         $brand-primary;
+
+//** Active dropdown menu item text color.
+$dropdown-link-active-color:     $component-active-color !default;
+//** Active dropdown menu item background color.
+$dropdown-link-active-bg:        $component-active-bg !default;
+
+//** Disabled dropdown menu item background color.
+$dropdown-link-disabled-color:   $gray-light !default;
+
+//** Text color for headers within dropdown menus.
+$dropdown-header-color:          white;
+$dropdown-header-bg:             $brand-primary;
+
+//** Deprecated `$dropdown-caret-color` as of v3.1.0
+$dropdown-caret-color:           white;

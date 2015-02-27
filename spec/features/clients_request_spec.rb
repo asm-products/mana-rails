@@ -22,7 +22,7 @@ describe ClientsController do
 
     def create_client
       visit clients_path
-      click_link 'Create New Client'
+      click_link 'New Client'
       fill_in :client_name, with: "testname"
       fill_in :client_address, with: "testaddress"
       fill_in :client_phone, with: "123123"

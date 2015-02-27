@@ -5,6 +5,12 @@ describe User, :type => :model do
    @user = User.make!
  end
 
+  it { should validate_presence_of(:name) }
+  it { should validate_uniqueness_of(:name) }
+
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+
   it { should have_and_belong_to_many(:permissions) }
   it { should have_and_belong_to_many(:roles) }
   it { should have_many(:memberships) }
@@ -101,5 +107,38 @@ describe User, :type => :model do
   it "belongs to a team" do
     expect @user.respond_to? :team
   end
+
+  it "sets unavailable" do
+    @user.make_unavailable
+    expect !@user.available
+  end
+
+  it "sets available" do
+    @user.make_available
+    expect @user.available
+  end
+
+  it "sets out of office" do
+    @user.make_out_of_office
+    expect !@user.available
+    expect @user.status == "Out of Office"
+  end
+
+  it "sets in office" do
+    @user.make_in_office
+    expect @user.available
+    expect @user.status == "Available"
+  end
+
+  it "sets status" do
+    @user.set_status("Busy")
+    expect @user.status == "Busy"
+  end
+
+  it "sets status with an issue" do
+    @user.set_working_on(issue = Issue.make)
+    expect @user.status == "Working on #{issue.subject}"
+  end
+
 
 end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe UserProfile, :type => :model do
-  before { @user_profile = UserProfile.make! }
+describe Profile, :type => :model do
+  before { @user_profile = Profile.make! }
 
   it "is valid" do
     expect @user_profile.valid?

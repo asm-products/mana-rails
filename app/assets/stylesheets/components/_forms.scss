@@ -1,0 +1,23 @@
+//
+// COMPONENTS - FORMS
+// --------------------------------------------------
+
+
+// Checkboxes
+//
+
+@include checkbox-variant('.checkbox-primary', $brand-primary);
+@include checkbox-variant('.checkbox-danger', $brand-danger);
+@include checkbox-variant('.checkbox-info', $brand-info);
+@include checkbox-variant('.checkbox-warning', $brand-warning);
+@include checkbox-variant('.checkbox-success', $brand-success);
+
+
+// Radios
+//
+
+@include radio-variant('.radio-primary', $brand-primary);
+@include radio-variant('.radio-danger', $brand-danger);
+@include radio-variant('.radio-info', $brand-info);
+@include radio-variant('.radio-warning', $brand-warning);
+@include radio-variant('.radio-success', $brand-success);

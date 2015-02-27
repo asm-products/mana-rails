@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require_tree .
+
 
 // Auto generate input values from one text input to another.
 function generateShortCode(sourceElementId,outputElementId) {

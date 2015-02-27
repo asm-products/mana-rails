@@ -14,24 +14,24 @@ Issue.blueprint do
 end
 
 Project.blueprint do
-  name       { 'TestName' }
-  short_code { '1234' }
+  name       { "TestName#{sn}" }
+  short_code { '1234#{sn}' }
   client_id     { Client.make.id }
 end
 
 User.blueprint do
-  name       { 'TestName' }
-  email      { 'test@test.com' }
+  name       { "TestName#{sn}" }
+  email      { "test#{sn}@test.com" }
   password   { 'testtest' }
   teams { [Team.make!] }
+  profile { Profile.make! }
 end
 
-UserProfile.blueprint do
+Profile.blueprint do
   address          { 'TestAddress' }
   secondary_phone  { '(555) 555-5555' }
   time_zone        { 'Pacific' }
   twitter_name     { '@manacore' }
-  user             { User.make }
 end
 
 Contact.blueprint do

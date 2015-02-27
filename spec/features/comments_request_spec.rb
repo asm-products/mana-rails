@@ -28,7 +28,7 @@ describe CommentsController do
 
     def create_client
       visit clients_path
-      click_link 'Create New Client'
+      click_link 'New Client'
       fill_in :client_name, with: "testname"
       fill_in :client_address, with: "testaddress"
       fill_in :client_phone, with: "123123"
@@ -41,12 +41,12 @@ describe CommentsController do
     def create_comment
       create_client
       fill_in :comment_body , with: "testcomment"
-      click_on "Create Comment"
+      click_on "Add Note"
     end
 
     it "should render comment form" do
       create_client
-      expect(page).to have_selector(:link_or_button, 'Create Comment')
+      expect(page).to have_selector(:link_or_button, 'Add Note')
     end
 
     it "should create new comment and render it" do

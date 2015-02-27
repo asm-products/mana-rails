@@ -4,36 +4,70 @@
 
 
 // Settings
-// --------------------------------------------------
-@import "settings/global";
+//
+
 @import "settings/colors";
-@import "settings/susy_settings";
+@import "settings/globals";
+
+@import "settings/typography";
+@import "settings/buttons";
+@import "settings/pagination";
+@import "settings/alerts";
+@import "settings/breadcrumbs";
+@import "settings/forms";
+@import "settings/labels";
+@import "settings/dropdowns";
+@import "settings/grid";
+@import "settings/navigation";
+@import "settings/tables";
+@import "settings/progress-bars";
+@import "settings/panels";
 
 // Tools
-// --------------------------------------------------
+//
+
 @import "tools/mixins";
 
+
 // Generic
-// --------------------------------------------------
-@import "generic/normalize";
+//
+
+//## Bootstrap
+@import "bootstrap";
+
+//## Font Awesome
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
 
 // Base
-// --------------------------------------------------
-@import "base/typography";
+//
+
+@import "base/white-spaces";
+
 
 // Objects
-// --------------------------------------------------
-@import "objects/layout";
+//
+
+@import "objects/typography";
+@import "objects/buttons";
+@import "objects/pagination";
+@import "objects/alerts";
+@import "objects/forms";
+@import "objects/labels";
+@import "objects/dropdowns";
+@import "objects/navigation";
+@import "objects/tables";
+@import "objects/progress-bars";
+@import "objects/panels";
+
 
 // Components
-// --------------------------------------------------
+//
+
 @import "components/buttons";
-@import "components/pagination";
-@import "components/breadcrumbs";
-@import "components/helpers";
-@import "components/images";
+@import "components/forms";
+@import "components/views";
 
 // Trumps
-// --------------------------------------------------
-@import "trumps/clearfix";
-@import "trumps/helpers";
+//

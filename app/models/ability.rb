@@ -17,8 +17,15 @@ class Ability
       can :create, User
       can :create, Team
     else
+      can :read, Profile do |profile|
+        profile.user.memberships.map(&:team).flatten.include? user.current_team
+      end
+      can :read, User do |check_user|
+        check_user.memberships.map(&:team).flatten.include? user.current_team
+      end
+
       get_permissions_for(user).each do |permission|
-        can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.current_team)
+        can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.current_team) || permission.condition_block(user, user.current_team)
       end
     end
 

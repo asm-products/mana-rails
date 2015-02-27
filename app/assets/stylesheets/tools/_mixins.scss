@@ -2,46 +2,40 @@
 // TOOLS - MIXINS
 // --------------------------------------------------
 
-@mixin transition($transition-property, $transition-time, $method) {
-    -webkit-transition: $transition-property $transition-time $method;
-    -moz-transition: $transition-property $transition-time $method;
-    -ms-transition: $transition-property $transition-time $method;
-    -o-transition: $transition-property $transition-time $method;
-    transition: $transition-property $transition-time $method;
+
+// Forms - Checkboxes
+//
+
+@mixin checkbox-variant($parent, $color) {
+    #{$parent} input[type="checkbox"]:checked + label{
+        &::before {
+            background-color: $color;
+            border-color: $color;
+        }
+        &::after{
+            color: #fff;
+        }
+    }
 }
 
 
-@mixin appearance ($value) {
-    -webkit-appearance: $value;
-    -moz-appearance: $value;
-    appearance: $value;
-}
+// Forms - Radios
+//
 
-
-@mixin user-select($select) {
-    -webkit-user-select: $select;
-    -moz-user-select: $select;
-    -ms-user-select: $select; // IE10+
-    user-select: $select;
-}
-
-
-@mixin opacity($opacity) {
-    opacity: $opacity;
-    $opacity-ie: $opacity * 100;
-    filter: alpha(opacity=$opacity-ie); //IE8
-}
-
-@mixin text-hide() {
-    font: 0/0 a;
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
-}
-
-@mixin img-responsive($display: block) {
-    display: $display;
-    max-width: 100%;
-    height: auto;
+@mixin radio-variant($parent, $color) {
+    #{$parent} input[type="radio"]{
+        & + label{
+            &::after{
+                background-color: $color;
+            }
+        }
+        &:checked + label{
+            &::before {
+                border-color: $color;
+            }
+            &::after{
+                background-color: $color;
+            }
+        }
+    }
 }
