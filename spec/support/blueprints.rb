@@ -20,8 +20,8 @@ Project.blueprint do
 end
 
 User.blueprint do
-  name       { 'TestName' }
-  email      { 'test@test.com' }
+  name       { "TestName#{sn}" }
+  email      { "test#{sn}@test.com" }
   password   { 'testtest' }
   teams { [Team.make!] }
   profile { Profile.make! }

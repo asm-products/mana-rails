@@ -31,5 +31,41 @@ describe Ability do
     end
   end
 
+  context "Profile" do
+    let(:contact) { Contact.make! }
+    before(:each) do
+      Permission.seed("Profile")
+      membership.permissions << Permission.all
+      @ability = Ability.new(user)
+    end
 
+    it "should read teams profile" do
+      new_user = User.make! teams: [user.current_team]
+      expect(@ability.can? :read, new_user.profile).to be(true)
+    end
+
+    it "should not read other teams profile" do
+      new_user = User.make! teams: [user.teams.first]
+      expect(@ability.can? :read, new_user.profile).to be(false)
+    end
+  end
+
+  context "User" do
+    let(:contact) { Contact.make! }
+    before(:each) do
+      Permission.seed("User")
+      membership.permissions << Permission.all
+      @ability = Ability.new(user)
+    end
+
+    it "should read teams user" do
+      new_user = User.make! teams: [user.current_team]
+      expect(@ability.can? :read, new_user).to be(true)
+    end
+
+    it "should not read other teams ueser" do
+      new_user = User.make! teams: [user.teams.first]
+      expect(@ability.can? :read, new_user).to be(false)
+    end
+  end
 end
