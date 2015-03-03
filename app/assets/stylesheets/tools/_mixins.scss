@@ -39,3 +39,9 @@
         }
     }
 }
+
+// Fancy link undeline
+
+@mixin underline($color: $link-underline-color, $weight: $link-underline-width, $offset: $link-underline-offset) {
+  background-image: linear-gradient(to top, transparent, transparent $offset, $color $offset, $color $offset + $weight, transparent $offset + $weight);
+}

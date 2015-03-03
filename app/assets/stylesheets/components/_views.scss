@@ -28,8 +28,15 @@ main {
 }
 
 .client-link {
-  color: $gray-light;
+  color: $gray;
   font-size: $font-size-large;
+  font-weight: $semibold;
+
+  &:hover,
+  &:active {
+    color: $neon-purple;
+  }
+
 }
 
 .invoice--is-sent { color: $green; }
@@ -50,4 +57,28 @@ main {
 .note-info {
   color: $gray-light;
   font-size: $font-size-small;
+}
+
+// Comments
+
+.panel-body a {
+  color: $panel-link-color;
+  font-weight: $semibold;
+  text-decoration: none;
+  position: relative;
+  @if $breaking-underlines {
+    text-shadow: -1px -1px 0 $panel-bg, 1px -1px 0 $panel-bg, -1px 1px 0 $panel-bg, 1px 1px 0 $panel-bg;
+  }
+  @include underline($panel-link-color);
+  @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+    @include underline($panel-link-color, 0.5);
+  }
+  &:hover,
+  &:focus {
+    color: $panel-link-color-active;
+    @include underline($panel-link-color-active);
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+      @include underline($panel-link-color-active, 0.5);
+    }
+  }
 }

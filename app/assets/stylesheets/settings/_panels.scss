@@ -39,3 +39,13 @@ $panel-warning-heading-bg:    $state-warning-bg !default;
 $panel-danger-text:           $state-danger-text !default;
 $panel-danger-border:         $state-danger-border !default;
 $panel-danger-heading-bg:     $state-danger-bg !default;
+
+
+//** Fancy link underline
+$panel-link-color:            $brand-primary;
+$panel-link-color-active:     $neon-purple;
+$link-underline-color:        $panel-link-color !default;
+$link-underline-color-active: $panel-link-color-active !default;
+$link-underline-width:        1px !default;
+$link-underline-offset:       2px !default;
+$breaking-underlines:         true !default;
