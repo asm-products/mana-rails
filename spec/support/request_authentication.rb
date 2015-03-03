@@ -3,7 +3,7 @@ module SpecAuthRequestHelper
 
   def login(username='test@test.com', password='testtest', slug=nil)
     if User.count == 0
-      user = User.make!
+      user = User.make!(email: username)
       team = Team.make!
       user.teams << team
       slug = team.slug

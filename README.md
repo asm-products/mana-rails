@@ -6,8 +6,8 @@
 [![Test Coverage](https://codeclimate.com/github/asm-products/mana-rails/badges/coverage.svg)](https://codeclimate.com/github/asm-products/mana-rails)
 <a href="https://assembly.com/mana/bounties"><img src="http://badger.asm.co/mana/badges/tasks.svg" height="20px" alt="Open Tasks" /></a>
 
-## v0.3.0-prealpha.3.0.0
-This product is currently in a pre alpha development state and is not yet ready for production use. Please note that the semver file reflects the api version and not the application version.
+## v0.4.0-alpha.1.0.0
+This product is currently in an alpha development state and is not yet ready for production use. Please note that the semver file reflects the api version and not the application version.
 
 ### The project management, invoicing, team collaboration tool to rule them all!
 
@@ -51,7 +51,7 @@ then
 bundle install
 ```
 
-If neccessary config your database in `config/database.yml`. Make sure changes are not commit to git!
+If necessary config your database in `config/database.yml`. Make sure changes are not commit to git!
 
 ```
 rake db:create
@@ -60,12 +60,12 @@ rake db:seed
 rails s
 ```
 
-Please note you may run into some issues if this is the first time setup for postgresql we found these to stackoverflow articles very helpful:
+Please note you may run into some issues if this is the first time setup for postgresql we found these two stackoverflow articles very helpful:
 * [Installing PostgreSQL on Ubuntu for Ruby on Rails](http://stackoverflow.com/questions/11092807/installing-postgresql-on-ubuntu-for-ruby-on-rails)
 * [Getting error: Peer authentication failed for user “postgres”, when trying to get pgsql working with rails](http://stackoverflow.com/questions/18664074/getting-error-peer-authentication-failed-for-user-postgres-when-trying-to-ge)
 
 #### Different Teams
-Each team is identified by the subdomain of the app. In order to change team localy while development you have to map a domain (with subdomain) to localhost.
+Each team is identified by the subdomain of the app. In order to change team locally while development you have to map a domain (with subdomain) to localhost.
 - On mac / linux edit `/etc/hosts`
 - On windows edit `C:\WINDOWS\SYSTEM32\DRIVERS\ETC\HOSTS`.
 
