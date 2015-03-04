@@ -87,7 +87,7 @@ input, {
 .checkbox {
     padding-left: 20px;
 
-    label {
+    & label {
         display: inline-block;
         position: relative;
         padding-left: 5px;
@@ -124,10 +124,6 @@ input, {
     input[type="checkbox"] {
         opacity: 0;
 
-        &:focus + label:before {
-            @include tab-focus();
-        }
-
         &:checked + label:after {
             font-family: $icon-font;
             content: $fa-var-check;
@@ -160,7 +156,7 @@ input, {
 .radio {
     padding-left: 20px;
 
-    label {
+    & label {
         display: inline-block;
         position: relative;
         padding-left: 5px;
@@ -199,10 +195,6 @@ input, {
 
     input[type="radio"] {
         opacity: 0;
-
-        &:focus + label:before {
-            @include tab-focus();
-        }
 
         &:checked + label:after {
             @include scale(1, 1);

@@ -1,24 +1,28 @@
 .alert {
 
-    .alert-link {
-        color: $state-color-text;
-        text-decoration: underline;
-    }
+  .alert-link {
+    color: $state-color-text;
+    text-decoration: underline;
+  }
 }
+
+  .alert-notice { @extend .alert-info; }
+
+  .alert-error { @extend .alert-danger; }
 
 .close {
-    color: $state-color-text;
-    text-decoration: none;
-    opacity: 0.6;
+  color: $state-color-text;
+  text-decoration: none;
+  opacity: 0.6;
 
-    &:hover,
-    &:focus {
-        color: $state-color-text;
-        opacity: 1;
-    }
+  &:hover,
+  &:focus {
+    color: $state-color-text;
+    opacity: 1;
+  }
 }
 
-    .close:before {
-        font-family: $icon-font;
-        content: $fa-var-times;
-    }
+  .close:before {
+    font-family: $icon-font;
+    content: $fa-var-times;
+  }
