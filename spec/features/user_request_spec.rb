@@ -14,7 +14,7 @@ describe UsersController do
     fill_in :user_email, with: 'testemail@domain.com'
     fill_in :user_password, with: 'password'
     fill_in :user_password_confirmation, with: 'password'
-    click_on 'Create my account'
+    click_on 'Create account'
 
     expect(page.current_path).to eq(new_team_path)
 
@@ -53,7 +53,7 @@ describe UsersController do
 
     fill_in :user_password, with: 'test12345'
     fill_in :user_password_confirmation, with: 'test12345'
-    click_on 'Update my Account'
+    click_on 'Update account'
 
     expect(page.current_path).to eq(user_path(user))
 
