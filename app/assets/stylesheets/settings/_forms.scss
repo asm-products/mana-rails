@@ -26,7 +26,7 @@ $input-border-radius-large:      $border-radius-large !default;
 $input-border-radius-small:      $border-radius-small !default;
 
 //** Border color for inputs on focus
-$input-border-focus:             $gray-dark;
+$input-border-focus:             $gray;
 
 //** Placeholder text color
 $input-color-placeholder:        $gray;
@@ -42,7 +42,7 @@ $legend-color:                   $gray-dark !default;
 $legend-border-color:            #e5e5e5 !default;
 
 //** Background color for textual input addons
-$input-group-addon-bg:           $gray-lighter !default;
+$input-group-addon-bg:           $input-border;
 //** Border color for textual input addons
 $input-group-addon-border-color: $input-border !default;
 
