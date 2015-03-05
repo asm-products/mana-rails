@@ -90,6 +90,6 @@ class ContactsController < ApplicationController
   end
   
   def profile_params
-    params.require(:user_profile).permit(:first_name, :last_name, :job_title, :phone)
+    params.require(:profile).permit(:first_name, :last_name, :job_title, :phone)
   end
 end
