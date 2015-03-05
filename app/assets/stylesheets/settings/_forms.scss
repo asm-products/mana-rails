@@ -29,7 +29,7 @@ $input-border-radius-small:      $border-radius-small !default;
 $input-border-focus:             $gray;
 
 //** Placeholder text color
-$input-color-placeholder:        $gray-light;
+$input-color-placeholder:        $gray;
 
 //** Default `.form-control` height
 $input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;

@@ -1,29 +1,9 @@
-- provide(:title, 'Edit contact')
-
-.col-md-6.col-md-offset-3
-  h1 Edit contact
-  section.edit-contact
-    = form_for([@client, @contact]) do |f|
-      = fields_for @profile do |p|
-        .form-group
-          = p.label :first_name
-          = p.text_field :first_name, class: "form-control", placeholder: "Name"
-          = errors_for @profile, :first_name
-
-        .form-group
-          = p.label :last_name
-          = p.text_field :last_name, class: "form-control", placeholder: "Last name"
-          = errors_for @profile, :last_name
-
-        /.form-group
-          = p.label :job_title
-          = p.text_field :job_title, class: "form-control", placeholder: "Job title"
-          = errors_for @profile, :job_title
-
-        .form-group
-          = p.label :phone
-          = p.text_field :phone, class: "form-control", placeholder: "Telephone number"
-          = errors_for @profile, :phone
-        .form-group.pull-right
-          = link_to "Cancel", client_path(@client), class: "btn btn-default mr1"
-          = f.submit class: "btn btn-primary"
+= form_for([@client, @contact]) do |f|
+  = fields_for @profile do |p|
+    = p.label :first_name
+    = p.text_field :first_name, class: "form-control"
+    = p.label :last_name
+    = p.text_field :last_name, class: "form-control"
+    = p.label :phone
+    = p.text_field :phone, class: "form-control"
+  = f.submit class: "btn btn-success"
