@@ -1,32 +1,32 @@
-= form_for @client do |f| 
+= form_for @client do |f|
 	.form-group
 		= f.label :name
-		= f.text_field :name, class: "form-control"
+		= f.text_field :name, class: "form-control", placeholder: "Name"
 		= errors_for @client, :name
 
-    .form-group
+	.form-group
 		= f.label :address
-		= f.text_area :address, class: "form-control"
+		= f.text_area :address, class: "form-control", placeholder: "Address"
 		= errors_for @client, :address
 
 	.form-group
 		= f.label :phone
-		= f.text_field :phone, class: "form-control"
+		= f.text_field :phone, class: "form-control", placeholder: "Phone number"
 		= errors_for @client, :phone
 
 	.form-group
 		= f.label :website
-		= f.text_field :website, class: "form-control"
+		= f.text_field :website, class: "form-control", placeholder: "Website url"
 		= errors_for @client, :website
 
 	.form-group
 		= f.label :short_code
-		= f.text_field :short_code, class: "form-control"
+		= f.text_field :short_code, class: "form-control", placeholder: "Shortcode"
 		= errors_for @client, :short_code
 
-	.pull-right
+	.form-group.pull-right
 	  - if @client.short_code == nil
-	    = link_to "Cancel", clients_path, class: "btn btn-danger"
+	    = link_to "Cancel", clients_path, class: "btn btn-default mr1"
 	  - else
-	    = link_to "Cancel", client_path(@client), class: "btn btn-danger"
-	  = f.submit class:"btn btn-success"
+	    = link_to "Cancel", client_path(@client), class: "btn btn-default mr1"
+	  = f.submit class:"btn btn-primary"

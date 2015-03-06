@@ -1,7 +1,7 @@
 - @comments.each do |comment|
-  .panel.panel-default
+  .panel.panel-default id="#{comment.slug}"
     .pull-right.m1
-      = link_to raw('<i class="fa fa-trash"></i>'), [@client, comment], method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-default btn-sm btn--white mr1", title: "Delete Note"
+			= link_to raw('<i class="fa fa-pencil-square-o"></i>'), edit_polymorphic_path(@commentable, comment), class: "btn btn-default btn-sm btn--white mr1", title: "Edit Comment"
     .panel-body
       p.note-info Created by #{comment.commenter.name} on #{comment.created_at}
       p = render_markdown(comment.body)

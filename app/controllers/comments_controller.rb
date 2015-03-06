@@ -21,6 +21,26 @@ class CommentsController < ApplicationController
       render 'new'
     end
   end
+	
+	def edit
+		@comment = @commentable.comments.find_by_slug(params[:id])
+	end
+	
+	def update
+		@comment = @commentable.comments.find_by_slug(params[:id])
+		if @comment.update(comment_params)
+			redirect_to @commentable
+		else
+			flash[:danger] = 'Comment ' + @comment.errors.full_messages.to_sentence
+			render 'edit'
+		end
+	end
+		
+	def destroy
+		@comment = @commentable.comments.find_by_slug(params[:id])
+		@comment.destroy
+		redirect_to @commentable
+	end		
 
   private
     def comment_params
