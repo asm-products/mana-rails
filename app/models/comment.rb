@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 	
 	def default_values
 		self.body = capture_mention(body)
-		self.slug = SecureRandom.uuid if nil
+		self.slug ||= SecureRandom.uuid
 	end
 	
 	def find_by_slug slug

@@ -5,6 +5,10 @@ class CommentsController < ApplicationController
   def index
     @comments = @commentable.comments
   end
+	
+	def show
+		@commentable.comments.find_by_slug(params[:id])
+	end
 
   def new
     @comment = @commentable.comments.new
