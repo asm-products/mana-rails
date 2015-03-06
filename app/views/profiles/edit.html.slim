@@ -1,30 +1,33 @@
 - provide(:title, "Edit " + @user.name)
 
-- if @profile.created_at == @profile.updated_at
-	h3 Welcome to Mana, tell us a little about you...
-- else
-	h3 Edit Your Profile
+.col-md-6.col-md-offset-3
+	- if @profile.created_at == @profile.updated_at
+		h1 Welcome to Mana, tell us a little about you...
+	- else
+		h1 Edit Your Profile
 
-= form_for @profile, url: user_profile_path(@user, @profile) do |f|
-  .form-group
-    = f.label :first_name
-	= f.text_field :first_name, class: "form-control"
-	= errors_for @profile, :first_name
+	section.edit-profile
+		= form_for @profile, url: user_profile_path(@user, @profile) do |f|
+			.form-group
+				= f.label :first_name
+				= f.text_field :first_name, class: "form-control", placeholder: "Name"
+				= errors_for @profile, :first_name
 
-  .form-group
-    = f.label :last_name
-	= f.text_field :last_name, class: "form-control"
-	= errors_for @profile, :last_name
+			.form-group
+				= f.label :last_name
+				= f.text_field :last_name, class: "form-control", placeholder: "Last name"
+				= errors_for @profile, :last_name
 
-  .form-group
-    = f.label :job_title
-	= f.text_field :job_title, class: "form-control"
-	= errors_for @profile, :job_title
+			.form-group
+				= f.label :job_title
+				= f.text_field :job_title, class: "form-control", placeholder: "Job title"
+				= errors_for @profile, :job_title
 
-  .form-group
-    = f.label :phone
-	= f.text_field :phone, class: "form-control"
-	= errors_for @profile, :phone
+			.form-group
+				= f.label :phone
+				= f.text_field :phone, class: "form-control", placeholder: "Phone number"
+				= errors_for @profile, :phone
 
-  .pull-right
-	= f.submit class: "btn btn-success"
+			.form-group.pull-right
+				= link_to "Cancel", user_path(@user), class: "btn btn-default mr1"
+				= f.submit class: "btn btn-primary"
