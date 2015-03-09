@@ -40,12 +40,10 @@ ActiveRecord::Schema.define(version: 20150306220847) do
     t.datetime "updated_at"
     t.integer  "commentable_id"
     t.string   "commentable_type"
-    t.string   "slug"
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
-  add_index "comments", ["slug"], name: "index_comments_on_slug", unique: true, using: :btree
 
   create_table "issues", force: true do |t|
     t.integer  "unique_id"
