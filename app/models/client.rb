@@ -8,7 +8,7 @@ class Client < ActiveRecord::Base
   phony_normalize :phone
 
   belongs_to :team
-	belongs_to :account_manager, class_name: "User"
+	has_one :account_manager, class_name: "User"
   has_many :contacts
   has_many :comments, as: :commentable, dependent: :destroy
 

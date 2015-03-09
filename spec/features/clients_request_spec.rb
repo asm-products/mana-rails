@@ -36,7 +36,7 @@ describe ClientsController do
       create_client
       expect(page.current_path).to eq(client_path('tscde'))
     end
-
+		
     it "should list clients" do
       create_client
       visit clients_path

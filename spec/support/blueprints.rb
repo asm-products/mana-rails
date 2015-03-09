@@ -6,6 +6,7 @@ Client.blueprint do
   phone { '12345' }
   short_code { sn }
   website { 'http://www.testweb.com' }
+	account_manager_id { User.make.id }
 end
 
 Issue.blueprint do
