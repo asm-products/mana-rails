@@ -18,6 +18,11 @@
 		= f.label :website
 		= f.text_field :website, class: "form-control", placeholder: "Website url"
 		= errors_for @client, :website
+	
+	.form-group
+		= f.label :account_manager
+		= f.collection_select :account_manager_id, @current_team.users, :id, :name, {},  { :class => 'form-control' }
+		= errors_for @client, :account_manager_id
 
 	.form-group
 		= f.label :short_code

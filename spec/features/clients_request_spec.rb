@@ -28,6 +28,7 @@ describe ClientsController do
       fill_in :client_phone, with: "123123"
       fill_in :client_website, with: "testweb.com"
       fill_in :client_short_code, with: "tscde"
+			# select(current_user.name.to_s, from: :client_account_manager_id) //TODO: Have pwesner review
       click_on "Create Client"
       expect(Client.last.team).to be_present
     end
@@ -36,7 +37,7 @@ describe ClientsController do
       create_client
       expect(page.current_path).to eq(client_path('tscde'))
     end
-
+		
     it "should list clients" do
       create_client
       visit clients_path
