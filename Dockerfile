@@ -1,4 +1,4 @@
-FROM ruby:2.1.3
+FROM ruby:2.2.1
 
 RUN apt-get update && apt-get install -qq -y libicu-dev cmake nodejs
 

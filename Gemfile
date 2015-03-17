@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.3'
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
@@ -16,6 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'puma'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -52,6 +53,7 @@ gem 'RedCloth',           '~> 4.2.9', :require => false
 gem 'github-markdown',    '~> 0.5',   :require => false
 gem 'email_reply_parser', '~> 0.5',   :require => false
 gem 'sanitize',           '~> 2.0',   :require => false
+
 gem 'github-linguist'
 
 group :development do
