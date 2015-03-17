@@ -43,7 +43,9 @@
   font-size: $font-size-large;
   padding: 30px;
 
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     background-color: $neon-purple;
   }
 }
