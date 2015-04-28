@@ -11,22 +11,33 @@ class Ability
     permissions.uniq
   end
 
-  def initialize(user)
-    if user.nil? || (user && user.current_team.nil?)
-      user = User.new
-      can :create, User
-      can :create, Team
-    else
-      can :read, Profile do |profile|
-        profile.user.memberships.map(&:team).flatten.include? user.current_team
-      end
-      can :read, User do |check_user|
-        check_user.memberships.map(&:team).flatten.include? user.current_team
-      end
+  def guest?(user)
+    user.nil? || (user && user.current_team.nil?)
+  end
 
-      get_permissions_for(user).each do |permission|
-        can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.current_team) || permission.condition_block(user, user.current_team)
-      end
+  def setup_guest_abilities(user)
+    user = User.new
+    can :create, User
+    can :create, Team
+  end
+
+  def setup_member_abilities(user)
+    can :read, Profile do |profile|
+      profile.user.memberships.map(&:team).flatten.include? user.current_team
+    end
+    can :read, User do |check_user|
+      check_user.memberships.map(&:team).flatten.include? user.current_team
+    end
+    get_permissions_for(user).each do |permission|
+      can permission.action.to_sym, permission.klass.constantize, permission.condition_hash(user, user.current_team) || permission.condition_block(user, user.current_team)
+    end
+  end
+
+  def initialize(user)
+    if guest?(user)
+      setup_guest_abilities(user)
+    else
+      setup_member_abilities(user)
     end
 
     # Handle Admins
