@@ -63,7 +63,7 @@ describe Ability do
       expect(@ability.can? :read, new_user).to be(true)
     end
 
-    it "should not read other teams ueser" do
+    it "should not read other teams user" do
       new_user = User.make! teams: [user.teams.first]
       expect(@ability.can? :read, new_user).to be(false)
     end
