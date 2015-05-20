@@ -21,4 +21,9 @@ describe Comment, :type => :model do
     @comment.commenter = nil
     expect !@comment.valid?
   end
+	
+	it 'generates slug' do
+		@comment.save
+		expect !@comment.slug.nil?
+	end
 end

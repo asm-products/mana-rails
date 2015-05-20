@@ -1,15 +1,14 @@
 - provide(:title, @contact.name)
 
-.col.md-12
+.col-md-12
   section.contact_info
     .row
-      .col-md-1
-        h1 = gravatar_for @contact, size: 120
-      .col-md-11
-        .pull-right
-          = link_to "Edit Contact", edit_client_contact_path(@client.short_code, @contact.name), class: "btn btn-default btn--white mr1", title: "Edit Contact"
-        h1 = full_name @contact.profile
-        h3.v-info.v-info--name = @contact.name
-        h3.v-info = @contact.profile.job_title
-        h3.v-info = @contact.email
-        h3.v-info = formatted_phone @contact.profile
+      .pull-left
+        h1.m2 = gravatar_for @contact, size: 120
+      .pull-right
+        = link_to "Edit Contact", edit_client_contact_path(@client.short_code, @contact.name), class: "btn btn-default btn--white mr1", title: "Edit Contact"
+      h1 = full_name @contact.profile
+      h3.v-info.v-info--name = @contact.name
+      h3.v-info = @contact.profile.job_title
+      h3.v-info = @contact.email
+      h3.v-info = formatted_phone @contact.profile

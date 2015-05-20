@@ -21,3 +21,18 @@
 @include radio-variant('.radio-info', $brand-info);
 @include radio-variant('.radio-warning', $brand-warning);
 @include radio-variant('.radio-success', $brand-success);
+
+
+// Forms
+//
+
+.error-explanation {
+  color: $brand-danger;
+  font-weight: $bold;
+  margin-left: 10px;
+  text-transform: uppercase;
+}
+
+.field_with_errors {
+  @extend .has-error;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226035049) do
+ActiveRecord::Schema.define(version: 20150306220847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20150226035049) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "team_id"
+    t.integer  "account_manager_id"
   end
 
+  add_index "clients", ["account_manager_id"], name: "index_clients_on_account_manager_id", using: :btree
   add_index "clients", ["short_code"], name: "index_clients_on_short_code", using: :btree
 
   create_table "comments", force: true do |t|
@@ -38,10 +40,12 @@ ActiveRecord::Schema.define(version: 20150226035049) do
     t.datetime "updated_at"
     t.integer  "commentable_id"
     t.string   "commentable_type"
+    t.string   "slug"
   end
 
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
   add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
+  add_index "comments", ["slug"], name: "index_comments_on_slug", unique: true, using: :btree
 
   create_table "issues", force: true do |t|
     t.integer  "unique_id"

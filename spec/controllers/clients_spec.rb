@@ -35,6 +35,12 @@ describe ClientsController, :type => :controller do
       post :create, client: {name: "testname", short_code: "12346"}
       expect(Client.last.team).to eq(current_team)
     end
+		
+		it "should set account_manager" do
+			am = User.make!
+			post :create, client: {name: "testname", short_code: "12345", account_manager_id: am.id}
+			expect(Client.last.account_manager_id).to eq(am.id)
+		end
 
     it "destroys Clients" do
       delete :destroy, { id: @client.short_code }
