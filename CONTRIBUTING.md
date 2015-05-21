@@ -14,28 +14,22 @@ The following guidelines for contribution should be followed if you want to subm
 
 ## Make Changes
 
-* In your forked repository, create a topic branch for your upcoming patch. (e.g. `feature--autoplay` or `bugfix--ios-crash`)
-	* Usually this is based on the `develop` branch.
-	* Create a branch based on `develop`; 
+* In your forked repository, create a topic branch for your upcoming patch and name it `ASM-[bounty number]` where `[bounty number]`
+  is the bounty id of the related assembly bounty.
+	* Usually this is based on the `master` branch.
 	```
-	git branch fix/master/my_contribution develop
+	git checkout master
+	git checkout -b ASM-[bounty number]
 	``` 
-	* then checkout the new branch with 
-	```
-	git	checkout fix/develop/my_contribution.
-	```  
-	* Please avoid working directly on the `master` or `develop` branch.
+	* Please avoid working directly on the `master` branch.
 * Make sure you stick to the coding style that is used already.
-* Squash your topic branch on `develop` in as few logical commits as possible.
+* Squash your topic branch on `master` in as few logical commits as possible.
    ```
-   git rebase -i develop
+   git rebase -i master
    ```
 * Check for unnecessary whitespace with `git diff --check` before committing.
 * If possible, submit tests to your patch / new feature so it can be tested easily.
 * Assure nothing is broken by running all the tests.
-* If your changes are to the api be sure to reflect those changes with semver.
-  * Read the [semver](http://semver.org/) spec
-  * Learn how to use the [semver2](https://github.com/haf/semver) gem to increment semver.
 
 ## Submit Changes
 
